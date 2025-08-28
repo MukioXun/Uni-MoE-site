@@ -1,29 +1,375 @@
+/* 全局样式 - 可调节参数区域 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    margin: 0;
-    font-family: system-ui, sans-serif;
-    background: #fafafa;
-    color: #222;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: #ffffff; /* 主背景色 - 可调节 */
+  color: #1a1a1a; /* 主文字色 - 可调节 */
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* 顶部导航栏 - 固定位置 + 粘性定位 */
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 2rem; /* 高度调节：上下内边距 - 可调节 */
+  background: rgba(255, 255, 255, 0.9); /* 半透明背景 - 可调节 */
+  backdrop-filter: blur(10px);
+  position: sticky; /* 粘性定位 */
+  top: 0; /* 固定在顶部 */
+  z-index: 1000; /* 确保在最上层 */
+  width: 100%;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(220, 220, 220, 0.3); /* 底部细线 - 可调节 */
+}
+
+/* 固定内部元素间距 */
+.nav-left {
+  margin-left: 0; /* 固定左侧间距 */
+}
+
+.nav-right {
+  margin-right: 0; /* 固定右侧间距 */
+}
+
+.nav-left .home-btn {
+  color: #333333; /* 文字颜色 - 可调节 */
+  text-decoration: none;
+  font-size: 1rem; /* 字体大小 - 可调节 */
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 8px; /* 圆角大小 - 可调节 */
+  transition: all 0.3s ease;
+  background: rgba(240, 240, 240, 0.5); /* 背景色 - 可调节 */
+}
+
+.nav-left .home-btn:hover {
+  background: rgba(230, 230, 230, 0.8); /* 悬停背景色 - 可调节 */
+  transform: translateY(-1px); /* 悬停位移 - 可调节 */
+}
+
+.nav-right .github-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* 间距 - 可调节 */
+  color: #333333; /* 文字颜色 - 可调节 */
+  text-decoration: none;
+  font-size: 1rem; /* 字体大小 - 可调节 */
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(200, 200, 200, 0.3); /* 边框颜色和透明度 - 可调节 */
+  border-radius: 8px; /* 圆角大小 - 可调节 */
+  transition: all 0.3s ease;
+  background: rgba(240, 240, 240, 0.5); /* 背景色 - 可调节 */
+}
+
+.nav-right .github-link:hover {
+  background: rgba(230, 230, 230, 0.8); /* 悬停背景色 - 可调节 */
+  transform: translateY(-1px); /* 悬停位移 - 可调节 */
+  border-color: rgba(180, 180, 180, 0.5); /* 悬停边框色 - 可调节 */
+}
+
+/* 中间标题区域 - 可调节参数 */
+.hero-section {
+  text-align: center;
+  padding: 3rem 2rem; /* 内边距 - 可调节 */
+  margin-top: 1rem; /* 上边距 - 可调节 */
+}
+
+.main-title {
+  font-size: 5rem; /* 主标题字体大小 - 可调节 */
+  font-weight: 700; /* 字重 - 可调节 */
+  margin-bottom: 1.5rem; /* 下边距 - 可调节 */
+  color: #1a1a1a; /* 文字颜色 - 可调节 */
+  letter-spacing: -0.02em; /* 字间距 - 可调节 */
+  line-height: 1.1; /* 行高 - 可调节 */
+}
+
+.subtitle {
+  font-size: 1.8rem; /* 副标题字体大小 - 可调节 */
+  color: #666666; /* 文字颜色 - 可调节 */
+  font-weight: 400; /* 字重 - 可调节 */
+  max-width: 600px; /* 最大宽度 - 可调节 */
+  margin: 0 auto;
+  line-height: 1.5; /* 行高 - 可调节 */
+  letter-spacing: 0.01em; /* 字间距 - 可调节 */
+}
+
+/* 下方按钮区域 - 固定间距 */
+.action-section {
+  padding: 3rem 2rem; /* 增加上下内边距 - 可调节 */
+  display: flex;
+  justify-content: center;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 3rem; /* 显著增加按钮间距 - 可调节 */
+  align-items: center;
+  flex-direction: row; /* 水平排列 */
+  width: 100%;
+  max-width: 600px; /* 限制最大宽度以保持间距固定 */
+  justify-content: center;
+}
+
+.action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem; /* 内部间距 - 可调节 */
+  padding: 1.2rem 2rem; /* 内边距 - 可调节 */
+  background: #ffffff; /* 背景色 - 可调节 */
+  border: 1px solid rgba(220, 220, 220, 0.8); /* 边框颜色和透明度 - 可调节 */
+  border-radius: 16px; /* 圆角大小 - 可调节 */
+  color: #333333; /* 文字颜色 - 可调节 */
+  font-size: 1rem; /* 字体大小 - 可调节 */
+  font-weight: 500; /* 字重 - 可调节 */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 140px; /* 最小宽度 - 可调节 */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* 阴影 - 可调节 */
+}
+
+.action-btn:hover {
+  background: #f8f9fa; /* 悬停背景色 - 可调节 */
+  transform: translateY(-2px); /* 悬停位移 - 可调节 */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12); /* 悬停阴影 - 可调节 */
+  border-color: rgba(200, 200, 200, 0.9); /* 悬停边框色 - 可调节 */
+}
+
+.action-btn span {
+  font-size: 1.3rem; /* 图标大小 - 可调节 */
+  margin-bottom: 0.2rem; /* 图标文字间距 - 可调节 */
+}
+
+.intro-btn {
+  background: #ffffff; /* 背景色 - 可调节 */
+  border-color: rgba(100, 150, 255, 0.3); /* 边框色 - 可调节 */
+}
+
+.showcase-btn {
+  background: #ffffff; /* 背景色 - 可调节 */
+  border-color: rgba(255, 150, 100, 0.3); /* 边框色 - 可调节 */
+}
+
+/* 内容区域 - 白色主题适配 */
+#content-area {
+  padding: 2rem; /* 内边距 - 可调节 */
+  max-width: 800px; /* 最大宽度 - 可调节 */
+  margin: 0 auto;
+}
+
+.content-container {
+  background: #ffffff; /* 背景色 - 可调节 */
+  border-radius: 16px; /* 圆角大小 - 可调节 */
+  padding: 2rem; /* 内边距 - 可调节 */
+  border: 1px solid rgba(220, 220, 220, 0.8); /* 边框颜色 - 可调节 */
+  position: relative;
+  color: #1a1a1a; /* 文字颜色 - 可调节 */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08); /* 阴影 - 可调节 */
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem; /* 位置 - 可调节 */
+  right: 1rem; /* 位置 - 可调节 */
+  background: rgba(240, 240, 240, 0.8); /* 背景色 - 可调节 */
+  border: none;
+  border-radius: 50%; /* 圆角 - 可调节 */
+  width: 40px; /* 大小 - 可调节 */
+  height: 40px; /* 大小 - 可调节 */
+  font-size: 1.5rem; /* 字体大小 - 可调节 */
+  cursor: pointer;
+  color: #666666; /* 文字颜色 - 可调节 */
+  transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+  background: rgba(220, 220, 220, 0.9); /* 悬停背景色 - 可调节 */
+  transform: rotate(90deg); /* 悬停动画 - 可调节 */
+}
+
+#dynamic-content h2 {
+  color: #1a1a1a; /* 文字颜色 - 可调节 */
+  margin-bottom: 1rem; /* 下边距 - 可调节 */
+  font-size: 2rem; /* 字体大小 - 可调节 */
+  font-weight: 600; /* 字重 - 可调节 */
+}
+
+#dynamic-content h3 {
+  color: #333333; /* 文字颜色 - 可调节 */
+  margin: 1.5rem 0 1rem 0; /* 边距 - 可调节 */
+  font-size: 1.5rem; /* 字体大小 - 可调节 */
+  font-weight: 600; /* 字重 - 可调节 */
+}
+
+#dynamic-content h4 {
+  color: #444444; /* 文字颜色 - 可调节 */
+  margin: 1rem 0 0.5rem 0; /* 边距 - 可调节 */
+  font-size: 1.2rem; /* 字体大小 - 可调节 */
+  font-weight: 500; /* 字重 - 可调节 */
+}
+
+#dynamic-content p {
+  color: #666666; /* 文字颜色 - 可调节 */
+  line-height: 1.6; /* 行高 - 可调节 */
+  margin-bottom: 1rem; /* 下边距 - 可调节 */
+}
+
+#dynamic-content ul {
+  color: #666666; /* 文字颜色 - 可调节 */
+  padding-left: 1.5rem; /* 左边距 - 可调节 */
+}
+
+#dynamic-content li {
+  margin-bottom: 0.5rem; /* 下边距 - 可调节 */
+  line-height: 1.6; /* 行高 - 可调节 */
+}
+
+.showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 列宽 - 可调节 */
+  gap: 1.5rem; /* 间距 - 可调节 */
+  margin-top: 1.5rem; /* 上边距 - 可调节 */
+}
+
+.showcase-item {
+  background: #f8f9fa; /* 背景色 - 可调节 */
+  padding: 1.5rem; /* 内边距 - 可调节 */
+  border-radius: 12px; /* 圆角大小 - 可调节 */
+  border: 1px solid rgba(220, 220, 220, 0.5); /* 边框颜色 - 可调节 */
+  transition: all 0.3s ease;
+}
+
+.showcase-item:hover {
+  transform: translateY(-2px); /* 悬停位移 - 可调节 */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* 悬停阴影 - 可调节 */
+}
+
+.showcase-item h4 {
+  margin-bottom: 0.5rem; /* 下边距 - 可调节 */
+  color: #1a1a1a; /* 文字颜色 - 可调节 */
+  font-weight: 600; /* 字重 - 可调节 */
+}
+
+.showcase-item p {
+  color: #666666; /* 文字颜色 - 可调节 */
+  font-size: 0.9rem; /* 字体大小 - 可调节 */
+  line-height: 1.5; /* 行高 - 可调节 */
+}
+
+/* 页脚样式 */
+.footer {
+  background: rgba(248, 249, 250, 0.8); /* 背景色 - 可调节 */
+  backdrop-filter: blur(10px);
+  padding: 3rem 2rem 1rem; /* 内边距 - 可调节 */
+  margin-top: 4rem; /* 上边距 - 可调节 */
+  border-top: 1px solid rgba(220, 220, 220, 0.3); /* 顶部边框 - 可调节 */
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px; /* 最大宽度 - 可调节 */
+  margin: 0 auto;
+  gap: 2rem; /* 间距 - 可调节 */
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 200px; /* 最小宽度 - 可调节 */
+}
+
+.footer-section h4 {
+  color: #1a1a1a; /* 文字颜色 - 可调节 */
+  font-size: 1.2rem; /* 字体大小 - 可调节 */
+  font-weight: 600; /* 字重 - 可调节 */
+  margin-bottom: 1rem; /* 下边距 - 可调节 */
+}
+
+.footer-section p {
+  color: #666666; /* 文字颜色 - 可调节 */
+  line-height: 1.6; /* 行高 - 可调节 */
+  margin-bottom: 0.5rem; /* 下边距 - 可调节 */
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 0.5rem; /* 间距 - 可调节 */
+}
+
+.footer-section ul li a {
+  color: #666666; /* 链接颜色 - 可调节 */
+  text-decoration: none;
+  transition: color 0.3s ease; /* 过渡效果 - 可调节 */
+  line-height: 1.6; /* 行高 - 可调节 */
+}
+
+.footer-section ul li a:hover {
+  color: #333333; /* 悬停颜色 - 可调节 */
+  text-decoration: underline; /* 悬停下划线 - 可调节 */
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 2rem; /* 上边距 - 可调节 */
+  margin-top: 2rem; /* 上边距 - 可调节 */
+  border-top: 1px solid rgba(220, 220, 220, 0.2); /* 顶部边框 - 可调节 */
+}
+
+.footer-bottom p {
+  color: #888888; /* 文字颜色 - 可调节 */
+  font-size: 0.9rem; /* 字体大小 - 可调节 */
+  margin: 0;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .top-nav {
+    padding: 0.8rem 1rem;
+    flex-direction: row;
+    gap: 1rem;
   }
-  
-  header {
-    text-align: center;
-    padding: 4rem 1rem;
-  }
-  
-  h1 {
+
+  .main-title {
     font-size: 2.5rem;
-    margin: 0.5rem 0;
   }
-  
-  p {
+
+  .subtitle {
     font-size: 1.2rem;
-    color: #555;
   }
-  
-  footer {
-    text-align: center;
-    padding: 2rem;
-    font-size: 0.9rem;
-    color: #777;
+
+  .action-buttons {
+    flex-direction: column;
+    gap: 2rem;
   }
+
+  .action-btn {
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .hero-section {
+    padding: 2rem 1rem;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .footer-section {
+    min-width: auto;
+  }
+}
   
