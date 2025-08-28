@@ -11,6 +11,8 @@ body {
   color: #1a1a1a; /* 主文字色 - 可调节 */
   min-height: 100vh;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 /* 顶部导航栏 - 固定位置 + 粘性定位 */
@@ -263,74 +265,90 @@ body {
   line-height: 1.5; /* 行高 - 可调节 */
 }
 
-/* 页脚样式 */
+/* 页脚样式 - 固定在底部 */
 .footer {
   background: rgba(248, 249, 250, 0.8); /* 背景色 - 可调节 */
   backdrop-filter: blur(10px);
-  padding: 3rem 2rem 1rem; /* 内边距 - 可调节 */
-  margin-top: 4rem; /* 上边距 - 可调节 */
+  padding: 1.5rem 2rem; /* 增加内边距 */
   border-top: 1px solid rgba(220, 220, 220, 0.3); /* 顶部边框 - 可调节 */
+  margin-top: auto; /* 自动推到页面底部 */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .footer-content {
   display: flex;
   justify-content: space-between;
-  max-width: 1200px; /* 最大宽度 - 可调节 */
+  align-items: center; /* 垂直居中对齐 */
+  max-width: 1200px; /* 进一步增加最大宽度 */
   margin: 0 auto;
-  gap: 2rem; /* 间距 - 可调节 */
+  gap: 8rem; /* 显著增加间距 */
   flex-wrap: wrap;
+  padding: 0 2rem; /* 增加水平内边距 */
 }
 
 .footer-section {
   flex: 1;
-  min-width: 200px; /* 最小宽度 - 可调节 */
+  min-width: 200px; /* 调整最小宽度 */
 }
 
 .footer-section h4 {
   color: #1a1a1a; /* 文字颜色 - 可调节 */
-  font-size: 1.2rem; /* 字体大小 - 可调节 */
+  font-size: 1rem; /* 字体大小 */
   font-weight: 600; /* 字重 - 可调节 */
-  margin-bottom: 1rem; /* 下边距 - 可调节 */
+  margin-bottom: 0.5rem; /* 下边距 */
+  text-align: center; /* 内部居中 */
 }
 
 .footer-section p {
   color: #666666; /* 文字颜色 - 可调节 */
-  line-height: 1.6; /* 行高 - 可调节 */
-  margin-bottom: 0.5rem; /* 下边距 - 可调节 */
-}
-
-.footer-section ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-section ul li {
-  margin-bottom: 0.5rem; /* 间距 - 可调节 */
-}
-
-.footer-section ul li a {
-  color: #666666; /* 链接颜色 - 可调节 */
-  text-decoration: none;
-  transition: color 0.3s ease; /* 过渡效果 - 可调节 */
-  line-height: 1.6; /* 行高 - 可调节 */
-}
-
-.footer-section ul li a:hover {
-  color: #333333; /* 悬停颜色 - 可调节 */
-  text-decoration: underline; /* 悬停下划线 - 可调节 */
-}
-
-.footer-bottom {
-  text-align: center;
-  padding-top: 2rem; /* 上边距 - 可调节 */
-  margin-top: 2rem; /* 上边距 - 可调节 */
-  border-top: 1px solid rgba(220, 220, 220, 0.2); /* 顶部边框 - 可调节 */
-}
-
-.footer-bottom p {
-  color: #888888; /* 文字颜色 - 可调节 */
-  font-size: 0.9rem; /* 字体大小 - 可调节 */
+  line-height: 1.4; /* 行高 */
+  font-size: 0.9rem; /* 字体大小 */
   margin: 0;
+  text-align: center; /* 内部居中 */
+}
+
+/* 链接容器 */
+.footer-links {
+  display: flex;
+  flex-direction: column; /* 垂直排列 */
+  align-items: flex-end; /* 右对齐 */
+  gap: 0.5rem; /* 垂直间距 */
+}
+
+.footer-icons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem; /* 图标间距 - 可调节 */
+  flex-wrap: wrap; /* 允许换行 */
+}
+
+/* 图标链接样式 */
+.footer-link {
+  display: inline-flex;
+  align-items: center;
+  color: #666666; /* 图标颜色 - 可调节 */
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  color: #333333; /* 悬停颜色 - 可调节 */
+}
+
+.footer-link svg {
+  width: 24px; /* 图标大小 */
+  height: 24px;
+}
+
+/* 版权信息 - 置于链接下方 */
+.footer-copyright {
+  color: #888888; /* 文字颜色 - 可调节 */
+  font-size: 0.7rem; /* 字体大小 */
+  text-align: right; /* 右对齐 */
+  margin-top: 0.25rem; /* 上方间距 */
+  white-space: nowrap; /* 防止版权文字换行 */
 }
 
 /* 响应式设计 */
