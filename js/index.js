@@ -2,8 +2,8 @@ const root = document.getElementById("root");
 
 root.innerHTML = `
   <header>
-    <h1>🚀 My Project</h1>
-    <p>Next-generation GUI agent demo</p>
+    <h1>Uni-MoE/h1>
+    <p></p>
   </header>
 
   <main style="max-width:800px;margin:0 auto;padding:2rem;">
