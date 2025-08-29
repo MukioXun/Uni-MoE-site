@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Uni-MoE - 技术展示博客</title>
+    <link rel="stylesheet" href="css/index.css">
     <script src="js/audio-player.js"></script>
     <style>
         * {
@@ -153,8 +154,9 @@
         .media-item {
             flex: 1;
             min-width: 300px;
-            max-width: 400px;
+            max-width: 900px;
             text-align: center;
+            margin: 0 auto;
         }
 
         .media-item img, .media-item video, .media-item audio {
@@ -252,93 +254,47 @@
         </div>
         <div class="media-container">
             <div class="media-item">
-                <img src="img/struct.png" alt="Uni-MoE架构图">
+                <img src="img/struct.png" alt="Uni-MoE架构图" style="max-width: 90%; width: 800px; height: auto; display: block; margin: 0 auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(123, 179, 255, 0.15);">
+
                 <p><strong>Fig. 1</strong>  Uni-MoE Framework</p>
             </div>
         </div>
     </div>
+    <div class = "blog-section">
+        <h2 class="section-title">Experiments</h2>
+        <p>
+            The MoE model effectively mitigates task conflicts in speech and music generation and benefits from multi-task joint training, outperforming dense models.
+        </p> 
+        <div class="media-container">
+            <div class="media-item">
+                <img src="img/exp_result.png" alt="Uni-MoE架构图" style="max-width: 90%; width: 800px; height: auto; display: block; margin: 0 auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(123, 179, 255, 0.15);">
 
-    <div class="blog-section">
-        <h2 class="section-title">Performance</h2>
-        
-        <div class="audio-showcase">
-            <div class="audio-card">
-                <div class="audio-header">
-                    <div class="audio-icon">🎤</div>
-                    <h3>Voice Clone</h3>
-                    <span class="audio-badge">语音克隆</span>
-                </div>
-                <div class="audio-visual">
-                    <div class="waveform">
-                        <div class="wave-bar" style="height: 60%"></div>
-                        <div class="wave-bar" style="height: 80%"></div>
-                        <div class="wave-bar" style="height: 40%"></div>
-                        <div class="wave-bar" style="height: 90%"></div>
-                        <div class="wave-bar" style="height: 70%"></div>
-                        <div class="wave-bar" style="height: 50%"></div>
-                        <div class="wave-bar" style="height: 85%"></div>
-                        <div class="wave-bar" style="height: 65%"></div>
-                    </div>
-                    <audio controls class="audio-player">
-                        <source src="demo-audio.wav" type="audio/wav">
-                        您的浏览器不支持音频播放。
-                    </audio>
-                </div>
-                <div class="audio-info">
-                    <p><strong>功能：</strong>高质量语音克隆与情感保持</p>
-                    <p><strong>应用：</strong>个性化语音助手、内容创作</p>
-                    <div class="audio-metrics">
-                        <span class="metric">相似度: 95%</span>
-                        <span class="metric">延迟: <50ms</span>
-                    </div>
-                </div>
+                <p><strong>Fig. 2</strong>  Uni-MoE Performance</p>
             </div>
+        </div>
+        <p>
+            As depth increases, the average number of selected experts rises rapidly then declines slowly, indicating that lower layers handle basic feature processing, middle layers perform complex computations like multimodal interaction to obtain dense feature encodings, and higher layers focus on downstream task output.
+        </p>
+        <div class="media-container">
+            <div class="media-item">
+                <img src="img/expert.png" alt="Uni-MoE架构图" style="max-width: 60%; width: 700px; height: auto; display: block; margin: 0 auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(123, 179, 255, 0.15);">
 
-            <div class="audio-card">
-                <div class="audio-header">
-                    <div class="audio-icon">🎵</div>
-                    <h3>Musical Generation</h3>
-                    <span class="audio-badge">音乐生成</span>
-                </div>
-                <div class="audio-visual">
-                    <div class="waveform">
-                        <div class="wave-bar" style="height: 75%"></div>
-                        <div class="wave-bar" style="height: 45%"></div>
-                        <div class="wave-bar" style="height: 90%"></div>
-                        <div class="wave-bar" style="height: 55%"></div>
-                        <div class="wave-bar" style="height: 80%"></div>
-                        <div class="wave-bar" style="height: 60%"></div>
-                        <div class="wave-bar" style="height: 95%"></div>
-                        <div class="wave-bar" style="height: 70%"></div>
-                    </div>
-                    <audio controls class="audio-player">
-                        <source src="demo-audio.wav" type="audio/wav">
-                        您的浏览器不支持音频播放。
-                    </audio>
-                </div>
-                <div class="audio-info">
-                    <p><strong>功能：</strong>多风格音乐生成与混音</p>
-                    <p><strong>应用：</strong>背景音乐、创意作曲</p>
-                    <div class="audio-metrics">
-                        <span class="metric">多样性: 8种风格</span>
-                        <span class="metric">质量: 44.1kHz</span>
-                    </div>
-                </div>
+                <p><strong>Fig. 3</strong>  Uni-MoE Expert Visulization</p>
             </div>
         </div>
     </div>
-
     <div class="blog-section">
-        <h2 class="section-title">Zero-shot TTS</h2>
-        <p>In the following, we first show some case in LibriTTS test clean set.</p>
-        
+        <h2 class="section-title">Performance</h2>
+        <h3>
+            Voice Clone
+        </h3>      
         <div class="tts-table-container">
             <table class="tts-table">
                 <thead>
                     <tr>
                         <th><center>Speeker</center></th>
                         <th><center>Prompt Voice</center></th>
-                        <th><center>Original</center></th>
+                        <th><center>Origin</center></th>
                         <th><center>Clone Speech</center></th>
                         <th><center>Cloned</center></th>
                     </tr>
@@ -349,10 +305,15 @@
                         <td class="text-cell" rowspan="1">Case #1</td>
                         <td class="text-cell">另外根据中央气象台的未来七天降雨预报。</td>
                         <td class="audio-cell">
-                            <audio class="audio-player-mini" src="demo-audio.wav" controls preload></audio>
+                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
                         <td class="text-cell">小径的面貌已然改变，泥土被踏实了，草皮有了被啃咬过的痕迹。</td>
-                        <td class="audio-cell">
-                            <audio class="audio-player-mini" src="demo-audio.wav" controls preload></audio>
+                                 <td class="audio-cell">
+                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
+                                <span class="play-icon">▶</span>
+                            </div>
                         </td>
                     </tr>
                     <!-- 案例行 -->
@@ -360,10 +321,15 @@
                         <td class="text-cell" rowspan="1">Case #2</td>
                         <td class="text-cell">另外根据中央气象台的未来七天降雨预报。</td>
                         <td class="audio-cell">
-                            <audio class="audio-player-mini" src="demo-audio.wav" controls preload></audio>
+                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
                         <td class="text-cell">小径的面貌已然改变，泥土被踏实了，草皮有了被啃咬过的痕迹。</td>
                         <td class="audio-cell">
-                            <audio class="audio-player-mini" src="demo-audio.wav" controls preload></audio>
+                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
+                                <span class="play-icon">▶</span>
+                            </div>
                         </td>
                     </tr>
                     <!-- 案例行 -->
@@ -371,10 +337,15 @@
                         <td class="text-cell" rowspan="1">Case #3</td>
                         <td class="text-cell">另外根据中央气象台的未来七天降雨预报。</td>
                         <td class="audio-cell">
-                            <audio class="audio-player-mini" src="demo-audio.wav" controls preload></audio>
+                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
                         <td class="text-cell">小径的面貌已然改变，泥土被踏实了，草皮有了被啃咬过的痕迹。</td>
                         <td class="audio-cell">
-                            <audio class="audio-player-mini" src="demo-audio.wav" controls preload></audio>
+                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
+                                <span class="play-icon">▶</span>
+                            </div>
                         </td>
                     </tr>
                     <!-- 案例行 -->
@@ -382,10 +353,15 @@
                         <td class="text-cell" rowspan="1">Case #4</td>
                         <td class="text-cell">另外根据中央气象台的未来七天降雨预报。</td>
                         <td class="audio-cell">
-                            <audio class="audio-player-mini" src="demo-audio.wav" controls preload></audio>
+                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
                         <td class="text-cell">小径的面貌已然改变，泥土被踏实了，草皮有了被啃咬过的痕迹。</td>
                         <td class="audio-cell">
-                            <audio class="audio-player-mini" src="demo-audio.wav" controls preload></audio>
+                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
+                                <span class="play-icon">▶</span>
+                            </div>
                         </td>
                     </tr>
                     <!-- 案例行 -->
@@ -393,10 +369,72 @@
                         <td class="text-cell" rowspan="1">Case #5</td>
                         <td class="text-cell">另外根据中央气象台的未来七天降雨预报。</td>
                         <td class="audio-cell">
-                            <audio class="audio-player-mini" src="demo-audio.wav" controls preload></audio>
+                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
                         <td class="text-cell">小径的面貌已然改变，泥土被踏实了，草皮有了被啃咬过的痕迹。</td>
                         <td class="audio-cell">
-                            <audio class="audio-player-mini" src="demo-audio.wav" controls preload></audio>
+                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>
+            Music Generation
+        </h3>      
+        <div class="tts-table-container">
+            <table class="tts-table">
+                <thead>
+                    <tr>
+                        <th><center>Language</center></th>
+                        <th><center>Style Description</center></th>
+                        <th><center>Music</center></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 案例行 -->
+                    <tr>
+                        <td class="text-cell" rowspan="1">Case #1</td>
+                        <td class="text-cell">另外根据中央气象台的未来七天降雨预报。</td>
+                        <td class="audio-cell">
+                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- 案例行 -->
+                    <tr>
+                        <td class="text-cell" rowspan="1">Case #1</td>
+                        <td class="text-cell">另外根据中央气象台的未来七天降雨预报。</td> 
+                        <td class="audio-cell">
+                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- 案例行 -->
+                    <tr>
+                        <td class="text-cell" rowspan="1">Case #1</td>
+                        <td class="text-cell">另外根据中央气象台的未来七天降雨预报。</td>
+                        <td class="audio-cell">
+                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- 案例行 -->
+                    <tr>
+                        <td class="text-cell" rowspan="1">Case #1</td>
+                        <td class="text-cell">另外根据中央气象台的未来七天降雨预报。</td>
+                        <td class="audio-cell">
+                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
+                                <span class="play-icon">▶</span>
+                            </div>
                         </td>
                     </tr>
                 </tbody>

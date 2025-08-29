@@ -331,10 +331,10 @@ body {
 }
 
 .tts-table-container {
-    border: 3px solid #667eea;
-    border-radius: 12px;
+    border: 1px solid #a8d0ff;
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 12px rgba(123, 179, 255, 0.15);
     margin: 2rem 0;
     background: white;
 }
@@ -377,25 +377,27 @@ body {
     text-align: center;
     font-weight: 600;
     font-size: 0.85rem;
-    letter-spacing: 0.5px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border: 1px solid #fff;
-    border-bottom: 2px solid #4a5568;
+    letter-spacing: 0.3px;
+    background: linear-gradient(135deg, #e6f2ff 0%, #d1e7ff 100%);
+    color: #2c5aa0;
+    border: 1px solid #b3d9ff;
+    border-bottom: 1px solid #b3d9ff;
 }
 
 .tts-table td {
-    padding: 0.6rem 0.4rem;
+    padding: 1.5rem 1rem;
     vertical-align: middle;
-    border: 1px solid #ddd;
+    background: #fafbff;
+    color: #2c3e50;
+    border-bottom: 1px solid #e6f2ff;
 }
 
 .tts-table td.text-cell {
-    background-color: #f8f9fa;
+    background-color: #ffffff;
     font-size: 0.8rem;
     line-height: 1.4;
     color: #333;
-    text-align: left;
+    text-align: center;
     word-wrap: break-word;
     overflow-wrap: break-word;
 }
@@ -404,48 +406,53 @@ body {
     background-color: #ffffff;
     text-align: center;
     padding: 0.3rem;
+    min-height: 60px;
+    vertical-align: middle;
+    display: table-cell;
 }
 
 /* 超小型音频播放器 */
 .audio-player-mini {
-    width: 100%;
-    max-width: 40px;
+    width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border: none;
+    background: linear-gradient(135deg, #a8d0ff 0%, #7bb3ff 100%);
     cursor: pointer;
-    display: inline-flex;
+    transition: all 0.3s ease;
+    position: relative;
+    margin: 0 auto;
+    display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    font-size: 16px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
+    border: none;
+    box-shadow: 0 2px 6px rgba(123, 179, 255, 0.3);
 }
 
 .audio-player-mini:hover {
     transform: scale(1.1);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 12px rgba(123, 179, 255, 0.4);
 }
 
-.audio-player-mini::-webkit-media-controls-panel {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+.audio-player-mini.clicked {
+    background: linear-gradient(135deg, #5ba3ff 0%, #3d8aff 100%);
 }
 
-.audio-player-mini::-webkit-media-controls-play-button,
-.audio-player-mini::-webkit-media-controls-pause-button {
-    color: white !important;
+.play-icon {
+    color: white;
+    font-size: 14px;
+    line-height: 1;
+    user-select: none;
 }
 
-/* 隐藏默认的音频控制元素，只保留播放按钮 */
-.audio-player-mini::-webkit-media-controls-timeline,
-.audio-player-mini::-webkit-media-controls-current-time-display,
-.audio-player-mini::-webkit-media-controls-time-remaining-display,
-.audio-player-mini::-webkit-media-controls-volume-slider,
-.audio-player-mini::-webkit-media-controls-mute-button,
-.audio-player-mini::-webkit-media-controls-fullscreen-button {
-    display: none !important;
+.audio-player-mini.clicked .play-icon {
+    font-size: 12px;
+}
+
+/* 点击后显示完整控制面板 */
+.audio-player-mini.clicked {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
 }
 
 /* 浮动音频控制面板样式 */
@@ -455,9 +462,10 @@ body {
     border-radius: 12px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
     padding: 1rem;
-    min-width: 300px;
+    width: 300px;
     z-index: 10000;
     border: 1px solid rgba(200, 220, 255, 0.3);
+    box-sizing: border-box;
 }
 
 .control-panel-header {
@@ -491,20 +499,221 @@ body {
     transform: rotate(90deg);
 }
 
-.control-panel-content audio {
-    width: 100%;
-    height: 40px;
-    border-radius: 8px;
+.control-panel-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
-/* 边框样式 */
+.control-panel-content .play-pause-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    margin: 0 auto;
+}
+
+.control-panel-content .play-pause-btn:hover {
+    transform: scale(1.1);
+}
+
+.control-panel-content .progress-container {
+    width: 100%;
+    height: 6px;
+    background: #e2e8f0;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 1rem 0;
+}
+
+.control-panel-content .progress-bar {
+    height: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 3px;
+    width: 0%;
+}
+
+.control-panel-content .time-display {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.control-panel-content .volume-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.control-panel-content .volume-slider {
+    flex: 1;
+    height: 4px;
+    background: #e2e8f0;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.control-panel-content .volume-slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #667eea;
+    cursor: pointer;
+}
+
+.control-panel-content .volume-icon {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* 清新浅蓝色边框样式 */
 .tts-table th,
 .tts-table td {
-    border: 2px solid #667eea;
+    border: 1px solid #b3d9ff !important;
 }
 
 .tts-table {
-    border: 3px solid #667eea;
+    border: 2px solid #a8d0ff !important;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(163, 196, 243, 0.1);
+}
+
+/* 新的音频控制面板样式 */
+.audio-controls-panel {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(123, 179, 255, 0.15);
+    padding: 8px 12px;
+    z-index: 1000;
+    min-width: 280px;
+    max-width: 320px;
+    border: 1px solid #d1e7ff;
+}
+
+.controls-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: nowrap;
+}
+
+.play-btn {
+    background: #7bb3ff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: 0;
+    transition: background 0.2s ease;
+}
+
+.play-btn:hover {
+    background: #5ba3ff;
+}
+
+.progress-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 3px;
+    background: #e0e0e0;
+    border-radius: 2px;
+    cursor: pointer;
+    position: relative;
+    min-width: 80px;
+}
+
+.progress {
+    height: 100%;
+    background: #7bb3ff;
+    border-radius: 2px;
+    width: 0%;
+    transition: width 0.1s ease;
+}
+
+.time {
+    font-size: 11px;
+    color: #666;
+    min-width: 70px;
+    text-align: center;
+    flex-shrink: 0;
+    font-family: 'Courier New', monospace;
+}
+
+.volume-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0;
+    color: #666;
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+}
+
+.volume-btn:hover {
+    color: #333;
+}
+
+.volume-slider {
+    width: 60px;
+    height: 3px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: #e0e0e0;
+    border-radius: 2px;
+    outline: none;
+    flex-shrink: 0;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 10px;
+    height: 10px;
+    background: #667eea;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.volume-slider::-moz-range-thumb {
+    width: 10px;
+    height: 10px;
+    background: #667eea;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
 }
 
 /* 响应式调整 */
@@ -520,16 +729,34 @@ body {
         transform: scale(0.7);
     }
     
-    .floating-audio-controls {
-        min-width: 250px;
-        left: 10px !important;
-        right: 10px !important;
-        margin: 0 auto;
+    .audio-controls-panel {
+        min-width: 240px;
+        max-width: 280px;
+        padding: 6px 10px;
+    }
+    
+    .controls-row {
+        gap: 6px;
+    }
+    
+    .play-btn {
+        width: 24px;
+        height: 24px;
+        font-size: 10px;
+    }
+    
+    .time {
+        font-size: 10px;
+        min-width: 60px;
+    }
+    
+    .volume-slider {
+        width: 50px;
     }
 }
 
 .tts-table tbody tr:hover {
-    background-color: #f8f9ff;
+    background-color: #e6f2ff;
 }
 
 .tts-table td {

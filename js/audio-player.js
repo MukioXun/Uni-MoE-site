@@ -1,102 +1,148 @@
 // 音频播放器交互功能
 
-// 为所有迷你音频播放器添加点击事件监听器
 document.addEventListener('DOMContentLoaded', function() {
-    // 获取所有迷你音频播放器元素
     const miniPlayers = document.querySelectorAll('.audio-player-mini');
+    console.log('Found ' + miniPlayers.length + ' audio player elements');
     
-    // 为每个迷你音频播放器添加点击事件
-    miniPlayers.forEach(function(player) {
-        // 添加点击事件监听器
+    if (miniPlayers.length === 0) {
+        console.log('No audio player elements found');
+        return;
+    }
+
+    let currentAudio = null;
+    let currentPlayer = null;
+    let currentControls = null;
+
+    miniPlayers.forEach(function(player, index) {
+        const audioSrc = player.getAttribute('data-audio');
+        console.log('Initializing audio player ' + index + ' with src: ' + audioSrc);
+        
         player.addEventListener('click', function(e) {
-            // 阻止事件冒泡
             e.stopPropagation();
             
-            // 切换控制面板的显示状态
-            toggleFloatingControls(player);
+            this.classList.toggle('clicked');
+            toggleAudioControls(this, audioSrc);
         });
     });
-    
-    // 点击页面其他地方时隐藏控制面板
-    document.addEventListener('click', function(e) {
-        // 隐藏所有音频控制面板
-        hideAllFloatingControls();
-    });
-});
 
-// 切换浮动控制面板显示状态
-function toggleFloatingControls(player) {
-    // 检查是否已经存在控制面板
-    const existingControls = document.querySelector('.floating-audio-controls');
-    
-    // 如果已经存在控制面板，则移除它
-    if (existingControls) {
-        existingControls.remove();
-        // 如果点击的是同一个播放器，则不创建新的控制面板
-        if (existingControls.dataset.playerId === player.id) {
-            return;
+    function toggleAudioControls(player, src) {
+        if (currentControls) {
+            currentControls.remove();
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio = null;
+            }
+            if (currentPlayer && currentPlayer !== player) {
+                currentPlayer.classList.remove('clicked');
+            }
+        }
+
+        if (player.classList.contains('clicked')) {
+            currentAudio = new Audio(src);
+            currentPlayer = player;
+            
+            const controls = document.createElement('div');
+            controls.className = 'audio-controls-panel';
+            controls.innerHTML = `
+                <div class="controls-row">
+                    <button class="play-btn">⏸</button>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress"></div>
+                        </div>
+                        <span class="time">0:00 / 0:00</span>
+                    </div>
+                    <button class="volume-btn">🔊</button>
+                    <input type="range" class="volume-slider" min="0" max="1" step="0.1" value="1">
+                </div>
+            `;
+            
+            const rect = player.getBoundingClientRect();
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+            
+            controls.style.position = 'absolute';
+            controls.style.left = (rect.left + scrollLeft + rect.width / 2 - 140) + 'px';
+            controls.style.top = (rect.bottom + scrollTop + 8) + 'px';
+            controls.style.zIndex = '1000';
+            
+            document.body.appendChild(controls);
+            currentControls = controls;
+            
+            setupAudioEvents(currentAudio, controls, player);
         }
     }
-    
-    // 为播放器分配唯一ID（如果还没有）
-    if (!player.id) {
-        player.id = 'audio-player-' + Date.now();
-    }
-    
-    // 创建浮动控制面板
-    createFloatingControls(player);
-}
 
-// 创建浮动控制面板
-function createFloatingControls(player) {
-    // 创建控制面板容器
-    const controlPanel = document.createElement('div');
-    controlPanel.className = 'floating-audio-controls';
-    
-    // 为控制面板分配唯一ID并关联播放器
-    controlPanel.dataset.playerId = player.id;
-    
-    // 创建控制面板内容
-    controlPanel.innerHTML = `
-        <div class="control-panel-content">
-            <audio controls src="${player.src}"></audio>
-        </div>
-    `;
-    
-    // 添加到页面中
-    document.body.appendChild(controlPanel);
-    
-    // 定位控制面板
-    positionControlPanel(controlPanel, player);
-    
-    // 添加点击事件以防止控制面板被关闭
-    controlPanel.addEventListener('click', function(e) {
-        e.stopPropagation();
+    function setupAudioEvents(audio, controls, player) {
+        const playBtn = controls.querySelector('.play-btn');
+        const progress = controls.querySelector('.progress');
+        const timeDisplay = controls.querySelector('.time');
+        const volumeSlider = controls.querySelector('.volume-slider');
+        const volumeBtn = controls.querySelector('.volume-btn');
+
+        playBtn.addEventListener('click', function() {
+            if (audio.paused) {
+                audio.play();
+                playBtn.textContent = '⏸';
+            } else {
+                audio.pause();
+                playBtn.textContent = '▶';
+            }
+        });
+
+        volumeSlider.addEventListener('input', function() {
+            audio.volume = this.value;
+            volumeBtn.textContent = audio.volume > 0 ? '🔊' : '🔇';
+        });
+
+        audio.addEventListener('timeupdate', function() {
+            const progressPercent = (audio.currentTime / audio.duration) * 100 || 0;
+            progress.style.width = progressPercent + '%';
+            
+            const currentTime = formatTime(audio.currentTime);
+            const duration = formatTime(audio.duration || 0);
+            timeDisplay.textContent = `${currentTime} / ${duration}`;
+        });
+
+        controls.querySelector('.progress-bar').addEventListener('click', function(e) {
+            const rect = this.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const seekTime = (clickX / rect.width) * audio.duration;
+            audio.currentTime = seekTime;
+        });
+
+        audio.addEventListener('ended', function() {
+            playBtn.textContent = '▶';
+            player.classList.remove('clicked');
+            controls.remove();
+            currentControls = null;
+            currentAudio = null;
+            currentPlayer = null;
+        });
+
+        audio.play();
+    }
+
+    function formatTime(seconds) {
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.audio-player-mini') && !e.target.closest('.audio-controls-panel')) {
+            if (currentControls) {
+                currentControls.remove();
+                if (currentAudio) {
+                    currentAudio.pause();
+                    currentAudio = null;
+                }
+                if (currentPlayer) {
+                    currentPlayer.classList.remove('clicked');
+                }
+                currentControls = null;
+                currentPlayer = null;
+            }
+        }
     });
-    
-    // 获取音频元素并播放
-    const audioElement = controlPanel.querySelector('audio');
-    setTimeout(() => {
-        audioElement.play();
-    }, 100);
-}
-
-// 隐藏所有浮动控制面板
-function hideAllFloatingControls() {
-    const existingControls = document.querySelector('.floating-audio-controls');
-    if (existingControls) {
-        existingControls.remove();
-    }
-}
-
-// 定位控制面板
-function positionControlPanel(panel, player) {
-    const rect = player.getBoundingClientRect();
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
-    // 设置控制面板位置
-    panel.style.position = 'absolute';
-    panel.style.top = (rect.top + scrollTop + rect.height + 10) + 'px';
-    panel.style.left = (rect.left) + 'px';
-    panel.style.zIndex = '10000';
-}
+});

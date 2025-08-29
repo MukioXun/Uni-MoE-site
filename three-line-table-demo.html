@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uni-MoE 三线表样例</title>
+    <style>
+        /* 三线表样式 */
+        .three-line-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-family: 'Arial', sans-serif;
+            font-size: 14px;
+        }
+
+        /* 顶部线 */
+        .three-line-table thead tr {
+            border-top: 2px solid #333;
+        }
+
+        /* 列标题线 */
+        .three-line-table thead th {
+            border-bottom: 1px solid #333;
+            padding: 12px 8px;
+            text-align: center;
+            font-weight: bold;
+            background: transparent;
+        }
+
+        /* 底部线 */
+        .three-line-table tbody tr:last-child {
+            border-bottom: 2px solid #333;
+        }
+
+        /* 单元格 */
+        .three-line-table th,
+        .three-line-table td {
+            padding: 10px 8px;
+            text-align: center;
+            border: none;
+        }
+
+        /* 隔行变色 */
+        .three-line-table tbody tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .demo-container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 20px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1>Uni-MoE 三线表演示</h1>
+        
+        <h2>Voice Clone 性能对比</h2>
+        <table class="three-line-table">
+            <thead>
+                <tr>
+                    <th>案例</th>
+                    <th>说话人</th>
+                    <th>提示语音</th>
+                    <th>原始音频</th>
+                    <th>克隆语音</th>
+                    <th>相似度评分</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Case #1</td>
+                    <td>男性-中文</td>
+                    <td>另外根据中央气象台的未来七天降雨预报。</td>
+                    <td>▶</td>
+                    <td>▶</td>
+                    <td>95.7%</td>
+                </tr>
+                <tr>
+                    <td>Case #2</td>
+                    <td>女性-英文</td>
+                    <td>The weather forecast for the next seven days.</td>
+                    <td>▶</td>
+                    <td>▶</td>
+                    <td>93.2%</td>
+                </tr>
+                <tr>
+                    <td>Case #3</td>
+                    <td>男性-日文</td>
+                    <td>今後七日間の天気予報によると。</td>
+                    <td>▶</td>
+                    <td>▶</td>
+                    <td>94.1%</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Music Generation 效果评估</h2>
+        <table class="three-line-table">
+            <thead>
+                <tr>
+                    <th>语言类型</th>
+                    <th>风格描述</th>
+                    <th>生成质量</th>
+                    <th>时长(秒)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>中文</td>
+                    <td>轻快民谣</td>
+                    <td>优秀</td>
+                    <td>30.5</td>
+                </tr>
+                <tr>
+                    <td>英文</td>
+                    <td>古典钢琴</td>
+                    <td>良好</td>
+                    <td>45.2</td>
+                </tr>
+                <tr>
+                    <td>日文</td>
+                    <td>电子音乐</td>
+                    <td>优秀</td>
+                    <td>60.0</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
