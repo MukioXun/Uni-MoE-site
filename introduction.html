@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-EN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uni-MoE - 技术展示博客</title>
+    <script src="js/audio-player.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 继承主页面的页头样式 */
+        .navbar {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(220, 220, 220, 0.3);
+            padding: 0.5rem 2rem;
+            z-index: 1000;
+            box-sizing: border-box;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-left .home-link {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-left .home-link:hover {
+            color: #667eea;
+        }
+
+        .nav-right .github-link {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-right .github-link:hover {
+            color: #333;
+        }
+
+        .main-content {
+            flex: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem 0;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            color: #1a1a1a;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.5rem;
+            color: #666;
+            font-weight: 300;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 5rem;
+            left: 2rem;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            z-index: 100;
+            transition: transform 0.3s ease;
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .blog-section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #007bff;
+            padding-left: 1rem;
+        }
+
+        .content-block {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .content-block h3 {
+            font-size: 1.5rem;
+            color: #34495e;
+            margin-bottom: 1rem;
+        }
+
+        .content-block p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .media-container {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+            justify-content: center;
+        }
+
+        .media-item {
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .media-item img, .media-item video, .media-item audio {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .icon-item {
+            text-align: center;
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .icon-item svg {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 0.5rem;
+            fill: #007bff;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .back-button {
+                position: relative;
+                top: 0;
+                left: 0;
+                display: inline-block;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 继承主页面的页头 -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="nav-left">
+                <a href="index.html" class="home-link">Uni-MoE</a>
+            </div>
+            <div class="nav-right">
+                <a href="https://github.com/HITsz-TMG/UMOE-Scaling-Unified-Multimodal-LLMs" target="_blank" class="github-link">GitHub</a>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="main-content">
+        <div class="header">
+            <h1>Introduction to Uni-MoE</h1>
+            <p>Advanced MoE LLM</p>
+        </div>
+
+    <div class="blog-section">
+        <h2 class="section-title">AudioMoE</h2>
+        <h3>
+            we introduce the Mix-of-ALL architecture—an end-to-end universal audio generation model capable of unified multimodal audio synthesis.
+        </h3>
+        <div class="content-block">
+            <p><strong>The system incorporates several key innovations:</strong></p>
+            <ul style="margin-left: 2rem; margin-top: 1rem;">
+                <li><strong>Adaptive Computation Allocation</strong>: A routing mechanism dynamically selects the number of activated experts based on the uncertainty estimated per audio frame, enabling computation that adapts to varying information density and prediction difficulty.</li>
+                <li><strong>Multi-Granularity Expert Design</strong>: We deploy both dynamic and static experts. Dynamic experts are activated on-demand for task-specific processing, while static experts remain consistently active for general computation, achieving an optimal balance between performance and efficiency.</li>
+                <li><strong>Mixture-of-Attention Architecture</strong>: By introducing dynamic activation strategies into the attention modules, the model selectively activates attention heads, significantly expanding the parameter activation space and unlocking greater potential.</li>
+            </ul>
+            
+            <p style="margin-top: 1.5rem; font-weight: 600;">
+                Together, these advances form a powerful and efficient framework for high-quality, flexible audio generation across multiple modalities.
+            </p>
+        </div>
+        <div class="media-container">
+            <div class="media-item">
+                <img src="img/struct.png" alt="Uni-MoE架构图">
+                <p><strong>Fig. 1</strong>  Uni-MoE Framework</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="blog-section">
+        <h2 class="section-title">Performance</h2>
+        
+        <div class="audio-showcase">
+            <div class="audio-card">
+                <div class="audio-header">
+                    <div class="audio-icon">🎤</div>
+                    <h3>Voice Clone</h3>
+                    <span class="audio-badge">语音克隆</span>
+                </div>
+                <div class="audio-visual">
+                    <div class="waveform">
+                        <div class="wave-bar" style="height: 60%"></div>
+                        <div class="wave-bar" style="height: 80%"></div>
+                        <div class="wave-bar" style="height: 40%"></div>
+                        <div class="wave-bar" style="height: 90%"></div>
+                        <div class="wave-bar" style="height: 70%"></div>
+                        <div class="wave-bar" style="height: 50%"></div>
+                        <div class="wave-bar" style="height: 85%"></div>
+                        <div class="wave-bar" style="height: 65%"></div>
+                    </div>
+                    <audio controls class="audio-player">
+                        <source src="demo-audio.wav" type="audio/wav">
+                        您的浏览器不支持音频播放。
+                    </audio>
+                </div>
+                <div class="audio-info">
+                    <p><strong>功能：</strong>高质量语音克隆与情感保持</p>
+                    <p><strong>应用：</strong>个性化语音助手、内容创作</p>
+                    <div class="audio-metrics">
+                        <span class="metric">相似度: 95%</span>
+                        <span class="metric">延迟: <50ms</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="audio-card">
+                <div class="audio-header">
+                    <div class="audio-icon">🎵</div>
+                    <h3>Musical Generation</h3>
+                    <span class="audio-badge">音乐生成</span>
+                </div>
+                <div class="audio-visual">
+                    <div class="waveform">
+                        <div class="wave-bar" style="height: 75%"></div>
+                        <div class="wave-bar" style="height: 45%"></div>
+                        <div class="wave-bar" style="height: 90%"></div>
+                        <div class="wave-bar" style="height: 55%"></div>
+                        <div class="wave-bar" style="height: 80%"></div>
+                        <div class="wave-bar" style="height: 60%"></div>
+                        <div class="wave-bar" style="height: 95%"></div>
+                        <div class="wave-bar" style="height: 70%"></div>
+                    </div>
+                    <audio controls class="audio-player">
+                        <source src="demo-audio.wav" type="audio/wav">
+                        您的浏览器不支持音频播放。
+                    </audio>
+                </div>
+                <div class="audio-info">
+                    <p><strong>功能：</strong>多风格音乐生成与混音</p>
+                    <p><strong>应用：</strong>背景音乐、创意作曲</p>
+                    <div class="audio-metrics">
+                        <span class="metric">多样性: 8种风格</span>
+                        <span class="metric">质量: 44.1kHz</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="blog-section">
+        <h2 class="section-title">Zero-shot TTS</h2>
+        <p>In the following, we first show some case in LibriTTS test clean set.</p>
+        
+        <div class="tts-table-container">
+            <table class="tts-table">
+                <thead>
+                    <tr>
+                        <th><center>Speeker</center></th>
+                        <th><center>Prompt Voice</center></th>
+                        <th><center>Original</center></th>
+                        <th><center>Clone Speech</center></th>
+                        <th><center>Cloned</center></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 案例行 -->
+                    <tr>
+                        <td class="text-cell" rowspan="1">Case #1</td>
+                        <td class="text-cell">另外根据中央气象台的未来七天降雨预报。</td>
+                        <td class="audio-cell">
+                            <audio class="audio-player-mini" src="demo-audio.wav" controls preload></audio>
+                        <td class="text-cell">小径的面貌已然改变，泥土被踏实了，草皮有了被啃咬过的痕迹。</td>
+                        <td class="audio-cell">
+                            <audio class="audio-player-mini" src="demo-audio.wav" controls preload></audio>
+                        </td>
+                    </tr>
+                    <!-- 案例行 -->
+                    <tr>
+                        <td class="text-cell" rowspan="1">Case #2</td>
+                        <td class="text-cell">另外根据中央气象台的未来七天降雨预报。</td>
+                        <td class="audio-cell">
+                            <audio class="audio-player-mini" src="demo-audio.wav" controls preload></audio>
+                        <td class="text-cell">小径的面貌已然改变，泥土被踏实了，草皮有了被啃咬过的痕迹。</td>
+                        <td class="audio-cell">
+                            <audio class="audio-player-mini" src="demo-audio.wav" controls preload></audio>
+                        </td>
+                    </tr>
+                    <!-- 案例行 -->
+                    <tr>
+                        <td class="text-cell" rowspan="1">Case #3</td>
+                        <td class="text-cell">另外根据中央气象台的未来七天降雨预报。</td>
+                        <td class="audio-cell">
+                            <audio class="audio-player-mini" src="demo-audio.wav" controls preload></audio>
+                        <td class="text-cell">小径的面貌已然改变，泥土被踏实了，草皮有了被啃咬过的痕迹。</td>
+                        <td class="audio-cell">
+                            <audio class="audio-player-mini" src="demo-audio.wav" controls preload></audio>
+                        </td>
+                    </tr>
+                    <!-- 案例行 -->
+                    <tr>
+                        <td class="text-cell" rowspan="1">Case #4</td>
+                        <td class="text-cell">另外根据中央气象台的未来七天降雨预报。</td>
+                        <td class="audio-cell">
+                            <audio class="audio-player-mini" src="demo-audio.wav" controls preload></audio>
+                        <td class="text-cell">小径的面貌已然改变，泥土被踏实了，草皮有了被啃咬过的痕迹。</td>
+                        <td class="audio-cell">
+                            <audio class="audio-player-mini" src="demo-audio.wav" controls preload></audio>
+                        </td>
+                    </tr>
+                    <!-- 案例行 -->
+                    <tr>
+                        <td class="text-cell" rowspan="1">Case #5</td>
+                        <td class="text-cell">另外根据中央气象台的未来七天降雨预报。</td>
+                        <td class="audio-cell">
+                            <audio class="audio-player-mini" src="demo-audio.wav" controls preload></audio>
+                        <td class="text-cell">小径的面貌已然改变，泥土被踏实了，草皮有了被啃咬过的痕迹。</td>
+                        <td class="audio-cell">
+                            <audio class="audio-player-mini" src="demo-audio.wav" controls preload></audio>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>
