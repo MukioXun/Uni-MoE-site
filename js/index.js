@@ -4,7 +4,7 @@ root.innerHTML = `
   <!-- 顶部导航栏 -->
   <nav class="top-nav">
     <div class="nav-left">
-      <a href="#" class="home-btn"> Uni-MoE </a>
+      <a href="#" class="home-btn"> Uni-MoE Audio</a>
     </div>
     <div class="nav-right">
       <a href="https://github.com/HITsz-TMG/UMOE-Scaling-Unified-Multimodal-LLMs" target="_blank" class="github-link">
@@ -18,8 +18,8 @@ root.innerHTML = `
 
   <!-- 中间标题区域 -->
   <section class="hero-section">
-    <h1 class="main-title">Uni-MoE</h1>
-    <p class="subtitle">A MoE-based Unified Multimodal Model that Can Handle Diverse Modalities including Audio, Speech, Image, Text, and Video</p>
+    <h1 class="main-title">Uni-MoE Audio</h1>
+    <p class="subtitle">An End-to-End Large Audio Model for Mnified Multimodal Audio Generation</p>
   </section>
 
   <!-- 下方按钮区域 -->
@@ -38,8 +38,8 @@ root.innerHTML = `
   <footer class="footer">
     <div class="footer-content">
       <div class="footer-section">
-        <h4>Uni-MoE</h4>
-        <p>Unified Multimodal LLM</p>
+        <h4>Uni-MoE Audio</h4>
+        <p> Unified Multimodal Audio Generation </p>
       </div>
       <div class="footer-section">
         <div class="footer-links">
@@ -50,11 +50,11 @@ root.innerHTML = `
               </svg>
             </a>
             <a href="https://huggingface.co/Uni-MoE" target="_blank" class="footer-link" title="Hugging Face">
-              🤗
+              <img src="img/hf-logo.png" alt="Hugging Face Logo" width="32" height="32" />
             </a>
           </div>
           <div class="footer-copyright">
-            <p>&copy; 2025 Uni-MoE. All rights reserved.</p>
+            <p>&copy; 2025 Uni-MoE Audio. All rights reserved.</p>
 
           </div>
         </div>

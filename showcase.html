@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Uni-MoE - 功能展示</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/audio-player.js"></script>
     <style>
         * {
             margin: 0;
@@ -233,127 +235,245 @@
     
     <div class="main-content">
         <div class="header">
-            <h1>Uni-MoE 功能展示</h1>
-            <p>探索多模态AI的无限可能</p>
+            <h1>Uni-MoE Audio Performance</h1>
         </div>
-
         <div class="category-tabs">
-        <div class="category-tab active" data-category="audio">Audio</div>
-        <div class="category-tab" data-category="speech">Speech</div>
-        <div class="category-tab" data-category="image">Image</div>
-        <div class="category-tab" data-category="text">Text</div>
-        <div class="category-tab" data-category="video">Video</div>
+        <div class="category-tab active" data-category="TTS">Text_to_Speech</div>
+        <div class="category-tab" data-category="VC">Voice Clone</div>
+        <div class="category-tab" data-category="MT">Text_to_Music</div>
+        <div class="category-tab" data-category="VT">Video_to_Music</div>
     </div>
 
-    <!-- Audio Category -->
-    <div class="category-content active" id="audio-content">
-        <h2 class="content-title">Audio 处理展示</h2>
-        <div class="showcase-grid">
-            <div class="showcase-item">音频分类</div>
-            <div class="showcase-item">音乐生成</div>
-            <div class="showcase-item">音效识别</div>
-            <div class="showcase-item">音频增强</div>
-            <div class="showcase-item">节拍检测</div>
-            <div class="showcase-item">音调转换</div>
-            <div class="showcase-item">噪声消除</div>
-            <div class="showcase-item">音频合成</div>
-            <div class="showcase-item">风格迁移</div>
+    <!-- TTS Category -->
+    <div class="category-content active" id="TTS-content">
+        <h2 class="content-title">Text_to_Speech</h2>
+        <div class="tts-table-container">
+            <table class="tts-table">
+                <thead>
+                    <tr>
+                        <th><center>Language</center></th>
+                        <th><center>Style Description</center></th>
+                        <th><center>Music</center></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 案例行 -->
+                    <tr>
+                        <td class="text-cell" rowspan="1">Case #1</td>
+                        <td class="text-cell">另外根据中央气象台的未来七天降雨预报。</td>
+                        <td class="audio-cell">
+                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- 案例行 -->
+                    <tr>
+                        <td class="text-cell" rowspan="1">Case #1</td>
+                        <td class="text-cell">另外根据中央气象台的未来七天降雨预报。</td> 
+                        <td class="audio-cell">
+                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- 案例行 -->
+                    <tr>
+                        <td class="text-cell" rowspan="1">Case #1</td>
+                        <td class="text-cell">另外根据中央气象台的未来七天降雨预报。</td>
+                        <td class="audio-cell">
+                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- 案例行 -->
+                    <tr>
+                        <td class="text-cell" rowspan="1">Case #1</td>
+                        <td class="text-cell">另外根据中央气象台的未来七天降雨预报。</td>
+                        <td class="audio-cell">
+                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
-    <!-- Speech Category -->
-    <div class="category-content" id="speech-content">
-        <h2 class="content-title">Speech 处理展示</h2>
-        <div class="showcase-grid">
-            <div class="showcase-item">语音识别</div>
-            <div class="showcase-item">语音合成</div>
-            <div class="showcase-item">说话人识别</div>
-            <div class="showcase-item">情感分析</div>
-            <div class="showcase-item">语音翻译</div>
-            <div class="showcase-item">语音克隆</div>
-            <div class="showcase-item">实时转录</div>
-            <div class="showcase-item">语音搜索</div>
-            <div class="showcase-item">命令识别</div>
+    <!-- Voice Clone Category -->
+    <div class="category-content" id="VC-content">
+        <h2 class="content-title">Voice Clone</h2>
+        <div class="tts-table-container">
+            <table class="tts-table">
+                <thead>
+                    <tr>
+                        <th><center>Language</center></th>
+                        <th><center>Style Description</center></th>
+                        <th><center>Music</center></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-cell" rowspan="1">Case #1</td>
+                        <td class="text-cell">Voice Clone Demo</td>
+                        <td class="audio-cell">
+                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
-    <!-- Image Category -->
-    <div class="category-content" id="image-content">
-        <h2 class="content-title">Image 处理展示</h2>
-        <div class="showcase-grid">
-            <div class="showcase-item">图像分类</div>
-            <div class="showcase-item">目标检测</div>
-            <div class="showcase-item">图像分割</div>
-            <div class="showcase-item">风格转换</div>
-            <div class="showcase-item">超分辨率</div>
-            <div class="showcase-item">图像修复</div>
-            <div class="showcase-item">人脸识别</div>
-            <div class="showcase-item">场景理解</div>
-            <div class="showcase-item">图像生成</div>
+    <!-- Text_to_Music Category -->
+    <div class="category-content" id="MT-content">
+        <h2 class="content-title">Text_to_Music</h2>
+        <div class="tts-table-container">
+            <table class="tts-table">
+                <thead>
+                    <tr>
+                        <th><center>Language</center></th>
+                        <th><center>Style Description</center></th>
+                        <th><center>Music</center></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 案例行 -->
+                    <tr>
+                        <td class="text-cell" rowspan="1">Case #1</td>
+                        <td class="text-cell">另外根据中央气象台的未来七天降雨预报。</td>
+                        <td class="audio-cell">
+                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- 案例行 -->
+                    <tr>
+                        <td class="text-cell" rowspan="1">Case #1</td>
+                        <td class="text-cell">另外根据中央气象台的未来七天降雨预报。</td> 
+                        <td class="audio-cell">
+                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- 案例行 -->
+                    <tr>
+                        <td class="text-cell" rowspan="1">Case #1</td>
+                        <td class="text-cell">另外根据中央气象台的未来七天降雨预报。</td>
+                        <td class="audio-cell">
+                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- 案例行 -->
+                    <tr>
+                        <td class="text-cell" rowspan="1">Case #1</td>
+                        <td class="text-cell">另外根据中央气象台的未来七天降雨预报。</td>
+                        <td class="audio-cell">
+                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
-    <!-- Text Category -->
-    <div class="category-content" id="text-content">
-        <h2 class="content-title">Text 处理展示</h2>
-        <div class="showcase-grid">
-            <div class="showcase-item">文本分类</div>
-            <div class="showcase-item">情感分析</div>
-            <div class="showcase-item">机器翻译</div>
-            <div class="showcase-item">文本生成</div>
-            <div class="showcase-item">问答系统</div>
-            <div class="showcase-item">摘要提取</div>
-            <div class="showcase-item">命名实体</div>
-            <div class="showcase-item">关键词提取</div>
-            <div class="showcase-item">文本校对</div>
-        </div>
-    </div>
-
-    <!-- Video Category -->
-    <div class="category-content" id="video-content">
-        <h2 class="content-title">Video 处理展示</h2>
-        <div class="showcase-grid">
-            <div class="showcase-item">视频分类</div>
-            <div class="showcase-item">动作识别</div>
-            <div class="showcase-item">目标跟踪</div>
-            <div class="showcase-item">视频摘要</div>
-            <div class="showcase-item">视频生成</div>
-            <div class="showcase-item">场景检测</div>
-            <div class="showcase-item">视频修复</div>
-            <div class="showcase-item">实时分析</div>
-            <div class="showcase-item">视频检索</div>
+    <!-- Video_to_Music Category -->
+    <div class="category-content" id="VT-content">
+        <h2 class="content-title">Video_to_Music</h2>
+        <div class="tts-table-container">
+            <table class="tts-table">
+                <thead>
+                    <tr>
+                        <th><center>Language</center></th>
+                        <th><center>Style Description</center></th>
+                        <th><center>Music</center></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 案例行 -->
+                    <tr>
+                        <td class="text-cell" rowspan="1">Case #1</td>
+                        <td class="text-cell">另外根据中央气象台的未来七天降雨预报。</td>
+                        <td class="audio-cell">
+                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- 案例行 -->
+                    <tr>
+                        <td class="text-cell" rowspan="1">Case #1</td>
+                        <td class="text-cell">另外根据中央气象台的未来七天降雨预报。</td> 
+                        <td class="audio-cell">
+                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- 案例行 -->
+                    <tr>
+                        <td class="text-cell" rowspan="1">Case #1</td>
+                        <td class="text-cell">另外根据中央气象台的未来七天降雨预报。</td>
+                        <td class="audio-cell">
+                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- 案例行 -->
+                    <tr>
+                        <td class="text-cell" rowspan="1">Case #1</td>
+                        <td class="text-cell">另外根据中央气象台的未来七天降雨预报。</td>
+                        <td class="audio-cell">
+                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
     <script>
-        // Category switching functionality
-        const tabs = document.querySelectorAll('.category-tab');
-        const contents = document.querySelectorAll('.category-content');
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取所有标签和内容区域
+            const tabs = document.querySelectorAll('.category-tab');
+            const contents = document.querySelectorAll('.category-content');
 
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const category = tab.dataset.category;
-                
-                // Update active tab
-                tabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                
-                // Update active content
-                contents.forEach(content => {
-                    content.classList.remove('active');
-                    if (content.id === `${category}-content`) {
-                        content.classList.add('active');
+            // 为每个标签添加点击事件
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // 移除所有标签的active类
+                    tabs.forEach(t => t.classList.remove('active'));
+                    // 为当前点击的标签添加active类
+                    this.classList.add('active');
+
+                    // 获取当前标签对应的类别
+                    const category = this.getAttribute('data-category');
+                    
+                    // 隐藏所有内容区域
+                    contents.forEach(content => content.classList.remove('active'));
+                    
+                    // 显示当前类别对应的内容
+                    const targetContent = document.getElementById(`${category}-content`);
+                    if (targetContent) {
+                        targetContent.classList.add('active');
                     }
                 });
             });
         });
 
-        // Add click handlers for showcase items
-        document.querySelectorAll('.showcase-item').forEach(item => {
-            item.addEventListener('click', () => {
-                alert(`功能演示：${item.textContent}\n\n这里将展示具体的${item.textContent}功能实现...`);
-            });
-        });
     </script>
 </body>
 </html>

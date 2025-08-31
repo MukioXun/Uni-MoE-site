@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uni-MoE - 技术展示博客</title>
+    <title>Uni-MoE Audio site</title>
     <link rel="stylesheet" href="css/index.css">
     <script src="js/audio-player.js"></script>
     <style>
@@ -231,14 +231,14 @@
     
     <div class="main-content">
         <div class="header">
-            <h1>Introduction to Uni-MoE</h1>
-            <p>Advanced MoE LLM</p>
+            <h1>Introduction to Uni-MoE Audio</h1>
+            <p>Advanced MoE Model for Audio Generation</p>
         </div>
 
     <div class="blog-section">
         <h2 class="section-title">AudioMoE</h2>
         <h3>
-            we introduce the Mix-of-ALL architecture—an end-to-end universal audio generation model capable of unified multimodal audio synthesis.
+            we introduce the <strong>Mix-of-ALL</strong> architecture—an end-to-end universal audio generation model capable of unified multimodal audio synthesis.
         </h3>
         <div class="content-block">
             <p><strong>The system incorporates several key innovations:</strong></p>
@@ -265,23 +265,146 @@
         <p>
             The MoE model effectively mitigates task conflicts in speech and music generation and benefits from multi-task joint training, outperforming dense models.
         </p> 
-        <div class="media-container">
-            <div class="media-item">
-                <img src="img/exp_result.png" alt="Uni-MoE架构图" style="max-width: 90%; width: 800px; height: auto; display: block; margin: 0 auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(123, 179, 255, 0.15);">
-
-                <p><strong>Fig. 2</strong>  Uni-MoE Performance</p>
-            </div>
+        <style>
+            .table-container {
+                max-width: 1000px;
+                margin: 2rem auto;
+                overflow-x: auto;
+                border: 1px solid #e0e0e0;
+            }
+            .research-table {
+                width: 100%;
+                border-collapse: collapse;
+                white-space: nowrap;
+                margin: 0 auto;
+                min-width: 800px;
+            }
+            .research-table caption {
+                padding: 10px;
+                font-weight: bold;
+                font-size: 1.1em;
+                color: #333;
+            }
+            .research-table th, .research-table td {
+                padding: 12px 15px;
+                text-align: center;
+                border: none;
+            }
+            .research-table thead {
+                border-top: 2px solid #333;
+                border-bottom: 1px solid #333;
+            }
+            .research-table thead tr:last-child {
+                border-bottom: 2px solid #333;
+            }
+            .research-table tbody tr:last-child {
+                border-bottom: 2px solid #333;
+            }
+            .research-table th {
+                font-weight: bold;
+                background-color: #f8f9fa;
+            }
+            .research-table td i {
+                font-style: italic;
+                color: #666;
+            }
+            .research-table td b {
+                font-weight: bold;
+                color: #d32f2f;
+            }
+            ::-webkit-scrollbar {
+                height: 8px;
+            }
+            ::-webkit-scrollbar-track {
+                background: #f1f1f1;
+                border-radius: 4px;
+            }
+            ::-webkit-scrollbar-thumb {
+                background: #888;
+                border-radius: 4px;
+            }
+            ::-webkit-scrollbar-thumb:hover {
+                background: #555;
+            }
+        </style>
+        <div class="table-container">
+            <table class="research-table">
+            <caption>Table 1: Performance on Music & Text-to-Music Generation</caption>
+            <tr>
+                <th rowspan="2">Dataset</th>
+                <th rowspan="2">Method</th>
+                <th rowspan="2">Task</th>
+                <th>PCT</th>
+                <th>PQT</th>
+                <th>CE↑</th>
+                <th>CLAP↑</th>
+                <th>KL↓</th>
+                <th>CLaMP3↑</th>
+                <th>FAD↓</th>
+            </tr>
+            <tr></tr>
+            <tr>
+                <td rowspan="3">MusicCap</td>
+                <td><i>Dense (Single-Task)</i></td>
+                <td>T2M</td><td>4.70</td><td>7.29</td><td>6.03</td><td><b>0.308</b></td><td>1.44</td><td>0.120</td><td>3.72</td>
+            </tr>
+            <tr>
+                <td><i>Dense (Multi-Task)</i></td>
+                <td>T2M</td><td>5.52</td><td>6.70</td><td>5.89</td><td>0.290</td><td>1.67</td><td>0.108</td><td>2.53</td>
+            </tr>
+            <tr>
+                <td><i>MoE (Multi-Task)</i></td>
+                <td>T2M</td><td><b>5.59</b></td><td><b>7.73</b></td><td><b>6.20</b></td><td>0.293</td><td>1.14</td><td><b>0.138</b></td><td><b>0.92</b></td>
+            </tr>
+            <tr>
+                <td rowspan="3">V2M-Bench</td>
+                <td><i>Dense (Single-Task)</i></td>
+                <td>T2M</td><td>4.41</td><td>7.46</td><td>5.69</td><td>0.345</td><td>1.31</td><td>0.163</td><td>2.94</td>
+            </tr>
+            <tr>
+                <td><i>Dense (Multi-Task)</i></td>
+                <td>T2M</td><td>5.69</td><td>6.69</td><td>5.33</td><td>0.328</td><td>1.95</td><td>0.153</td><td>1.73</td>
+            </tr>
+            <tr>
+                <td><i>MoE (Multi-Task)</i></td>
+                <td>T2M</td><td>5.60</td><td><b>7.98</b></td><td><b>6.95</b></td><td>0.264</td><td><b>0.89</b></td><td>0.187</td><td><b>1.13</b></td>
+            </tr>
+               </table>
         </div>
+
         <p>
             As depth increases, the average number of selected experts rises rapidly then declines slowly, indicating that lower layers handle basic feature processing, middle layers perform complex computations like multimodal interaction to obtain dense feature encodings, and higher layers focus on downstream task output.
         </p>
-        <div class="media-container">
-            <div class="media-item">
-                <img src="img/expert.png" alt="Uni-MoE架构图" style="max-width: 60%; width: 700px; height: auto; display: block; margin: 0 auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(123, 179, 255, 0.15);">
+        <div class="table-container">
+            <table class="research-table">
+            <caption>Table 2: Performance on Speech Synthesis (SEED TTS)</caption>
+            <tr>
+                <th rowspan="2">Dataset</th>
+                <th rowspan="2">Method</th>
+                <th rowspan="2">Task</th>
+                <th>WER% (EN)↓</th>
+                <th>MOS (EN)↑</th>
+                <th>SIM% (EN)↑</th>
+                <th>CER% (ZH)↓</th>
+                <th>MOS (ZH)↑</th>
+                <th>SIM% (ZH)↑</th>
+            </tr>
+            <tr></tr>
+            <tr>
+                <td rowspan="3">Seed-TTS</td>
+                <td><i>Dense (Single-Task)</i></td>
+                <td>T2S</td><td>0.023</td><td>3.84</td><td>0.533</td><td>0.016</td><td><b>3.23</b></td><td>0.620</td>
+            </tr>
+            <tr>
+                <td><i>Dense (Multi-Task)</i></td>
+                <td>T2S</td><td>0.053</td><td>3.68</td><td>0.511</td><td>0.016</td><td>3.20</td><td>0.572</td>
+            </tr>
+            <tr>
+                <td><i>MoE (Multi-Task)</i></td>
+                <td>T2S</td><td><b>0.020</b></td><td><b>4.37</b></td><td><b>0.586</b></td><td><b>0.014</b></td><td>3.32</td><td><b>0.694</b></td>
+            </tr>
+     </table>
 
-                <p><strong>Fig. 3</strong>  Uni-MoE Expert Visulization</p>
-            </div>
-        </div>
     </div>
     <div class="blog-section">
         <h2 class="section-title">Performance</h2>
@@ -302,80 +425,64 @@
                 <tbody>
                     <!-- 案例行 -->
                     <tr>
-                        <td class="text-cell" rowspan="1">Case #1</td>
-                        <td class="text-cell">另外根据中央气象台的未来七天降雨预报。</td>
+                        <td class="text-cell" rowspan="1">Male Chinese</td>
+                        <td class="text-cell">还有人得了冻伤久治不愈，做这些事的人大有人在。</td>
                         <td class="audio-cell">
-                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
+                            <div class="audio-player-mini" data-audio="audios/media3.wav">
                                 <span class="play-icon">▶</span>
                             </div>
                         </td>
-                        <td class="text-cell">小径的面貌已然改变，泥土被踏实了，草皮有了被啃咬过的痕迹。</td>
+                        <td class="text-cell">据当地媒体报道，阿普尔鲍姆当天在家中被警察带走。</td>
                                  <td class="audio-cell">
-                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
+                            <div class="audio-player-mini" data-audio="audios/media15.wav">
                                 <span class="play-icon">▶</span>
                             </div>
                         </td>
                     </tr>
                     <!-- 案例行 -->
                     <tr>
-                        <td class="text-cell" rowspan="1">Case #2</td>
+                        <td class="text-cell" rowspan="1">Female Chinese</td>
                         <td class="text-cell">另外根据中央气象台的未来七天降雨预报。</td>
                         <td class="audio-cell">
-                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
+                            <div class="audio-player-mini" data-audio="audios/media16.wav">
                                 <span class="play-icon">▶</span>
                             </div>
                         </td>
                         <td class="text-cell">小径的面貌已然改变，泥土被踏实了，草皮有了被啃咬过的痕迹。</td>
                         <td class="audio-cell">
-                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
+                            <div class="audio-player-mini" data-audio="audios/media15.wav">
                                 <span class="play-icon">▶</span>
                             </div>
                         </td>
                     </tr>
                     <!-- 案例行 -->
                     <tr>
-                        <td class="text-cell" rowspan="1">Case #3</td>
-                        <td class="text-cell">另外根据中央气象台的未来七天降雨预报。</td>
+                        <td class="text-cell" rowspan="1">Male English</td>
+                        <td class="text-cell">At that point in their lives, everything is clear and everything is possible.</td>
                         <td class="audio-cell">
-                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
+                            <div class="audio-player-mini" data-audio="audios/media13.wav">
                                 <span class="play-icon">▶</span>
                             </div>
                         </td>
-                        <td class="text-cell">小径的面貌已然改变，泥土被踏实了，草皮有了被啃咬过的痕迹。</td>
+                        <td class="text-cell">I'm trying to explain to my mother how to get pictures off her phone.</td>
                         <td class="audio-cell">
-                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
-                                <span class="play-icon">▶</span>
-                            </div>
-                        </td>
-                    </tr>
-                    <!-- 案例行 -->
-                    <tr>
-                        <td class="text-cell" rowspan="1">Case #4</td>
-                        <td class="text-cell">另外根据中央气象台的未来七天降雨预报。</td>
-                        <td class="audio-cell">
-                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
-                                <span class="play-icon">▶</span>
-                            </div>
-                        </td>
-                        <td class="text-cell">小径的面貌已然改变，泥土被踏实了，草皮有了被啃咬过的痕迹。</td>
-                        <td class="audio-cell">
-                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
+                            <div class="audio-player-mini" data-audio="audios/media14.wav">
                                 <span class="play-icon">▶</span>
                             </div>
                         </td>
                     </tr>
                     <!-- 案例行 -->
                     <tr>
-                        <td class="text-cell" rowspan="1">Case #5</td>
-                        <td class="text-cell">另外根据中央气象台的未来七天降雨预报。</td>
+                        <td class="text-cell" rowspan="1">Female English</td>
+                        <td class="text-cell">I have already described the appearance of that colossal bulk which was embedded in the ground.</td>
                         <td class="audio-cell">
-                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
+                            <div class="audio-player-mini" data-audio="audios/meidia10.wav">
                                 <span class="play-icon">▶</span>
                             </div>
                         </td>
-                        <td class="text-cell">小径的面貌已然改变，泥土被踏实了，草皮有了被啃咬过的痕迹。</td>
+                        <td class="text-cell">She would never know the difference, because she didn't know how to read.</td>
                         <td class="audio-cell">
-                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
+                            <div class="audio-player-mini" data-audio="audios/media9.wav">
                                 <span class="play-icon">▶</span>
                             </div>
                         </td>
@@ -399,40 +506,20 @@
                 <tbody>
                     <!-- 案例行 -->
                     <tr>
-                        <td class="text-cell" rowspan="1">Case #1</td>
-                        <td class="text-cell">另外根据中央气象台的未来七天降雨预报。</td>
+                        <td class="text-cell" rowspan="1">Chinese</td>
+                        <td class="text-cell">这首歌包含一个音调快速变化的合成贝斯，以及一段数字鼓的律动。一把失真的电子吉他正在演奏一段riff，声像移到了扬声器的右侧。这段音频可能是在快节奏的街机游戏中播放的。</td>
                         <td class="audio-cell">
-                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
+                            <div class="audio-player-mini" data-audio="audios/meida17.wav">
                                 <span class="play-icon">▶</span>
                             </div>
                         </td>
                     </tr>
                     <!-- 案例行 -->
                     <tr>
-                        <td class="text-cell" rowspan="1">Case #1</td>
-                        <td class="text-cell">另外根据中央气象台的未来七天降雨预报。</td> 
+                        <td class="text-cell" rowspan="1">English</td>
+                        <td class="text-cell">A smooth and sophisticated instrumental jazz piece featuring a prominent saxophone melody and a relaxed, groovy rhythm section. Perfect for a chill and classy atmosphere.</td> 
                         <td class="audio-cell">
-                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
-                                <span class="play-icon">▶</span>
-                            </div>
-                        </td>
-                    </tr>
-                    <!-- 案例行 -->
-                    <tr>
-                        <td class="text-cell" rowspan="1">Case #1</td>
-                        <td class="text-cell">另外根据中央气象台的未来七天降雨预报。</td>
-                        <td class="audio-cell">
-                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
-                                <span class="play-icon">▶</span>
-                            </div>
-                        </td>
-                    </tr>
-                    <!-- 案例行 -->
-                    <tr>
-                        <td class="text-cell" rowspan="1">Case #1</td>
-                        <td class="text-cell">另外根据中央气象台的未来七天降雨预报。</td>
-                        <td class="audio-cell">
-                            <div class="audio-player-mini" data-audio="audios/demo.mp3">
+                            <div class="audio-player-mini" data-audio="audios/media20.wav">
                                 <span class="play-icon">▶</span>
                             </div>
                         </td>
