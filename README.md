@@ -1,2 +1,2 @@
 ## Introduction of Uni-MoE
-Please see here: https://mukioxun.github.io/Uni-MoE-site/
+Please see here: https://mukioxun.github.io/Uni-MoE-site

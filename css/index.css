@@ -15,6 +15,19 @@ body {
   flex-direction: column;
 }
 
+/* 主要内容区域自动扩展 */
+#root {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* 确保页脚始终在底部 */
+.footer {
+  margin-top: auto;
+}
+
 /* 顶部导航栏 - 固定位置 + 粘性定位 */
 .top-nav {
   display: flex;
@@ -1052,18 +1065,21 @@ body {
 
 .footer-content {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start; /* 顶部对齐 */
-  max-width: 1200px; /* 进一步增加最大宽度 */
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
   margin: 0 auto;
-  gap: 8rem; /* 显著增加间距 */
+  gap: 2rem;
   flex-wrap: wrap;
-  padding: 0 2rem; /* 增加水平内边距 */
+  padding: 0 2rem;
 }
 
 .footer-section {
-  flex: 1;
-  min-width: 200px; /* 调整最小宽度 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-width: 200px;
 }
 
 .footer-section h4 {
@@ -1085,17 +1101,18 @@ body {
 /* 链接容器 */
 .footer-links {
   display: flex;
-  flex-direction: column; /* 垂直排列 */
-  align-items: flex-start; /* 左对齐 */
-  gap: 0.5rem; /* 垂直间距 */
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .footer-icons {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 1.5rem; /* 图标间距 - 可调节 */
-  flex-wrap: wrap; /* 允许换行 */
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
 }
 
 /* 图标链接样式 */
@@ -1118,11 +1135,11 @@ body {
 
 /* 版权信息 - 置于链接下方 */
 .footer-copyright {
-  color: #888888; /* 文字颜色 - 可调节 */
-  font-size: 0.7rem; /* 字体大小 */
-  text-align: left; /* 左对齐 */
-  margin-top: 0.25rem; /* 上方间距 */
-  white-space: nowrap; /* 防止版权文字换行 */
+  color: #888888;
+  font-size: 0.7rem;
+  text-align: center;
+  margin-top: 0.25rem;
+  white-space: nowrap;
 }
 
 /* 响应式设计 */
