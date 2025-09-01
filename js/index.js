@@ -19,7 +19,7 @@ root.innerHTML = `
   <!-- 中间标题区域 -->
   <section class="hero-section">
     <h1 class="main-title">Uni-MoE Audio</h1>
-    <p class="subtitle">An End-to-End Large Audio Model for Mnified Multimodal Audio Generation</p>
+    <p class="subtitle">An End-to-End Large Audio Model for Unified Multimodal Audio Generation</p>
   </section>
 
   <!-- 下方按钮区域 -->
