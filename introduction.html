@@ -299,6 +299,10 @@
             .research-table thead tr:last-child {
                 border-bottom: 2px solid #333;
             }
+            /* dataset separator for transposed tables */
+            .research-table .dataset-sep {
+                border-top: 1px solid #666;
+            }
             .research-table tbody tr:last-child {
                 border-bottom: 2px solid #333;
             }
@@ -334,42 +338,74 @@
             <caption>Table 1: Performance on Music & Text-to-Music Generation</caption>
             <tr>
                 <th rowspan="2">Dataset</th>
-                <th rowspan="2">Method</th>
                 <th rowspan="2">Task</th>
-                <th>PCT</th>
-                <th>PQT</th>
-                <th>CE↑</th>
-                <th>CLAP↑</th>
-                <th>KL↓</th>
-                <th>CLaMP3↑</th>
-                <th>FAD↓</th>
-            </tr>
-            <tr></tr>
-            <tr>
-                <td rowspan="3">MusicCap</td>
-                <td><i>Dense (Single-Task)</i></td>
-                <td>T2M</td><td>4.70</td><td>7.29</td><td>6.03</td><td><b>0.308</b></td><td>1.44</td><td>0.120</td><td>3.72</td>
+                <th rowspan="2">Metric</th>
+                <th colspan="3">Model</th>
             </tr>
             <tr>
-                <td><i>Dense (Multi-Task)</i></td>
-                <td>T2M</td><td>5.52</td><td>6.70</td><td>5.89</td><td>0.290</td><td>1.67</td><td>0.108</td><td>2.53</td>
+                <th><i>Dense (Single-Task)</i></th>
+                <th><i>Dense (Multi-Task)</i></th>
+                <th><i>MoE (Multi-Task)</i></th>
             </tr>
             <tr>
-                <td><i>MoE (Multi-Task)</i></td>
-                <td>T2M</td><td><b>5.59</b></td><td><b>7.73</b></td><td><b>6.20</b></td><td>0.293</td><td>1.14</td><td><b>0.138</b></td><td><b>0.92</b></td>
+                <td rowspan="7">MusicCap</td>
+                <td rowspan="7">T2M</td>
+                <td>PCT</td>
+                <td>4.70</td><td>5.52</td><td><b>5.59</b></td>
             </tr>
             <tr>
-                <td rowspan="3">V2M-Bench</td>
-                <td><i>Dense (Single-Task)</i></td>
-                <td>T2M</td><td>4.41</td><td>7.46</td><td>5.69</td><td>0.345</td><td>1.31</td><td>0.163</td><td>2.94</td>
+                <td>PQT</td>
+                <td>7.29</td><td>6.70</td><td><b>7.73</b></td>
             </tr>
             <tr>
-                <td><i>Dense (Multi-Task)</i></td>
-                <td>T2M</td><td>5.69</td><td>6.69</td><td>5.33</td><td>0.328</td><td>1.95</td><td>0.153</td><td>1.73</td>
+                <td>CE↑</td>
+                <td>6.03</td><td>5.89</td><td><b>6.20</b></td>
             </tr>
             <tr>
-                <td><i>MoE (Multi-Task)</i></td>
-                <td>T2M</td><td>5.60</td><td><b>7.98</b></td><td><b>6.95</b></td><td>0.264</td><td><b>0.89</b></td><td>0.187</td><td><b>1.13</b></td>
+                <td>CLAP↑</td>
+                <td><b>0.308</b></td><td>0.290</td><td>0.293</td>
+            </tr>
+            <tr>
+                <td>KL↓</td>
+                <td>1.44</td><td>1.67</td><td><b>1.14</b></td>
+            </tr>
+            <tr>
+                <td>CLaMP3↑</td>
+                <td>0.120</td><td>0.108</td><td><b>0.138</b></td>
+            </tr>
+            <tr>
+                <td>FAD↓</td>
+                <td>3.72</td><td>2.53</td><td><b>0.92</b></td>
+            </tr>
+            <tr class="dataset-sep">
+                <td rowspan="7">V2M-Bench</td>
+                <td rowspan="7">T2M</td>
+                <td>PCT</td>
+                <td>4.41</td><td><b>5.69</b></td><td>5.60</td>
+            </tr>
+            <tr>
+                <td>PQT</td>
+                <td>7.46</td><td>6.69</td><td><b>7.98</b></td>
+            </tr>
+            <tr>
+                <td>CE↑</td>
+                <td>5.69</td><td>5.33</td><td><b>6.95</b></td>
+            </tr>
+            <tr>
+                <td>CLAP↑</td>
+                <td><b>0.345</b></td><td>0.328</td><td>0.264</td>
+            </tr>
+            <tr>
+                <td>KL↓</td>
+                <td>1.31</td><td>1.95</td><td><b>0.89</b></td>
+            </tr>
+            <tr>
+                <td>CLaMP3↑</td>
+                <td>0.163</td><td>0.153</td><td><b>0.187</b></td>
+            </tr>
+            <tr>
+                <td>FAD↓</td>
+                <td>2.94</td><td>1.73</td><td><b>1.13</b></td>
             </tr>
                </table>
         </div>
@@ -379,28 +415,40 @@
             <caption>Table 2: Performance on Speech Synthesis (SEED TTS)</caption>
             <tr>
                 <th rowspan="2">Dataset</th>
-                <th rowspan="2">Method</th>
                 <th rowspan="2">Task</th>
-                <th>WER% (EN)↓</th>
-                <th>MOS (EN)↑</th>
-                <th>SIM% (EN)↑</th>
-                <th>CER% (ZH)↓</th>
-                <th>MOS (ZH)↑</th>
-                <th>SIM% (ZH)↑</th>
-            </tr>
-            <tr></tr>
-            <tr>
-                <td rowspan="3">Seed-TTS</td>
-                <td><i>Dense (Single-Task)</i></td>
-                <td>T2S</td><td>0.023</td><td>3.84</td><td>0.533</td><td>0.016</td><td><b>3.23</b></td><td>0.620</td>
+                <th rowspan="2">Metric</th>
+                <th colspan="3">Model</th>
             </tr>
             <tr>
-                <td><i>Dense (Multi-Task)</i></td>
-                <td>T2S</td><td>0.053</td><td>3.68</td><td>0.511</td><td>0.016</td><td>3.20</td><td>0.572</td>
+                <th><i>Dense (Single-Task)</i></th>
+                <th><i>Dense (Multi-Task)</i></th>
+                <th><i>MoE (Multi-Task)</i></th>
             </tr>
             <tr>
-                <td><i>MoE (Multi-Task)</i></td>
-                <td>T2S</td><td><b>0.020</b></td><td><b>4.37</b></td><td><b>0.586</b></td><td><b>0.014</b></td><td>3.32</td><td><b>0.694</b></td>
+                <td rowspan="6">Seed-TTS</td>
+                <td rowspan="6">T2S</td>
+                <td>WER% (EN)↓</td>
+                <td>0.023</td><td>0.053</td><td><b>0.020</b></td>
+            </tr>
+            <tr>
+                <td>MOS (EN)↑</td>
+                <td>3.84</td><td>3.68</td><td><b>4.37</b></td>
+            </tr>
+            <tr>
+                <td>SIM% (EN)↑</td>
+                <td>0.533</td><td>0.511</td><td><b>0.586</b></td>
+            </tr>
+            <tr>
+                <td>CER% (ZH)↓</td>
+                <td>0.016</td><td>0.016</td><td><b>0.014</b></td>
+            </tr>
+            <tr>
+                <td>MOS (ZH)↑</td>
+                <td><b>3.23</b></td><td>3.20</td><td>3.32</td>
+            </tr>
+            <tr>
+                <td>SIM% (ZH)↑</td>
+                <td>0.620</td><td>0.572</td><td><b>0.694</b></td>
             </tr>
                 </table>
         </div>
