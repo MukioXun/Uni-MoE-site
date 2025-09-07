@@ -4,7 +4,7 @@ root.innerHTML = `
   <!-- 顶部导航栏 -->
   <nav class="top-nav">
     <div class="nav-left">
-      <a href="#" class="home-btn"> Uni-MoE Audio</a>
+      <a href="#" class="home-btn"> UniMoE Audio</a>
     </div>
     <div class="nav-right">
       <a href="https://github.com/HITsz-TMG/UMOE-Scaling-Unified-Multimodal-LLMs" target="_blank" class="github-link">
@@ -18,7 +18,7 @@ root.innerHTML = `
 
   <!-- 中间标题区域 -->
   <section class="hero-section">
-    <h1 class="main-title">Uni-MoE Audio</h1>
+    <h1 class="main-title">UniMoE Audio</h1>
     <p class="subtitle">An End-to-End Large Audio Model for Unified Multimodal Audio Generation</p>
   </section>
 
