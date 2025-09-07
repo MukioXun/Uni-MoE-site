@@ -864,14 +864,19 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        // 等待页面完全加载后再初始化tab功能
+        window.addEventListener('load', function() {
             // 获取所有标签和内容区域
             const tabs = document.querySelectorAll('.category-tab');
             const contents = document.querySelectorAll('.category-content');
 
+            console.log('Tab initialization: Found', tabs.length, 'tabs and', contents.length, 'content areas');
+
             // 为每个标签添加点击事件
             tabs.forEach(tab => {
                 tab.addEventListener('click', function() {
+                    console.log('Tab clicked:', this.getAttribute('data-category'));
+                    
                     // 移除所有标签的active类
                     tabs.forEach(t => t.classList.remove('active'));
                     // 为当前点击的标签添加active类
@@ -887,6 +892,9 @@
                     const targetContent = document.getElementById(`${category}-content`);
                     if (targetContent) {
                         targetContent.classList.add('active');
+                        console.log('Showing content for category:', category);
+                    } else {
+                        console.error('Content area not found for category:', category);
                     }
                 });
             });
