@@ -38,8 +38,8 @@ root.innerHTML = `
   <footer class="footer">
     <div class="footer-content">
       <div class="footer-section">
-        <h4>Uni-MoE Audio</h4>
-        <p> Unified Multimodal Audio Generation </p>
+        <h4>UniMoE Audio</h4>
+        <p> Unified Multimodal Audio Generator </p>
       </div>
       <div class="footer-section">
         <div class="footer-links">
@@ -54,7 +54,7 @@ root.innerHTML = `
             </a>
           </div>
           <div class="footer-copyright">
-            <p>&copy; 2025 Uni-MoE Audio. All rights reserved.</p>
+            <p>&copy; 2025 UniMoE Audio. All rights reserved.</p>
 
           </div>
         </div>
