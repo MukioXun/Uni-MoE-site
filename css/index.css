@@ -407,7 +407,8 @@ body {
 
 .tts-table td.text-cell {
     background-color: #ffffff;
-    font-size: 0.8rem;
+    font-size: 1.0rem; /* 增大两个字号 */
+    font-weight: 500; /* 加粗 */
     line-height: 1.4;
     color: #333;
     text-align: center;
