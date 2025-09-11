@@ -1,6 +1,7 @@
 audios/old/
 audios/*.tar.gz
-
+audios/*.tar
+audios/music_demo
 infer_text.json
 prompt_text.txt
 
