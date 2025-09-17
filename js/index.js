@@ -4,7 +4,7 @@ root.innerHTML = `
   <!-- 顶部导航栏 -->
   <nav class="top-nav">
     <div class="nav-left">
-      <a href="#" class="home-btn"> UniMoE Audio</a>
+      <a href="#" class="home-btn"> UniMoE-Audio</a>
     </div>
     <div class="nav-right">
       <a href="https://github.com/foggy-frost-forest/UniMoE-Audio" target="_blank" class="github-link">
@@ -18,8 +18,8 @@ root.innerHTML = `
 
   <!-- 中间标题区域 -->
   <section class="hero-section">
-    <h1 class="main-title">UniMoE Audio</h1>
-    <p class="subtitle">An End-to-End Large Audio Model for Unified Multimodal Audio Generation</p>
+    <h1 class="main-title">UniMoE-Audio</h1>
+    <p class="subtitle">An Unified Speech and Music Generation with Dynamic-Capacity Mixture of Experts</p>
   </section>
 
   <!-- 下方按钮区域 -->
@@ -38,8 +38,8 @@ root.innerHTML = `
   <footer class="footer">
     <div class="footer-content">
       <div class="footer-section">
-        <h4>UniMoE Audio</h4>
-        <p> Unified Multimodal Audio Generator </p>
+        <h4>UniMoE-Audio</h4>
+        <p> Unified Speech and Music Generation</p>
       </div>
       <div class="footer-section">
         <div class="footer-links">

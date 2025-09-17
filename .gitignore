@@ -4,7 +4,6 @@ audios/*.tar
 audios/music_demo
 infer_text.json
 prompt_text.txt
-
+.DS_Store
 three-line-table-demo.html
-
 *.py
