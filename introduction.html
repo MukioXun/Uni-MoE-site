@@ -327,6 +327,14 @@
                 finally trains the entire, model end-to-end on the full, curated balanced dataset, fostering effective knowledge transfer across domains.</li>
         </ul>
     </div>
+    The figure below illustrates the training pipeline of UniMoE-Audio.
+    <div class="media-container">
+        <div class="media-item">
+            <img src="img/AudioLLM_training_moe.png" alt="UniMoE-Audio Training Pipeline" style="max-width: 70%; width: 800px; height: auto; display: block; margin: 0 auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(123, 179, 255, 0.15);">
+            <p><strong>Fig. 2</strong>UniMoE-Audio Training Pipeline</p>
+        </div>
+    </div>
+
     <div class = "blog-section">
         <h2 class="section-title">Experiments</h2>
         <p>
@@ -334,7 +342,7 @@
         </p> 
         <style>
             .table-container {
-                max-width: 1000px;
+                max-width: 1200px;
                 margin: 2rem auto;
                 overflow-x: auto;
                 border: 1px solid #e0e0e0;
@@ -398,7 +406,7 @@
                 background: #555;
             }
         </style>
-        <div class="table-container">
+        <!-- <div class="table-container">
             <table class="research-table">
             <caption>Table 1: Performance on Music & Text-to-Music Generation</caption>
             <tr>
@@ -516,19 +524,211 @@
                 <td>0.620</td><td>0.572</td><td><b>0.694</b></td>
             </tr>
                 </table>
+        </div> -->
+        <div class="table-container">
+            <table class="research-table">
+                <caption>Table 1: Performance on Music & Text-to-Music Generation</caption>
+                <tr>
+                <th rowspan="2">Dataset</th>
+                <th rowspan="2">Task</th>
+                <th rowspan="2">Metric</th>
+                <th colspan="7">Models</th>
+                </tr>
+                <tr>
+                <th>YuE</th>
+                <th>Stable Audio</th>
+                <th>AudioX</th>
+                <th>MuGen</th>
+                <th>MUMU-LLAMA</th>
+                <th><i>UniMoE-Dense</i></th>
+                <th><i>UniMoE-MoE</i></th>
+                </tr>
+                <tr>
+                <td colspan="15" style="border-top: 2px solid #333; padding: 0; height: 2px;"></td>
+                </tr>
+                <!-- MusicCap -->
+                <tr>
+                <td rowspan="8">MusicCap</td>
+                <td rowspan="8">T2M</td>
+                <td>PC↑</td>
+                <td>3.45</td><td>3.70</td><td>5.00</td><td>4.78</td><td>5.15</td><td>5.66</td><td><b>6.00</b></td>
+                </tr>
+                <tr>
+                <td>PQ↑</td>
+                <td>7.25</td><td>7.29</td><td>6.67</td><td>7.37</td><td>7.71</td><td>6.48</td><td><b>7.77</b></td>
+                </tr>
+                <tr>
+                <td>CE↑</td>
+                <td>5.84</td><td>6.02</td><td>6.14</td><td>6.57</td><td>6.87</td><td>5.30</td><td><b>7.34</b></td>
+                </tr>
+                <tr>
+                <td>CLAP↑</td>
+                <td>0.18</td><td><b>0.30</b></td><td>0.25</td><td>0.26</td><td>0.20</td><td>0.14</td><td>0.29</td>
+                </tr>
+                <tr>
+                <td>KL↓</td>
+                <td>2.12</td><td>1.44</td><td><b>1.20</b></td><td>1.21</td><td>1.27</td><td>1.57</td><td>1.39</td>
+                </tr>
+                <tr>
+                <td>CLaMP3↑</td>
+                <td>0.09</td><td>0.11</td><td><b>0.12</b></td><td>0.10</td><td>0.10</td><td>0.07</td><td><b>0.12</b></td>
+                </tr>
+                <tr>
+                <td>IS↑</td>
+                <td>2.09</td><td>2.74</td><td><b>3.02</b></td><td>1.68</td><td>1.44</td><td>1.57</td><td>1.93</td>
+                </tr>
+                <tr>
+                <td>FAD↓</td>
+                <td>9.02</td><td>3.72</td><td><b>1.64</b></td><td>7.02</td><td>8.57</td><td>9.64</td><td>6.43</td>
+                </tr>
+                <!-- V2M-bench -->
+                <tr class="dataset-sep">
+                <td rowspan="8">V2M-bench</td>
+                <td rowspan="8">T2M</td>
+                <td>PC↑</td>
+                <td>3.78</td><td>3.41</td><td>4.60</td><td>4.64</td><td>5.19</td><td>5.71</td><td><b>5.75</b></td>
+                </tr>
+                <tr>
+                <td>PQ↑</td>
+                <td>7.25</td><td>7.46</td><td>7.30</td><td>7.37</td><td>7.73</td><td>6.68</td><td><b>7.58</b></td>
+                </tr>
+                <tr>
+                <td>CE↑</td>
+                <td>6.01</td><td>5.69</td><td>6.06</td><td>6.24</td><td>6.75</td><td>5.83</td><td><b>6.85</b></td>
+                </tr>
+                <tr>
+                <td>CLAP↑</td>
+                <td>0.15</td><td><b>0.34</b></td><td>0.30</td><td>0.28</td><td>0.17</td><td>0.23</td><td>0.31</td>
+                </tr>
+                <tr>
+                <td>KL↓</td>
+                <td>1.27</td><td>1.91</td><td>2.12</td><td>1.27</td><td><b>0.92</b></td><td>1.89</td><td>1.06</td>
+                </tr>
+                <tr>
+                <td>CLaMP3↑</td>
+                <td>0.13</td><td>0.16</td><td>0.11</td><td>0.15</td><td>0.13</td><td>0.15</td><td><b>0.19</b></td>
+                </tr>
+                <tr>
+                <td>IS↑</td>
+                <td>1.79</td><td>3.13</td><td><b>3.64</b></td><td>1.70</td><td>1.42</td><td>1.83</td><td>2.17</td>
+                </tr>
+                <tr>
+                <td>FAD↓</td>
+                <td>4.29</td><td>2.94</td><td>4.26</td><td>3.39</td><td><b>2.54</b></td><td>3.27</td><td>3.11</td>
+                </tr>
+                <!-- V2M-bench VT2M -->
+                <tr class="dataset-sep">
+                <td rowspan="8">V2M-bench</td>
+                <td rowspan="8">VT2M</td>
+                <td>PC↑</td>
+                <td>-</td><td>-</td><td>4.44</td><td>-</td><td>-</td><td>-</td><td><b>5.88</b></td>
+                </tr>
+                <tr>
+                <td>PQ↑</td>
+                <td>-</td><td>-</td><td>7.44</td><td>-</td><td>-</td><td>-</td><td><b>7.62</b></td>
+                </tr>
+                <tr>
+                <td>CE↑</td>
+                <td>-</td><td>-</td><td>6.06</td><td>-</td><td>-</td><td>-</td><td><b>6.96</b></td>
+                </tr>
+                <tr>
+                <td>KL↓</td>
+                <td>-</td><td>-</td><td>1.84</td><td>-</td><td>-</td><td>-</td><td><b>1.69</b></td>
+                </tr>
+                <tr>
+                <td>IS↑</td>
+                <td>-</td><td>-</td><td>3.14</td><td>-</td><td>-</td><td>-</td><td><b>3.31</b></td>
+                </tr>
+                <tr>
+                <td>FAD↓</td>
+                <td>-</td><td>-</td><td>2.94</td><td>-</td><td>-</td><td>-</td><td><b>2.89</b></td>
+                </tr>
+            </table>
         </div>
+
+        <div class="table-container">
+            <table class="research-table">
+                <caption>Table 2: Performance on Speech Synthesis</caption>
+                <tr>
+                <th rowspan="2">Method</th>
+                <th colspan="3">SeedTTS-EN</th>
+                <th colspan="3">SeedTTS-ZH</th>
+                <th colspan="2">Librispeech</th>
+                <th colspan="2">AISHELL-3</th>
+                </tr>
+                <tr>
+                <th>WER↓</th><th>UTMOS↑</th><th>SIM↑</th>
+                <th>CER↓</th><th>UTMOS↑</th><th>SIM↑</th>
+                <th>WER↓</th><th>UTMOS↑</th>
+                <th>CER↓</th><th>UTMOS↑</th>
+                </tr>
+                <tr>
+                <td colspan="15" style="border-top: 2px solid #333; padding: 0; height: 2px;"></td>
+                </tr>
+                <tr>
+                <td>UniAudio</td>
+                <td>0.072</td><td>3.46</td><td>0.40</td>
+                <td>-</td><td>-</td><td>-</td>
+                <td>0.183</td><td>3.26</td>
+                <td>-</td><td>-</td>
+                </tr>
+                <tr>
+                <td>Mini-CPM-O-2.6</td>
+                <td>0.034</td><td>3.49</td><td>0.36</td>
+                <td>0.130</td><td>2.94</td><td>0.47</td>
+                <td>0.111</td><td>3.76</td>
+                <td>0.131</td><td>3.30</td>
+                </tr>
+                <tr>
+                <td>Qwen-Omni</td>
+                <td>0.021</td><td>4.16</td><td>-</td>
+                <td>0.016</td><td>3.28</td><td>-</td>
+                <td>0.076</td><td>4.19</td>
+                <td>0.025</td><td>3.38</td>
+                </tr>
+                <tr>
+                <td>Step-audio</td>
+                <td>0.022</td><td>3.84</td><td>0.52</td>
+                <td>0.010</td><td>3.23</td><td>0.62</td>
+                <td>0.050</td><td>4.37</td>
+                <td>0.027</td><td>3.69</td>
+                </tr>
+                <tr>
+                <td colspan="15" style="border-top: 2px solid #333; padding: 0; height: 2px;"></td>
+                </tr>
+                <tr>
+                <td><i>UniMoE-Dense</i></td>
+                <td>0.025</td><td>3.67</td><td>0.47</td>
+                <td>0.020</td><td>3.29</td><td>0.57</td>
+                <td>0.108</td><td>3.97</td>
+                <td>0.042</td><td>3.45</td>
+                </tr>
+                <tr>
+                <td><i>UniMoE-MoE</i></td>
+                <td><b>0.019</b></td><td><b>4.36</b></td><td><b>0.56</b></td>
+                <td><b>0.008</b></td><td><b>3.73</b></td><td><b>0.65</b></td>
+                <td><b>0.044</b></td><td><b>4.23</b></td>
+                <td><b>0.016</b></td><td><b>3.86</b></td>
+                </tr>
+            </table>
+        </div>
+
         <p>
-            As depth increases, the average number of selected experts rises rapidly then declines slowly, indicating that lower layers handle basic feature processing, middle layers perform complex computations like multimodal interaction to obtain dense feature encodings, and higher layers focus on downstream task output.
+            The comparison between the input (left) and output (right) expert distributions shows a clear shift from nearly uniform usage across all experts to more specialized patterns. In the input, experts are invoked almost evenly at each layer, indicating no strong preference. However, in the output, certain experts dominate at specific depths: lower layers favor experts 1 and 2, middle layers rely more on experts 3-5, and higher layers increasingly use experts 8 and 9. This demonstrates that training encourages a division of labor among experts, where different layers specialize in leveraging particular experts rather than distributing usage uniformly.
         </p>
         <div class="media-container">
             <div class="media-item">
-                <img src="img/expert.png" alt="expert activation during training" style="max-width: 90%; width: 400px; height: auto; display: block; margin: 0 auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(123, 179, 255, 0.15);">
-                <p><strong>Fig. 2</strong>  UniMoE-Audio expert activation during training</p>
+                <img src="img/all_experts_input.png" alt="expert activation for input" style="max-width: 100%; width: 400px; height: auto; display: block; margin: 0 auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(123, 179, 255, 0.15);">
+                <p><strong>Fig. 3a</strong>  UniMoE-Audio expert activation for input</p>
+            </div>
+            <div class="media-item">
+                <img src="img/all_experts_output.png" alt="expert activation for output" style="max-width: 100%; width: 400px; height: auto; display: block; margin: 0 auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(123, 179, 255, 0.15);">
+                <p><strong>Fig. 3b</strong>  UniMoE-Audio expert activation for output</p>
             </div>
         </div>
     <div class="blog-section">
         <h2 class="section-title">Performance</h2>
-        <h3>
+        <h3 style="text-align: center;">
             Voice Clone
         </h3>      
         <div class="tts-table-container">
@@ -720,7 +920,7 @@
             </table>
         </div>
 
-        <h3>
+        <h3 style="text-align: center;">
             Music Generation
         </h3>      
         <div class="tts-table-container">
@@ -734,18 +934,36 @@
                 <tbody>
                     <!-- 案例行 -->
                     <tr>
-                        <td class="text-cell">Generate a cinematic orchestral piece featuring soaring violins, bold brass, and rolling timpani. The atmosphere is epic and triumphant.</td>
+                        <td class="text-cell">This song contains several drum hits and percussive instruments playing a fast paced rhythm that motivates dancing along. An e-bass is bringing the low end supporting the drums. Cuatro guitars are strumming chords as a rhythmic addition. Trumpets are playing a loud and catchy melody. Some of the musical elements are slightly panned to the left and right side of the speakers. This song may be playing at a cheerful event.</td>
                         <td class="audio-cell">
-                            <div class="audio-player-mini" data-audio="audios/music_demo/0.wav">
+                            <div class="audio-player-mini" data-audio="audios/intro_music/demo_1.mp3">
                                 <span class="play-icon">▶</span>
                             </div>
                         </td>
                     </tr>
                     <!-- 案例行 -->
                     <tr>
-                        <td class="text-cell">Generate a mellow bossa nova piece featuring nylon-string guitar, upright bass, soft drums, and gentle piano chords. The atmosphere is smooth and romantic.</td>
+                        <td class="text-cell">This song contains a digital drum playing a simple pattern with a kick and a snare sound. Synthesizers are playing a repeating melody in the higher register. Another synth sound is playing a more aggressive lead sound with a countermelody. A string sample is being used to create a short hit. This song may be playing during a car ride.</td>
                         <td class="audio-cell">
-                            <div class="audio-player-mini" data-audio="audios/music_demo/1.wav">
+                            <div class="audio-player-mini" data-audio="audios/intro_music/demo_2.mp3">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                    </tr>
+                        <!-- 案例行 -->
+                    <tr>
+                        <td class="text-cell">This is a four on the floor style of production. The song is a drum and bass type of song with a bright and fuzzy synth to add a melodic element. The first part of the song feels suspenseful.</td>
+                        <td class="audio-cell">
+                            <div class="audio-player-mini" data-audio="audios/intro_music/demo_3.mp3">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                    </tr>
+                                   <!-- 案例行 -->
+                    <tr>
+                        <td class="text-cell">This is a rock music piece. There is a medium-to-high pitched electric guitar solo at the forefront. In the melodic background, a keyboard and a bass guitar repeating the same pattern can be heard. The acoustic drums are playing a loud and slightly fast-paced rock drum beat. There is a rebellious atmosphere to this piece. It can be used in the soundtrack of a teenage drama or a crime shootout audio game.</td>
+                        <td class="audio-cell">
+                            <div class="audio-player-mini" data-audio="audios/intro_music/demo_4.mp3">
                                 <span class="play-icon">▶</span>
                             </div>
                         </td>
@@ -771,11 +989,11 @@
                                 <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.097.118.112.221.083.342-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.746-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.012.001z"/>
                             </svg>
                         </a>
-                        <a href="1252439618@qq.com" class="footer-link">
+                        <!-- <a href="1252439618@qq.com" class="footer-link">
                             <svg viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                             </svg>
-                        </a>
+                        </a> -->
                     </div>
                     <div class="footer-copyright">
                         <p>© 2025 UniMoE-Audio. All rights reserved.</p>

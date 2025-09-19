@@ -407,7 +407,7 @@ body {
 
 .tts-table td.text-cell {
     background-color: #ffffff;
-    font-size: 1.5rem; /* 增大两个字号 */
+    font-size: 1.0rem; /* 增大两个字号 */
     font-weight: 400; /* 加粗 */
     line-height: 1.4;
     color: #333;
@@ -884,7 +884,7 @@ body {
 .case-text {
   font-size: 1.1rem;
   color: #2d3748;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.4;
 }
 
