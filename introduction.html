@@ -338,7 +338,7 @@
     <div class = "blog-section">
         <h2 class="section-title">Experiments</h2>
         <p>
-            The MoE model effectively mitigates task conflicts in speech and music generation and benefits from multi-task joint training, outperforming dense models.
+            We conducted a systematic evaluation of our Uni-MoE-Audio model on a variety of music and speech generation tasks. The main results, presented in Table 1, 2 and 3,demonstrate that our proposed model achieves state-of-the-art (SOTA) or highly competitive results when compared against existing leading models. 
         </p> 
         <style>
             .table-container {
@@ -374,7 +374,7 @@
             }
             /* dataset separator for transposed tables */
             .research-table .dataset-sep {
-                border-top: 1px solid #666;
+                border-top: 2px solid #666;
             }
             .research-table tbody tr:last-child {
                 border-bottom: 2px solid #333;
@@ -389,7 +389,8 @@
             }
             .research-table td b {
                 font-weight: bold;
-                color: #d32f2f;
+                color: #000000;
+                /* bk:#d32f2f; */
             }
             ::-webkit-scrollbar {
                 height: 8px;
@@ -527,7 +528,7 @@
         </div> -->
         <div class="table-container">
             <table class="research-table">
-                <caption>Table 1: Performance on Music & Text-to-Music Generation</caption>
+                <caption>Table 1: Performance of Text-to-Music Generation</caption>
                 <tr>
                 <th rowspan="2">Dataset</th>
                 <th rowspan="2">Task</th>
@@ -620,33 +621,52 @@
 
         <div class="table-container">
             <table class="research-table">
-                <caption>Table 1 (continued)</caption>
+                <caption>Table2: Performance of Video-Text-to-Music</caption>
                 <tr>
-                <th rowspan="2">Method</th>
-                <th colspan="6">VT2M on V2M-bench</th>
+                <th rowspan="2">Dataset</th>
+                <th rowspan="2">Task</th>
+                <th rowspan="2">Metric</th>
+                <th colspan="2">Models</th>
                 </tr>
                 <tr>
-                <th>PC↑</th><th>PQ↑</th><th>CE↑</th>
-                <th>KL↓</th><th>IS↑</th><th>FAD↓</th>
+                <th>AudioX</th>
+                <th><i>UniMoE-MoE</i></th>
                 </tr>
                 <tr>
-                <td colspan="7" style="border-top: 2px solid #333; padding: 0; height: 2px;"></td>
+                <td colspan="5" style="border-top: 2px solid #333; padding: 0; height: 2px;"></td>
                 </tr>
                 <tr>
-                <td>AudioX</td>
-                <td>4.44</td><td>7.44</td><td>6.06</td>
-                <td>1.84</td><td>3.14</td><td>2.94</td>
+                <td rowspan="6">V2M-bench</td>
+                <td rowspan="6">VT2M</td>
+                <td>PC↑</td>
+                <td>4.44</td><td><b>5.88</b></td>
+                </tr>
                 <tr>
-                <td><i>UniMoE-MoE</i></td>
-                <td><b>5.88</b></td><td><b>7.62</b></td><td><b>6.96</b></td>
-                <td><b>1.69</b></td><td><b>3.31</b></td><td><b>2.89</b></td>
+                <td>PQ↑</td>
+                <td>7.44</td><td><b>7.62</b></td>
+                </tr>
+                <tr>
+                <td>CE↑</td>
+                <td>6.06</td><td><b>6.96</b></td>
+                </tr>
+                <tr>
+                <td>KL↓</td>
+                <td>1.84</td><td><b>1.69</b></td>
+                </tr>
+                <tr>
+                <td>IS↑</td>
+                <td>3.14</td><td><b>3.31</b></td>
+                </tr>
+                <tr>
+                <td>FAD↓</td>
+                <td>2.94</td><td><b>2.89</b></td>
                 </tr>
             </table>
         </div>
 
         <div class="table-container">
             <table class="research-table">
-                <caption>Table 2: Performance on Speech Synthesis</caption>
+                <caption>Table 3: Performance on Speech Synthesis</caption>
                 <tr>
                 <th rowspan="2">Method</th>
                 <th colspan="3">SeedTTS-EN</th>
@@ -705,7 +725,7 @@
         </div>
 
         <p>
-            The comparison between the input (left) and output (right) expert distributions shows a clear shift from nearly uniform usage across all experts to more specialized patterns. In the input, experts are invoked almost evenly at each layer, indicating no strong preference. However, in the output, certain experts dominate at specific depths: lower layers favor experts 1 and 2, middle layers rely more on experts 3-5, and higher layers increasingly use experts 8 and 9. This demonstrates that training encourages a division of labor among experts, where different layers specialize in leveraging particular experts rather than distributing usage uniformly.
+            The comparison between the input (Fig. 3a) and output (Fig. 3b) expert distributions shows a clear shift from nearly uniform usage across all experts to more specialized patterns. In the input, experts are invoked almost evenly at each layer, indicating no strong preference. However, in the output, certain experts dominate at specific depths: lower layers favor experts 1 and 2, middle layers rely more on experts 3-5, and higher layers increasingly use experts 8 and 9. This demonstrates that training encourages a division of labor among experts, where different layers specialize in leveraging particular experts rather than distributing usage uniformly.
         </p>
         <div class="media-container">
             <div class="media-item">
