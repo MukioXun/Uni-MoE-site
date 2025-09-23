@@ -19,7 +19,7 @@ root.innerHTML = `
   <!-- 中间标题区域 -->
   <section class="hero-section">
     <h1 class="main-title">UniMoE-Audio</h1>
-    <p class="subtitle">An Unified Speech and Music Generation with Dynamic-Capacity Mixture of Experts</p>
+    <p class="subtitle">A Unified Speech and Music Generation with Dynamic-Capacity Mixture of Experts</p>
   </section>
 
   <!-- 下方按钮区域 -->

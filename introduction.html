@@ -235,25 +235,46 @@
         <div class="header">
             <!-- <p>September 17, 2025  Announcement </p> -->
             <h1>Introduction to UniMoE-Audio</h1>
-            <p>Unified Speech and Music Generation with Dynamic-Capacity Mixture of Experts</p>
+            <p>A Unified Speech and Music Generation with Dynamic-Capacity Mixture of Experts</p>
         </div>
 
     <div class="blog-section">
         <h2 class="section-title">UniMoE-Audio</h2>
-        <p>
-            We propose <strong>UniMoE-Audio</strong>, a unified speech and music generation model based on a novel dynamic-capacity Mixture-of-Experts framework.
+        <!-- <p>
+            We propose <strong>UniMoE-Audio</strong>, a unified speech and music generation model based on a novel <strong>dynamic-capacity</strong> Mixture-of-Experts framework.
+            With this design, UniMoE-Audio achieves a seamless integration of speech and music generation, paving the way toward universal audio synthesis.
         </p>
         <br>
         <p>
-            By integrating a dynamic-capacity routing strategy for adaptive resource allocation and a hybrid expert design for functional decoupling, our architecture effectively mitigates <strong>the inherent task conflict</strong> between speech and music generation.
+            UniMoE-Audio introduces <strong>a dynamic-capacity routing mechanism</strong> using Top-P sampling for dynamic expert allocation, 
+            and a hybrid expert design that decouples domain-specific computation (dynamic experts) from universal features (shared experts).
+            To enable effective joint learning from imbalanced data, UniMoE-Audio introduces a three-stage training curriculum.
+            Therefore, UniMoE-Audio accepts a diverse set of conditional inputs, 
+            including <strong>voice cloning</strong>, <strong>text-to-speech (TTS)</strong>, <strong>text-to-music (T2M)</strong>, and <strong>video-to-music (V2M)</strong>, 
+            offering flexibility across a wide range of applications.
+            Extensive experiments show that UniMoE-Audio not only achieves state-of-the-art performance but also demonstrates superior synergistic learning.
+        </p>
+        <br> -->
+        <p>
+            <strong>UniMoE-Audio</strong> is a unified framework that seamlessly combines speech and music generation. 
+            Powered by a novel <strong>dynamic-capacity Mixture-of-Experts</strong> design, it adapts intelligently to input complexity, 
+            enabling high-fidelity voice and expressive music within a single model.
+        </p>
+        <br>
+        <p>
+            UniMoE-Audio introduces <strong>a dynamic-capacity routing mechanism</strong> based on Top-P sampling for adaptive expert allocation, 
+            together with a hybrid expert design that separates domain-specific computation (dynamic experts) from universal representations (shared experts). 
+            To address data imbalance and task conflicts, UniMoE-Audio adopts a structured three-stage training curriculum. 
+            From <strong>voice cloning</strong> and <strong>text-to-speech (TTS)</strong> to <strong>text-to-music (T2M)</strong> and <strong>video-to-music (V2M)</strong>, 
+            UniMoE-Audio supports diverse creative workflows. 
+            Extensive experiments confirm its state-of-the-art performance and superior cross-task synergy, paving the way toward <strong>universal audio generation</strong>.
         </p>
         <br>
 
-
-        <h3>
+        <!-- <h3>
             Challenges in Unifying Speech and Music Generation
-        </h3>
-        <p>The unification of speech and music generation faces :</p>
+        </h3> -->
+        <!-- <p>The unification of speech and music generation faces :</p>
          <div class="content-block">
             <p><strong>Two Major Obstacles:</strong></p>
             <ul style="margin-left: 2rem; margin-top: 1rem; font-size: 1.1rem;">
@@ -274,16 +295,37 @@
                     </ul>
                 </li>
             </ul>
+        </div> -->
+
+        <div class="media-container" id="fig1">
+            <div class="media-item">
+                <img src="img/abstract.png" alt="Performance of UniMoE-Audio" style="max-width: 100%; width: 1600px; height: auto; display: block; margin: 0 auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(123, 179, 255, 0.15);">
+                <p style="font-size: 0.9em; color: #666; margin-top: 0.5rem;">
+                    Left: Our model overcomes the performance degradation of naive joint training, achieving synergistic gains. 
+                    <br>
+                    Right: It demonstrates competitive performance against leading models on comprehensive speech and music metrics.
+                </p>
+                <p><strong>Fig. 1</strong>Performance of UniMoE-Audio</p>
+            </div>
         </div>
-        
-        <h3>
-            Here are our work's novelty and contributions.
-        </h3>
+        <br>
+        <p>
+            On the left of <a href="#fig1">Fig. 1</a>, 
+            comparison against specialized baselines reveals the failure of naive joint
+            training, which causes a clear performance degradation on speech generation and more significant decline on music generation.
+            The root of this problem lies in the divergent objectives of speech and music tasks as well as severe data imbalances, 
+            which make naive joint training incapable of capturing their inherent complexity.
+        </p>
+        <br>
+        <p>  
+            In contrast, UniMoE-Audio yields synergistic gains across both tasks. 
+            On radar charts in <a href="#fig1">Fig. 1</a>, UniMoE-Audio is shown achieving competitive performance against leading models on a wide array of speech (a) and music (b) metrics.
+        </p>
         <br>
         <h3>
-            A novel dynamic-capacity MoE for mitigating task conflict.
+            A Novel Dynamic-capacity MoE for Mitigating Task Conflict
         </h3>
-        <div class="content-block">
+        <!-- <div class="content-block">
             <p><strong>Two key architectural optimization:</strong></p>
             <ul style="margin-left: 2rem; margin-top: 1rem; font-size: 1.1rem;">
                 <li><strong>A Dynamic-capacity Routing Strategy</strong>: &nbsp; Enabling <strong>more flexible</strong> expert combinations 
@@ -302,18 +344,39 @@
             <p style="margin-top: 1.5rem; font-weight: 600;">
                 Together, these advances form a powerful and efficient framework for high-quality, flexible audio generation across multiple modalities.
             </p>
-        </div>
-        The following figure shows the overall architecture of UniMoE-Audio.
+        </div> -->
+        <br>
+        <p>
+            To provide adaptive allocation of computational resources between simple and complex tasks, 
+            the model's architectural core is a Transformer enhanced with <strong>Dynamic-Capacity</strong> Mixture-of-Experts (MoE) layers.
+            The following <a href="#fig2">Fig. 2</a> shows the overall architecture of UniMoE-Audio.
+        </p>
         <div class="media-container">
             <div class="media-item">
-                <img src="img/AudioLLM_model-MoE.png" alt="UniMoE-Audio Structure" style="max-width: 90%; width: 800px; height: auto; display: block; margin: 0 auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(123, 179, 255, 0.15);">
-                <p><strong>Fig. 1</strong>  UniMoE-Audio Structure</p>
+                <img src="img/AudioLLM_model-MoE.png" alt="UniMoE-Audio Structure" style="max-width: 90%; width: 1200px; height: auto; display: block; margin: 0 auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(123, 179, 255, 0.15);">
+                <p style="font-size: 0.9em; color: #666; margin-top: 0.5rem;">
+                    Left: The UniMoE-Audio unified architecture for speech and music generation from multimodal conditions.
+                    <br>
+                    Right: The proposed Top-P routing strategy for dynamic expert allocation based on token complexity.
+                </p>
+                <p><strong>Fig. 2</strong>  UniMoE-Audio Structure</p>
             </div>
         </div>
     </div>
-
+    <p>
+        Crucially, we introduce <strong>a Top-P routing strategy</strong> that overcomes the limitations of conventional static Top-K routing. 
+        Instead of assigning a fixed number of experts to every token, 
+        our approach dynamically determines the number of experts based on the complexity of each token.
+        This ensures that simple tokens do not consume unnecessary resources, 
+        while complex tokens are granted sufficient processing power, resulting in improved overall efficiency and performance.
+    </p>
     <br>
-    <h3>
+    <p>
+        Moreover, we employ <strong>a three-stage training curriculum</strong> to enable effective joint learning from imbalanced data. This process—comprising independent specialist training, integration with warm-up, and synergistic joint training—successfully overcomes the challenges of data imbalance and task conflict. (Details can be found in the paper)
+        <!-- <a href="https://arxiv.org/abs/2310.17223">paper</a> -->
+    </p> 
+    <br>
+    <!-- <h3>
         A tightly coupled, three-stage training curriculum to address data imbalance.
     </h3>
     <div class="content-block">
@@ -326,19 +389,22 @@
             <li><strong>Synergistic Joint Training</strong>
                 finally trains the entire, model end-to-end on the full, curated balanced dataset, fostering effective knowledge transfer across domains.</li>
         </ul>
-    </div>
-    The figure below illustrates the training pipeline of UniMoE-Audio.
+    </div> -->
+    <!-- The figure below illustrates the training pipeline of UniMoE-Audio.
     <div class="media-container">
         <div class="media-item">
             <img src="img/AudioLLM_training_moe.png" alt="UniMoE-Audio Training Pipeline" style="max-width: 70%; width: 800px; height: auto; display: block; margin: 0 auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(123, 179, 255, 0.15);">
             <p><strong>Fig. 2</strong>UniMoE-Audio Training Pipeline</p>
         </div>
-    </div>
+    </div> -->
 
     <div class = "blog-section">
-        <h2 class="section-title">Experiments</h2>
+        <h2 class="section-title">Experiment Results</h2>
         <p>
-            We conducted a systematic evaluation of our Uni-MoE-Audio model on a variety of music and speech generation tasks. The main results, presented in Table 1, 2 and 3,demonstrate that our proposed model achieves state-of-the-art (SOTA) or highly competitive results when compared against existing leading models. 
+            We evaluate UniMoE-Audio against state-of-the-art specialized models for speech and music generation. 
+            The results, summarized in Table 1, Table 2 and Table 3, demonstrate that
+            our single, unified model not only <strong> avoids the performance degradation </strong> typical of naive joint training 
+            but achieves competitive or even superior results in both domains.
         </p> 
         <style>
             .table-container {
@@ -407,6 +473,85 @@
                 background: #555;
             }
         </style>
+
+        <br>
+        <h3>Speech Synthesis</h3>
+        <br>
+        <p>
+            Speech Synthesis (TTS) converts text into natural and fluent speech, focusing on clarity, naturalness, and speaker characteristics.
+
+        </p>
+        <div class="table-container">
+            <table class="research-table">
+                <caption>Table 1: Performance on Speech Synthesis</caption>
+                <tr>
+                <th rowspan="2">Method</th>
+                <th colspan="3">SeedTTS-EN</th>
+                <th colspan="3">SeedTTS-ZH</th>
+                <th colspan="2">Librispeech</th>
+                <th colspan="2">AISHELL-3</th>
+                </tr>
+                <tr>
+                <th>WER↓</th><th>UTMOS↑</th><th>SIM↑</th>
+                <th>CER↓</th><th>UTMOS↑</th><th>SIM↑</th>
+                <th>WER↓</th><th>UTMOS↑</th>
+                <th>CER↓</th><th>UTMOS↑</th>
+                </tr>
+                <tr>
+                <td colspan="15" style="border-top: 2px solid #333; padding: 0; height: 2px;"></td>
+                </tr>
+                <tr>
+                <td>UniAudio</td>
+                <td>0.072</td><td>3.46</td><td>0.40</td>
+                <td>-</td><td>-</td><td>-</td>
+                <td>0.183</td><td>3.26</td>
+                <td>-</td><td>-</td>
+                </tr>
+                <tr>
+                <td>Mini-CPM-O-2.6</td>
+                <td>0.034</td><td>3.49</td><td>0.36</td>
+                <td>0.130</td><td>2.94</td><td>0.47</td>
+                <td>0.111</td><td>3.76</td>
+                <td>0.131</td><td>3.30</td>
+                </tr>
+                <tr>
+                <td>Qwen-Omni</td>
+                <td>0.021</td><td>4.16</td><td>-</td>
+                <td>0.016</td><td>3.28</td><td>-</td>
+                <td>0.076</td><td>4.19</td>
+                <td>0.025</td><td>3.38</td>
+                </tr>
+                <tr>
+                <td>Step-audio</td>
+                <td>0.022</td><td>3.84</td><td>0.52</td>
+                <td>0.010</td><td>3.23</td><td>0.62</td>
+                <td>0.050</td><td>4.37</td>
+                <td>0.027</td><td>3.69</td>
+                </tr>
+                <tr>
+                <td colspan="15" style="border-top: 2px solid #333; padding: 0; height: 2px;"></td>
+                </tr>
+                <tr>
+                <td><i>UniMoE-MoE</i></td>
+                <td><b>0.019</b></td><td><b>4.36</b></td><td><b>0.56</b></td>
+                <td><b>0.008</b></td><td><b>3.73</b></td><td><b>0.65</b></td>
+                <td><b>0.044</b></td><td><b>4.23</b></td>
+                <td><b>0.016</b></td><td><b>3.86</b></td>
+                </tr>
+            </table>
+        </div>  
+        <p>
+            Across multilingual benchmarks including SeedTTS, LibriSpeech, and AISHELL-3, UniMoE-MoE leads across all metrics, with WER as low as 0.019 and UTMOS up to 4.36 (3.86 for Chinese), outperforming UniAudio, Qwen-Omni, and others. This indicates superior speech clarity, naturalness, and speaker consistency.
+        </p> 
+        
+        
+        <br>
+        <h3>Text to Music Generation</h3>
+        <br>
+        <p>
+            Text-to-Music Generation (T2M) transforms text descriptions into music clips, evaluating the model's ability to capture melody, rhythm, and atmosphere.
+        </p>
+        <br>
         <!-- <div class="table-container">
             <table class="research-table">
             <caption>Table 1: Performance on Music & Text-to-Music Generation</caption>
@@ -528,7 +673,7 @@
         </div> -->
         <div class="table-container">
             <table class="research-table">
-                <caption>Table 1: Performance of Text-to-Music Generation</caption>
+                <caption>Table 2: Performance of Text-to-Music Generation</caption>
                 <tr>
                 <th rowspan="2">Dataset</th>
                 <th rowspan="2">Task</th>
@@ -618,10 +763,21 @@
                 </tr>
             </table>
         </div>
+        <p>
+            On both MusicCap and V2M-bench, UniMoE-MoE achieves the best performance across key metrics such as PC, PQ, and CE (e.g., PC=6.00, PQ=7.77, CE=7.34 on MusicCap), outperforming strong baselines. This shows its ability to generate music with clear melody, coherent rhythm, and high perceptual quality.
+        </p>
 
+
+        <br>
+        <h3>Video-Text to Music Generation</h3>
+        <br>
+        <p>
+            Video-to-Music Generation (VT2M) generates music aligned with video content, testing cross-modal alignment and emotional expression.
+
+        </p>
         <div class="table-container">
             <table class="research-table">
-                <caption>Table2: Performance of Video-Text-to-Music</caption>
+                <caption>Table 3: Performance of Video-Text-to-Music</caption>
                 <tr>
                 <th rowspan="2">Dataset</th>
                 <th rowspan="2">Task</th>
@@ -663,80 +819,11 @@
                 </tr>
             </table>
         </div>
-
-        <div class="table-container">
-            <table class="research-table">
-                <caption>Table 3: Performance on Speech Synthesis</caption>
-                <tr>
-                <th rowspan="2">Method</th>
-                <th colspan="3">SeedTTS-EN</th>
-                <th colspan="3">SeedTTS-ZH</th>
-                <th colspan="2">Librispeech</th>
-                <th colspan="2">AISHELL-3</th>
-                </tr>
-                <tr>
-                <th>WER↓</th><th>UTMOS↑</th><th>SIM↑</th>
-                <th>CER↓</th><th>UTMOS↑</th><th>SIM↑</th>
-                <th>WER↓</th><th>UTMOS↑</th>
-                <th>CER↓</th><th>UTMOS↑</th>
-                </tr>
-                <tr>
-                <td colspan="15" style="border-top: 2px solid #333; padding: 0; height: 2px;"></td>
-                </tr>
-                <tr>
-                <td>UniAudio</td>
-                <td>0.072</td><td>3.46</td><td>0.40</td>
-                <td>-</td><td>-</td><td>-</td>
-                <td>0.183</td><td>3.26</td>
-                <td>-</td><td>-</td>
-                </tr>
-                <tr>
-                <td>Mini-CPM-O-2.6</td>
-                <td>0.034</td><td>3.49</td><td>0.36</td>
-                <td>0.130</td><td>2.94</td><td>0.47</td>
-                <td>0.111</td><td>3.76</td>
-                <td>0.131</td><td>3.30</td>
-                </tr>
-                <tr>
-                <td>Qwen-Omni</td>
-                <td>0.021</td><td>4.16</td><td>-</td>
-                <td>0.016</td><td>3.28</td><td>-</td>
-                <td>0.076</td><td>4.19</td>
-                <td>0.025</td><td>3.38</td>
-                </tr>
-                <tr>
-                <td>Step-audio</td>
-                <td>0.022</td><td>3.84</td><td>0.52</td>
-                <td>0.010</td><td>3.23</td><td>0.62</td>
-                <td>0.050</td><td>4.37</td>
-                <td>0.027</td><td>3.69</td>
-                </tr>
-                <tr>
-                <td colspan="15" style="border-top: 2px solid #333; padding: 0; height: 2px;"></td>
-                </tr>
-                <tr>
-                <td><i>UniMoE-MoE</i></td>
-                <td><b>0.019</b></td><td><b>4.36</b></td><td><b>0.56</b></td>
-                <td><b>0.008</b></td><td><b>3.73</b></td><td><b>0.65</b></td>
-                <td><b>0.044</b></td><td><b>4.23</b></td>
-                <td><b>0.016</b></td><td><b>3.86</b></td>
-                </tr>
-            </table>
-        </div>
-
         <p>
-            The comparison between the input (Fig. 3a) and output (Fig. 3b) expert distributions shows a clear shift from nearly uniform usage across all experts to more specialized patterns. In the input, experts are invoked almost evenly at each layer, indicating no strong preference. However, in the output, certain experts dominate at specific depths: lower layers favor experts 1 and 2, middle layers rely more on experts 3-5, and higher layers increasingly use experts 8 and 9. This demonstrates that training encourages a division of labor among experts, where different layers specialize in leveraging particular experts rather than distributing usage uniformly.
+            On V2M-bench, UniMoE-MoE significantly outperforms AudioX, reaching PC=5.88, PQ=7.62, and CE=6.96, while remaining competitive on diversity metrics like FAD. This demonstrates stronger capability in aligning video content with contextually fitting music, highlighting its cross-modal generation strength.
         </p>
-        <div class="media-container">
-            <div class="media-item">
-                <img src="img/all_experts_input.png" alt="expert activation for input" style="max-width: 100%; width: 400px; height: auto; display: block; margin: 0 auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(123, 179, 255, 0.15);">
-                <p><strong>Fig. 3a</strong>  UniMoE-Audio expert activation for input</p>
-            </div>
-            <div class="media-item">
-                <img src="img/all_experts_output.png" alt="expert activation for output" style="max-width: 100%; width: 400px; height: auto; display: block; margin: 0 auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(123, 179, 255, 0.15);">
-                <p><strong>Fig. 3b</strong>  UniMoE-Audio expert activation for output</p>
-            </div>
-        </div>
+        <br>
+
     <div class="blog-section">
         <h2 class="section-title">Performance</h2>
         <h3 style="text-align: center;">
