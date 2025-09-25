@@ -2,8 +2,11 @@ audios/old/
 audios/*.tar.gz
 audios/*.tar
 audios/music_demo
+audios/v3_output
 infer_text.json
 prompt_text.txt
 .DS_Store
 three-line-table-demo.html
 *.py
+._*
+showcase_new.html

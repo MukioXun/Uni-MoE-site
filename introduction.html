@@ -240,21 +240,6 @@
 
     <div class="blog-section">
         <h2 class="section-title">UniMoE-Audio</h2>
-        <!-- <p>
-            We propose <strong>UniMoE-Audio</strong>, a unified speech and music generation model based on a novel <strong>dynamic-capacity</strong> Mixture-of-Experts framework.
-            With this design, UniMoE-Audio achieves a seamless integration of speech and music generation, paving the way toward universal audio synthesis.
-        </p>
-        <br>
-        <p>
-            UniMoE-Audio introduces <strong>a dynamic-capacity routing mechanism</strong> using Top-P sampling for dynamic expert allocation, 
-            and a hybrid expert design that decouples domain-specific computation (dynamic experts) from universal features (shared experts).
-            To enable effective joint learning from imbalanced data, UniMoE-Audio introduces a three-stage training curriculum.
-            Therefore, UniMoE-Audio accepts a diverse set of conditional inputs, 
-            including <strong>voice cloning</strong>, <strong>text-to-speech (TTS)</strong>, <strong>text-to-music (T2M)</strong>, and <strong>video-to-music (V2M)</strong>, 
-            offering flexibility across a wide range of applications.
-            Extensive experiments show that UniMoE-Audio not only achieves state-of-the-art performance but also demonstrates superior synergistic learning.
-        </p>
-        <br> -->
         <p>
             <strong>UniMoE-Audio</strong> is a unified framework that seamlessly combines speech and music generation. 
             Powered by a novel <strong>dynamic-capacity Mixture-of-Experts</strong> design, it adapts intelligently to input complexity, 
@@ -270,33 +255,6 @@
             Extensive experiments confirm its state-of-the-art performance and superior cross-task synergy, paving the way toward <strong>universal audio generation</strong>.
         </p>
         <br>
-
-        <!-- <h3>
-            Challenges in Unifying Speech and Music Generation
-        </h3> -->
-        <!-- <p>The unification of speech and music generation faces :</p>
-         <div class="content-block">
-            <p><strong>Two Major Obstacles:</strong></p>
-            <ul style="margin-left: 2rem; margin-top: 1rem; font-size: 1.1rem;">
-                <li><strong>1. Task Conflict</strong>: 
-                    <br>
-                    <ul style="margin-left: 2rem; margin-top: 0.5rem; font-size: 1rem; list-style-type: disc;">
-                        <li><strong>Speech generation</strong>: focuses on semantic intelligibility and speaker identity.</li>
-                        <li><strong>Music generation</strong>: emphasizes harmony, rhythm, and complex structures.</li>
-                        Conflict arises because improvements in one task may degrade the other.
-                        <li><strong>Potential solution</strong>: Mixture-of-Experts (MoE) architectures show promise, but their optimization for unified audio remains unresolved.</li>
-                    </ul>
-                <li><strong>2. Data Imbalance</strong>:
-                    <br>
-                    <ul style="margin-left: 2rem; margin-top: 0.5rem; font-size: 1rem; list-style-type: disc;">
-                         <li><strong>Speech corpora</strong>: abundant, large-scale, high-quality.</li>
-                        <strong>Music datasets</strong>: relatively scarce.
-                        <li>Naive joint training often lets speech dominate, harming musical generation quality.</li>
-                    </ul>
-                </li>
-            </ul>
-        </div> -->
-
         <div class="media-container" id="fig1">
             <div class="media-item">
                 <img src="img/abstract.png" alt="Performance of UniMoE-Audio" style="max-width: 100%; width: 1600px; height: auto; display: block; margin: 0 auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(123, 179, 255, 0.15);">
@@ -325,26 +283,6 @@
         <h3>
             A Novel Dynamic-capacity MoE for Mitigating Task Conflict
         </h3>
-        <!-- <div class="content-block">
-            <p><strong>Two key architectural optimization:</strong></p>
-            <ul style="margin-left: 2rem; margin-top: 1rem; font-size: 1.1rem;">
-                <li><strong>A Dynamic-capacity Routing Strategy</strong>: &nbsp; Enabling <strong>more flexible</strong> expert combinations 
-                    <br>A routing strategy dynamically adjusts the number of experts allocated to each token based on their complexity. 
-                    <br>That replaces the conventional fixed-capacity routing but based on the Top-P sampling.</li>
-                <li><strong>A Hybrid Expert Design</strong>: &nbsp; Establishing <strong>clear</strong> functional specialization<br>
-                    It comprises:
-                    <ul style="margin-left: 2rem; margin-top: 0.5rem; font-size: 1rem; list-style-type: disc;">
-                        <li>(1) Conditional dynamic experts for domain-specific knowledge</li>
-                        <li>(2) Constantly active shared experts to handle domain-agnostic features</li>
-                        <li>(3) Null experts to enable adaptive computation skipping</li>
-                    </ul>
-                </li>
-            </ul>
-            
-            <p style="margin-top: 1.5rem; font-weight: 600;">
-                Together, these advances form a powerful and efficient framework for high-quality, flexible audio generation across multiple modalities.
-            </p>
-        </div> -->
         <br>
         <p>
             To provide adaptive allocation of computational resources between simple and complex tasks, 
@@ -376,27 +314,6 @@
         <!-- <a href="https://arxiv.org/abs/2310.17223">paper</a> -->
     </p> 
     <br>
-    <!-- <h3>
-        A tightly coupled, three-stage training curriculum to address data imbalance.
-    </h3>
-    <div class="content-block">
-        <p><strong>The curriculum unfolds as follows:</strong></p>
-        <ul style="margin-left: 2rem; margin-top: 1rem; font-size: 1.1rem;">
-            <li><strong>Independent Specialist Training</strong>
-                leverages the original, uncurated datasets to instill domain-specific knowledge into each ”proto-expert” without interference.</li>
-            <li><strong>MoE Fusion and Warmup</strong> 
-                then integrates these specialists into the UniMoE-Audio architecture. This stage begins by creating a curated, balanced dataset via a rigorous data filtering pipeline. </li>
-            <li><strong>Synergistic Joint Training</strong>
-                finally trains the entire, model end-to-end on the full, curated balanced dataset, fostering effective knowledge transfer across domains.</li>
-        </ul>
-    </div> -->
-    <!-- The figure below illustrates the training pipeline of UniMoE-Audio.
-    <div class="media-container">
-        <div class="media-item">
-            <img src="img/AudioLLM_training_moe.png" alt="UniMoE-Audio Training Pipeline" style="max-width: 70%; width: 800px; height: auto; display: block; margin: 0 auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(123, 179, 255, 0.15);">
-            <p><strong>Fig. 2</strong>UniMoE-Audio Training Pipeline</p>
-        </div>
-    </div> -->
 
     <div class = "blog-section">
         <h2 class="section-title">Experiment Results</h2>
@@ -833,7 +750,7 @@
             <table class="tts-table">
                 <thead>
                     <tr>
-                        <th><center>Speeker</center></th>
+                        <th><center>Speaker</center></th>
                         <th><center>Prompt Voice</center></th>
                         <th><center>Origin</center></th>
                         <th><center>Clone Speech</center></th>
