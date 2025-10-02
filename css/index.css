@@ -1362,4 +1362,92 @@ a:hover {
   color: var(--secondary-color);
   font-size: 0.9rem;
 }
+
+/* Attribution Section Styles */
+.attribution-section {
+  margin-top: 2rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  overflow: hidden;
+}
+
+.attribution-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.attribution-header:hover {
+  background-color: #e8e8e8;
+}
+
+.attribution-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #333;
+  font-weight: 600;
+}
+
+.attribution-toggle {
+  font-size: 1.2rem;
+  color: #666;
+  transition: transform 0.3s ease;
+}
+
+.attribution-toggle.collapsed {
+  transform: rotate(-90deg);
+}
+
+.attribution-content {
+  padding: 1.5rem;
+  background-color: #ffffff;
+  max-height: 500px;
+  overflow-y: auto;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.attribution-content.collapsed {
+  max-height: 0;
+  padding: 0 1.5rem;
+  overflow: hidden;
+}
+
+.attribution-item {
+  margin-bottom: 1rem;
+  padding: 0.8rem;
+  background-color: #f8f8f8;
+  border-radius: 6px;
+  border-left: 3px solid #007bff;
+}
+
+.attribution-item:last-child {
+  margin-bottom: 0;
+}
+
+.attribution-item strong {
+  color: #333;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 0.3rem;
+}
+
+.attribution-item a {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  display: block;
+  transition: color 0.3s ease;
+}
+
+.attribution-item a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
   

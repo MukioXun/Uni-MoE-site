@@ -196,6 +196,45 @@
             width: 10%; /* Music列 - 更窄 */
         }
 
+        /* 视频播放器样式 */
+        .video-player-mini {
+            width: 80px;
+            height: 60px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            box-shadow: 0 2px 6px rgba(255, 154, 158, 0.3);
+        }
+
+        .video-player-mini:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(255, 154, 158, 0.4);
+        }
+
+        .video-player-mini.clicked {
+            background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+        }
+
+        .video-player-mini .play-icon {
+            color: white;
+            font-size: 16px;
+            line-height: 1;
+            user-select: none;
+        }
+
+        .video-cell {
+            text-align: center;
+            padding: 0.5rem;
+            vertical-align: middle;
+        }
+
         @media (max-width: 768px) {
             body {
                 padding: 1rem;
@@ -249,14 +288,14 @@
             <h1>UniMoE-Audio Performance</h1>
         </div>
         <div class="category-tabs">
-        <div class="category-tab active" data-category="TTS">Text to Speech</div>
+        <div class="category-tab" data-category="TTS">Text to Speech</div>
         <div class="category-tab" data-category="VC">Voice Clone</div>
         <div class="category-tab" data-category="MT">Text to Music</div>
-        <div class="category-tab" data-category="VT">Video to Music</div>
+        <div class="category-tab active" data-category="VT">Video to Music</div>
     </div>
 
     <!-- TTS Category -->
-    <div class="category-content active" id="TTS-content">
+    <div class="category-content" id="TTS-content">
          <div class="tts-table-container">
             <table class="tts-table">
                 <thead>
@@ -919,7 +958,130 @@
     </div>
 
     <!-- Video_to_Music Category -->
-    <div class="category-content" id="VT-content">
+    <div class="category-content active" id="VT-content">
+                <div class="tts-table-container">
+            <table class="tts-table">
+                <thead>
+                    <tr>
+                        <th><center>Prompt Video</center></th>
+                        <th><center>Prompt Text</center></th>
+                        <th><center>Music</center></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 案例行 -->
+                    <tr>
+                        <td class="video-cell">
+                            <div class="video-player-mini" data-video="prompt_videos/grass.mov">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                        <td class="text-cell">Generate an ambient electronic piece featuring synthesizers, soft pads, and light percussion. The atmosphere is calm and ethereal, ideal for meditation background.</td>
+                        <td class="audio-cell">
+                            <div class="audio-player-mini" data-audio="audios/out/0.wav">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                    </tr>
+                                        <!-- 案例行 -->
+                    <tr>
+                        <td class="video-cell">
+                            <div class="video-player-mini" data-video="prompt_videos/rainy_woods.mov">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                        <td class="text-cell">Generate an ambient electronic piece featuring synthesizers, soft pads, and light percussion. The atmosphere is calm and ethereal, ideal for meditation background.</td>
+                        <td class="audio-cell">
+                            <div class="audio-player-mini" data-audio="audios/out/0.wav">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                    </tr>
+                                        <!-- 案例行 -->
+                    <tr>
+                        <td class="video-cell">
+                            <div class="video-player-mini" data-video="prompt_videos/river.mov">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                        <td class="text-cell">Generate an ambient electronic piece featuring synthesizers, soft pads, and light percussion. The atmosphere is calm and ethereal, ideal for meditation background.</td>
+                        <td class="audio-cell">
+                            <div class="audio-player-mini" data-audio="audios/out/0.wav">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                    </tr>
+                     <!-- 案例行 -->
+                    <tr>
+                        <td class="video-cell">
+                            <div class="video-player-mini" data-video="prompt_videos/snow_house.mov">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                        <td class="text-cell">Generate an ambient electronic piece featuring synthesizers, soft pads, and light percussion. The atmosphere is calm and ethereal, ideal for meditation background.</td>
+                        <td class="audio-cell">
+                            <div class="audio-player-mini" data-audio="audios/out/0.wav">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                    </tr>
+                                         <!-- 案例行 -->
+                    <tr>
+                        <td class="video-cell">
+                            <div class="video-player-mini" data-video="prompt_videos/sunset_beach.mov">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                        <td class="text-cell">Generate an ambient electronic piece featuring synthesizers, soft pads, and light percussion. The atmosphere is calm and ethereal, ideal for meditation background.</td>
+                        <td class="audio-cell">
+                            <div class="audio-player-mini" data-audio="audios/out/0.wav">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+       <!-- Attribution Section -->
+        <div class="attribution-section">
+            <div class="attribution-header" onclick="toggleAttribution()">
+                <h3>Video Attribution</h3>
+                <span class="attribution-toggle">▼</span>
+            </div>
+            <div class="attribution-content" id="attribution-content">
+                <div class="attribution-item">
+                    <strong>Grass Video:</strong> 
+                    <a href="https://youtu.be/MJ9-HmGWw1k?si=Qa8Z9g-KZMLELque" target="_blank">
+                        Field with Wind, Swallows, & Windchimes - Happy Summer moments 4K NO LOOP
+                    </a>
+                </div>
+                <div class="attribution-item">
+                    <strong>River:</strong> 
+                    <a href="https://youtu.be/SgEQrUIKJ6Y?si=8pUoUy1WQfwdu-KJ" target="_blank">
+                        4K 自然環境音 / 湧き水が流れる川の音 鳥のさえずり　birds chirping
+                    </a>
+                </div>
+                <div class="attribution-item">
+                    <strong>Rainy Forest:</strong> 
+                    <a href="https://youtu.be/SnUBb-FAlCY?si=SGaE_bPiN4Na0A4I" target="_blank">
+                        聆听森林小径上的雨声，放松心情，减少焦虑，深度睡眠
+                    </a>
+                </div>
+                <div class="attribution-item">
+                    <strong>Snowy Wood House:</strong> 
+                    <a href="https://youtu.be/2GkV7dPLBj4?si=_pQPwigD6dxy6lnW" target="_blank">
+                        ❄ 10 HOURS of Beautiful Winter Scenes /Amazing Nature Scenery & The Best Relax Music #1
+                    </a>
+                </div>
+                <div class="attribution-item">
+                    <strong>Sunset Beach:</strong> 
+                    <a href="https://youtu.be/2avT63Pjljg?si=W9RdNe0vOFsuqoG2" target="_blank">
+                        Sea, Sand, Sunset: 7 Minutes of Beautiful Sunset Therapy From California (4K Video)
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -957,6 +1119,33 @@
                     }
                 });
             });
+        });
+
+        // Attribution toggle function
+        function toggleAttribution() {
+            const content = document.getElementById('attribution-content');
+            const toggle = document.querySelector('.attribution-toggle');
+            
+            if (content.classList.contains('collapsed')) {
+                content.classList.remove('collapsed');
+                toggle.classList.remove('collapsed');
+                toggle.textContent = '▼';
+            } else {
+                content.classList.add('collapsed');
+                toggle.classList.add('collapsed');
+                toggle.textContent = '▶';
+            }
+        }
+
+        // Initialize attribution as collapsed by default
+        window.addEventListener('load', function() {
+            const content = document.getElementById('attribution-content');
+            const toggle = document.querySelector('.attribution-toggle');
+            if (content && toggle) {
+                content.classList.add('collapsed');
+                toggle.classList.add('collapsed');
+                toggle.textContent = '▶';
+            }
         });
 
     </script>
