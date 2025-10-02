@@ -96,33 +96,33 @@ body {
   margin-top: 1rem; /* 上边距 - 可调节 */
 }
 
-/* 标题容器 - 相对定位，保持主标题原始位置 */
+/* 标题容器 - 作为整体居中显示 */
 .title-container {
-  position: relative;
   display: flex;
+  align-items: center;
   justify-content: center;
-  margin-bottom: 1.5rem; /* 下边距 - 可调节 */
+  gap: 0px; /* logo和标题之间的间距 - 可调节 */
+  margin-bottom: 0rem; /* 下边距 - 可调节 */
+  
+  /* 可调节的整体位置参数 */
+  --container-x: 0px; /* 整体容器 X轴偏移 - 可调节 */
+  --container-y: 0px; /* 整体容器 Y轴偏移 - 可调节 */
+  
+  transform: translate(var(--container-x), var(--container-y));
 }
 
-/* 标题logo样式 - 绝对定位，不影响主标题位置 */
+/* 标题logo样式 - 作为flex项目，与标题一起居中 */
 .title-logo {
-  position: absolute;
   width: 160px; /* logo宽度 - 可调节 */
   height: 160px; /* logo高度 - 可调节 */
   object-fit: contain;
   transition: transform 0.3s ease;
-  
-  /* 可调节的位置参数 */
-  --logo-x: 270px; /* logo X轴偏移 - 可调节 */
-  --logo-y: 30px;    /* logo Y轴偏移 - 可调节 */
-  
-  left: var(--logo-x);
-  top: var(--logo-y);
-  transform: translateY(-50%); /* 垂直居中对齐主标题 */
+  flex-shrink: 0; /* 防止logo被压缩 */
+  transform: translateY(-2rem); /* Y轴向上偏移2rem */
 }
 
 .title-logo:hover {
-  transform: translateY(-50%) scale(1.05); /* 悬停缩放效果，保持垂直居中 */
+  transform: translateY(-2rem) scale(1.05); /* 悬停缩放效果，保持Y轴偏移 */
 }
 
 .main-title {
@@ -132,12 +132,7 @@ body {
   color: #1a1a1a; /* 文字颜色 - 可调节 */
   letter-spacing: -0.02em; /* 字间距 - 可调节 */
   line-height: 1.1; /* 行高 - 可调节 */
-  
-  /* 可调节的位置参数 */
-  --title-x: 40px;   /* 主标题 X轴偏移 - 可调节 */
-  --title-y: 0px;   /* 主标题 Y轴偏移 - 可调节 */
-  
-  transform: translate(var(--title-x), var(--title-y));
+  white-space: nowrap; /* 防止标题换行 */
 }
 
 .subtitle {
