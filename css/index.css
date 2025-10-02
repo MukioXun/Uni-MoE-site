@@ -96,13 +96,48 @@ body {
   margin-top: 1rem; /* 上边距 - 可调节 */
 }
 
+/* 标题容器 - 相对定位，保持主标题原始位置 */
+.title-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem; /* 下边距 - 可调节 */
+}
+
+/* 标题logo样式 - 绝对定位，不影响主标题位置 */
+.title-logo {
+  position: absolute;
+  width: 160px; /* logo宽度 - 可调节 */
+  height: 160px; /* logo高度 - 可调节 */
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  
+  /* 可调节的位置参数 */
+  --logo-x: 270px; /* logo X轴偏移 - 可调节 */
+  --logo-y: 30px;    /* logo Y轴偏移 - 可调节 */
+  
+  left: var(--logo-x);
+  top: var(--logo-y);
+  transform: translateY(-50%); /* 垂直居中对齐主标题 */
+}
+
+.title-logo:hover {
+  transform: translateY(-50%) scale(1.05); /* 悬停缩放效果，保持垂直居中 */
+}
+
 .main-title {
   font-size: 5rem; /* 主标题字体大小 - 可调节 */
   font-weight: 700; /* 字重 - 可调节 */
-  margin-bottom: 1.5rem; /* 下边距 - 可调节 */
+  margin: 0; /* 移除默认边距 */
   color: #1a1a1a; /* 文字颜色 - 可调节 */
   letter-spacing: -0.02em; /* 字间距 - 可调节 */
   line-height: 1.1; /* 行高 - 可调节 */
+  
+  /* 可调节的位置参数 */
+  --title-x: 40px;   /* 主标题 X轴偏移 - 可调节 */
+  --title-y: 0px;   /* 主标题 Y轴偏移 - 可调节 */
+  
+  transform: translate(var(--title-x), var(--title-y));
 }
 
 .subtitle {

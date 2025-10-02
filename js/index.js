@@ -18,7 +18,10 @@ root.innerHTML = `
 
   <!-- 中间标题区域 -->
   <section class="hero-section">
-    <h1 class="main-title">UniMoE-Audio</h1>
+    <div class="title-container">
+      <img src="img/UniMoE-logo.svg" alt="UniMoE Logo" class="title-logo">
+      <h1 class="main-title">UniMoE-Audio</h1>
+    </div>
     <p class="subtitle">A Unified Speech and Music Generation with Dynamic-Capacity Mixture of Experts</p>
   </section>
 
@@ -54,7 +57,7 @@ root.innerHTML = `
             </a>
           </div>
           <div class="footer-copyright">
-            <p>&copy; 2025 UniMoE Audio. All rights reserved.</p>
+            <p>&copy; 2025 UniMoE-Audio. All rights reserved.</p>
 
           </div>
         </div>
