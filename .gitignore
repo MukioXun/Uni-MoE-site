@@ -10,3 +10,4 @@ three-line-table-demo.html
 *.py
 ._*
 showcase_new.html
+.DS_Store
