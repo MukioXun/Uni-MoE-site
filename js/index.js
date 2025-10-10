@@ -39,8 +39,19 @@ root.innerHTML = `
     <!-- 展示视频区域 -->
     <div class="video-section">
       <div class="video-container">
-        <video controls muted loop class="demo-video" id="main-demo-video"> 
-          // poster="video/UniMoE-Audio_cover.jpg"
+        <video 
+          controls 
+          muted 
+          loop 
+          class="demo-video" 
+          id="main-demo-video" 
+          preload="none" 
+          poster="video/UniMoE-Audio_cover.jpg"
+          playsinline
+          webkit-playsinline
+          x5-playsinline
+          crossorigin="anonymous"
+          loading="lazy"> 
           <source src="video/UniMoE-Audio_video.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
@@ -48,7 +59,13 @@ root.innerHTML = `
           <div class="video-overlay-content">
             <h3 class="video-title">Introduction to UniMoE-Audio</h3>
             <div class="video-duration">
-              <span class="duration-text">Duration: 2 min 30 s</span>
+              <span class="duration-text">Duration: 3 min 12 s</span>
+            </div>
+            <div class="video-loading" id="video-loading" style="display: none;">
+              <div class="loading-bar">
+                <div class="loading-progress" id="loading-progress"></div>
+              </div>
+              <div class="loading-text" id="loading-text">Loading... 0%</div>
             </div>
           </div>
         </div>
@@ -143,17 +160,80 @@ function closeContent() {
 document.addEventListener('DOMContentLoaded', function() {
   const video = document.getElementById('main-demo-video');
   const overlay = document.getElementById('video-overlay');
+  const loadingDiv = document.getElementById('video-loading');
+  const loadingProgress = document.getElementById('loading-progress');
+  const loadingText = document.getElementById('loading-text');
+  
+  let videoLoaded = false;
   
   if (video && overlay) {
-    // 点击覆盖层播放视频
+    // 懒加载视频 - 只有当用户点击时才开始加载
+    function loadVideo() {
+      if (!videoLoaded) {
+        videoLoaded = true;
+        
+        // 显示加载进度
+        loadingDiv.style.display = 'block';
+        
+        // 开始预加载视频
+        video.preload = 'auto';
+        video.load();
+        
+        // 监听加载进度
+        video.addEventListener('progress', function() {
+          if (video.buffered.length > 0) {
+            const buffered = video.buffered.end(0);
+            const duration = video.duration || 1;
+            const percent = Math.round((buffered / duration) * 100);
+            
+            loadingProgress.style.width = percent + '%';
+            loadingText.textContent = `Loading... ${percent}%`;
+            
+            // 当缓冲足够时可以开始播放
+            if (percent >= 25) {
+              loadingDiv.style.display = 'none';
+              video.play();
+              overlay.classList.add('hidden');
+            }
+          }
+        });
+        
+        // 监听元数据加载完成
+        video.addEventListener('loadedmetadata', function() {
+          console.log('Video metadata loaded');
+        });
+        
+        // 监听可以播放事件
+        video.addEventListener('canplay', function() {
+          loadingDiv.style.display = 'none';
+          if (video.currentTime === 0) {
+            video.play();
+            overlay.classList.add('hidden');
+          }
+        });
+        
+        // 监听加载错误
+        video.addEventListener('error', function() {
+          loadingDiv.style.display = 'none';
+          loadingText.textContent = 'Loading failed. Please try again.';
+          loadingDiv.style.display = 'block';
+        });
+      } else {
+        // 视频已加载，直接播放
+        video.play();
+        overlay.classList.add('hidden');
+      }
+    }
+    
+    // 点击覆盖层开始加载并播放视频
     overlay.addEventListener('click', function() {
-      video.play();
-      overlay.classList.add('hidden');
+      loadVideo();
     });
     
     // 监听视频播放事件
     video.addEventListener('play', function() {
       overlay.classList.add('hidden');
+      loadingDiv.style.display = 'none';
     });
     
     // 监听视频暂停事件
@@ -164,6 +244,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // 监听视频结束事件
     video.addEventListener('ended', function() {
       overlay.classList.remove('hidden');
+    });
+    
+    // 监听视频等待事件（缓冲不足）
+    video.addEventListener('waiting', function() {
+      loadingDiv.style.display = 'block';
+      loadingText.textContent = 'Buffering...';
+    });
+    
+    // 监听视频可以继续播放事件
+    video.addEventListener('canplaythrough', function() {
+      loadingDiv.style.display = 'none';
     });
     
     // 初始状态显示覆盖层
