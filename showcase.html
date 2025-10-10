@@ -367,14 +367,14 @@
         </div>
         <div class="category-tabs">
             <div class="category-group">
-                <div class="category-tab" data-category="Speech">Speech Generation</div>
+                <div class="category-tab active" data-category="Speech">Speech Generation</div>
                 <div class="sub-nav-container speech-sub-nav">
                     <a href="#tts-section" class="sub-nav-btn">Text to Speech</a>
                     <a href="#voice-clone-section" class="sub-nav-btn">Voice Cloning</a>
                 </div>
             </div>
             <div class="category-group">
-                <div class="category-tab active" data-category="Music">Music Generation</div>
+                <div class="category-tab" data-category="Music">Music Generation</div>
                 <div class="sub-nav-container music-sub-nav">
                     <a href="#text-to-music-section" class="sub-nav-btn">Text to Music</a>
                     <a href="#video-to-music-section" class="sub-nav-btn">Video to Music</a>
@@ -383,7 +383,7 @@
         </div>
 
     <!-- Speech Category (TTS + Voice Clone) -->
-    <div class="category-content" id="Speech-content">
+    <div class="category-content active" id="Speech-content">
         <h2 id="tts-section" style="text-align: center; margin-bottom: 2rem; color: #333;">Text to Speech</h2>
          <div class="tts-table-container">
             <table class="tts-table">
@@ -1235,7 +1235,7 @@
             }
         }
 
-        // 为子导航按钮添加平滑滚动功能
+        // 为子导航按钮添加平滑滚动功能和标签页切换
         window.addEventListener('load', function() {
             const subNavBtns = document.querySelectorAll('.sub-nav-btn');
             
@@ -1243,6 +1243,41 @@
                 btn.addEventListener('click', function(e) {
                     e.preventDefault(); // 阻止默认的锚点跳转
                     const targetId = this.getAttribute('href').substring(1); // 移除#号
+                    
+                    // 根据目标ID确定需要激活的主标签页
+                    let targetCategory = '';
+                    if (targetId.includes('tts') || targetId.includes('voice-clone')) {
+                        targetCategory = 'Speech';
+                    } else if (targetId.includes('music')) {
+                        targetCategory = 'Music';
+                    }
+                    
+                    // 如果需要切换主标签页
+                    if (targetCategory) {
+                        // 移除所有标签的active类
+                        document.querySelectorAll('.category-tab').forEach(tab => {
+                            tab.classList.remove('active');
+                        });
+                        
+                        // 移除所有内容区域的active类
+                        document.querySelectorAll('.category-content').forEach(content => {
+                            content.classList.remove('active');
+                        });
+                        
+                        // 激活对应的主标签
+                        const targetTab = document.querySelector(`[data-category="${targetCategory}"]`);
+                        if (targetTab) {
+                            targetTab.classList.add('active');
+                        }
+                        
+                        // 激活对应的内容区域
+                        const targetContent = document.getElementById(`${targetCategory}-content`);
+                        if (targetContent) {
+                            targetContent.classList.add('active');
+                        }
+                    }
+                    
+                    // 平滑滚动到目标位置
                     smoothScrollTo(targetId);
                 });
             });
