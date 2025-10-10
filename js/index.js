@@ -52,7 +52,7 @@ root.innerHTML = `
           x5-playsinline
           crossorigin="anonymous"
           loading="lazy"> 
-          <source src="video/UniMoE-Audio_video.mp4" type="video/mp4">
+          <source src="video/web_UniMoE-Audio_demo.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
         <div class="video-overlay" id="video-overlay">
@@ -65,7 +65,7 @@ root.innerHTML = `
               <div class="loading-bar">
                 <div class="loading-progress" id="loading-progress"></div>
               </div>
-              <div class="loading-text" id="loading-text">Loading... 0%</div>
+              <div class="loading-text" id="loading-text" center>Loading... 0%</div>
             </div>
           </div>
         </div>
