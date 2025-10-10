@@ -39,10 +39,19 @@ root.innerHTML = `
     <!-- 展示视频区域 -->
     <div class="video-section">
       <div class="video-container">
-        <video controls muted loop class="demo-video" poster="video/UniMoE-Audio_cover.jpg">
+        <video controls muted loop class="demo-video" id="main-demo-video"> 
+          // poster="video/UniMoE-Audio_cover.jpg"
           <source src="video/UniMoE-Audio_video.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
+        <div class="video-overlay" id="video-overlay">
+          <div class="video-overlay-content">
+            <h3 class="video-title">Introduction to UniMoE-Audio</h3>
+            <div class="video-duration">
+              <span class="duration-text">Duration: 2 min 30 s</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -129,3 +138,35 @@ function showShowcase() {
 function closeContent() {
   document.getElementById('content-area').style.display = 'none';
 }
+
+// 视频覆盖层控制逻辑
+document.addEventListener('DOMContentLoaded', function() {
+  const video = document.getElementById('main-demo-video');
+  const overlay = document.getElementById('video-overlay');
+  
+  if (video && overlay) {
+    // 点击覆盖层播放视频
+    overlay.addEventListener('click', function() {
+      video.play();
+      overlay.classList.add('hidden');
+    });
+    
+    // 监听视频播放事件
+    video.addEventListener('play', function() {
+      overlay.classList.add('hidden');
+    });
+    
+    // 监听视频暂停事件
+    video.addEventListener('pause', function() {
+      overlay.classList.remove('hidden');
+    });
+    
+    // 监听视频结束事件
+    video.addEventListener('ended', function() {
+      overlay.classList.remove('hidden');
+    });
+    
+    // 初始状态显示覆盖层
+    overlay.classList.remove('hidden');
+  }
+});
