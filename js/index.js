@@ -23,20 +23,30 @@ root.innerHTML = `
       <h1 class="main-title">UniMoE-Audio</h1>
     </div>
     <p class="subtitle">A Unified Speech and Music Generation with Dynamic-Capacity Mixture of Experts</p>
-  </section>
-
-  <!-- 下方按钮区域 -->
-  <section class="action-section">
-    <div class="action-buttons">
-      <a href="introduction.html" class="action-btn intro-btn">
-        Introductions
-      </a>
-      <a href="showcase.html" class="action-btn showcase-btn">
-        Showcase
-      </a>
+    
+    <!-- 下方按钮区域 -->
+    <div class="action-section">
+      <div class="action-buttons">
+        <a href="introduction.html" class="action-btn intro-btn">
+          Introductions
+        </a>
+        <a href="showcase.html" class="action-btn showcase-btn">
+          Showcase
+        </a>
+      </div>
+    </div>
+    
+    <!-- 展示视频区域 -->
+    <div class="video-section">
+      <div class="video-container">
+        <video controls muted loop class="demo-video" poster="video/UniMoE-Audio_cover.jpg">
+          <source src="video/UniMoE-Audio_video.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
     </div>
   </section>
-
+  
   <!-- 页脚 -->
   <footer class="footer">
     <div class="footer-content">

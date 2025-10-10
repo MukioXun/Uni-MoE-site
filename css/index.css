@@ -202,6 +202,72 @@ body {
   border-color: rgba(255, 150, 100, 0.3); /* 边框色 - 可调节 */
 }
 
+/* 视频展示区域样式 */
+.video-section {
+  padding: 2rem 0; /* 上下内边距 - 可调节 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.video-container {
+  width: 100%;
+  max-width: 800px; /* 视频最大宽度 - 可调节 */
+  margin: 0 auto;
+  border-radius: 16px; /* 圆角大小 - 可调节 */
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12); /* 阴影效果 - 可调节 */
+  background: #000000; /* 视频容器背景色 */
+  transition: all 0.3s ease;
+}
+
+.video-container:hover {
+  transform: translateY(-4px); /* 悬停上移效果 - 可调节 */
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.18); /* 悬停阴影 - 可调节 */
+}
+
+.demo-video {
+  width: 100%;
+  height: auto;
+  min-height: 400px; /* 最小高度 - 可调节 */
+  max-height: 500px; /* 最大高度 - 可调节 */
+  object-fit: cover; /* 保持比例填充 */
+  display: block;
+  border: none;
+  outline: none;
+}
+
+/* 视频控制条样式优化 */
+.demo-video::-webkit-media-controls-panel {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.demo-video::-webkit-media-controls-play-button,
+.demo-video::-webkit-media-controls-volume-slider,
+.demo-video::-webkit-media-controls-timeline {
+  filter: brightness(1.2);
+}
+
+/* 移除视频暂停时的暗色遮罩 */
+.demo-video::-webkit-media-controls-overlay-enclosure {
+  display: none !important;
+}
+
+.demo-video::-webkit-media-controls-overlay-play-button {
+  display: none !important;
+}
+
+/* 移除视频暂停时的暗色背景 */
+.demo-video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+}
+
+/* 确保视频在暂停时不显示任何遮罩 */
+.demo-video::before,
+.demo-video::after {
+  display: none !important;
+}
+
 /* 内容区域 - 白色主题适配 */
 #content-area {
   padding: 2rem; /* 内边距 - 可调节 */
@@ -843,6 +909,21 @@ body {
         font-size: 0.8rem;
         max-width: 200px;
     }
+    
+    /* 平板端视频样式 */
+    .video-section {
+        padding: 1.8rem 1.5rem;
+    }
+    
+    .video-container {
+        max-width: 700px;
+        border-radius: 14px;
+    }
+    
+    .demo-video {
+        min-height: 350px;
+        max-height: 450px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -866,6 +947,22 @@ body {
     
     .mini-waveform {
         transform: scale(0.8);
+    }
+    
+    /* 移动端视频样式 */
+    .video-section {
+        padding: 1.5rem 1rem;
+    }
+    
+    .video-container {
+        max-width: 100%;
+        border-radius: 12px;
+        margin: 0 0.5rem;
+    }
+    
+    .demo-video {
+        min-height: 250px;
+        max-height: 350px;
     }
 }
 
