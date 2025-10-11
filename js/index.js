@@ -52,7 +52,7 @@ root.innerHTML = `
           x5-playsinline
           crossorigin="anonymous"
           loading="lazy"> 
-          <source src="video/web_UniMoE-Audio_demo.mp4" type="video/mp4">
+          <source src="video/web_UniMoE-Audio.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
         <div class="video-overlay" id="video-overlay">
@@ -100,10 +100,6 @@ root.innerHTML = `
       </div>
     </div>
   </footer>
-  <script src="js/video-config.js"></script>
-  <script src="js/index.js"></script>
-</body>
-</html>
 `;
 
 // 显示介绍内容
@@ -170,51 +166,17 @@ document.addEventListener('DOMContentLoaded', function() {
   
   let videoLoaded = false;
   
-  // 初始化视频源
-  function initializeVideoSource() {
-    if (typeof VIDEO_CONFIG !== 'undefined') {
-      const currentSource = VIDEO_CONFIG.getCurrentSource();
-      
-      // 更新视频源
-      const videoSource = video.querySelector('source');
-      if (videoSource && currentSource.url) {
-        videoSource.src = currentSource.url;
-      }
-      
-      // 更新封面图
-      if (currentSource.poster) {
-        video.poster = currentSource.poster;
-      }
-      
-      console.log(`使用视频托管方案: ${VIDEO_CONFIG.currentProvider} - ${currentSource.description}`);
-    }
-  }
-  
-  // 初始化视频源
-  initializeVideoSource();
-  
   if (video && overlay) {
-    // GitHub Pages优化的视频懒加载函数
+    // 懒加载视频 - 只有当用户点击时才开始加载
     function loadVideo() {
       if (!videoLoaded) {
         videoLoaded = true;
         
         // 显示加载进度
-        loadingDiv.style.display = 'flex';
-        loadingText.textContent = '正在连接...';
+        loadingDiv.style.display = 'block';
         
-        // 检测网络连接质量
-        const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-        const isSlowConnection = connection && (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g');
-        
-        // 根据网络状况调整策略
-        if (isSlowConnection) {
-          loadingText.textContent = '检测到慢速网络，优化加载中...';
-          video.preload = 'metadata';
-        } else {
-          video.preload = 'auto';
-        }
-        
+        // 开始预加载视频
+        video.preload = 'auto';
         video.load();
         
         // 监听加载进度
@@ -225,10 +187,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const percent = Math.round((buffered / duration) * 100);
             
             loadingProgress.style.width = percent + '%';
-            
-            // GitHub Pages优化：显示更详细的加载信息
-            const loadedMB = (buffered / duration * 76).toFixed(1); // 76MB是视频大小
-            loadingText.textContent = `加载中... ${percent}% (${loadedMB}MB/76MB)`;
+            loadingText.textContent = `Loading... ${percent}%`;
             
             // 当缓冲足够时可以开始播放
             if (percent >= 25) {
@@ -241,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // 监听元数据加载完成
         video.addEventListener('loadedmetadata', function() {
-          loadingText.textContent = '准备播放...';
+          console.log('Video metadata loaded');
         });
         
         // 监听可以播放事件
@@ -253,31 +212,12 @@ document.addEventListener('DOMContentLoaded', function() {
           }
         });
         
-        // GitHub Pages优化：增强错误处理
-        video.addEventListener('error', function(e) {
-          console.error('视频加载错误:', e);
-          loadingText.innerHTML = '视频加载失败<br><small>请检查网络连接或稍后重试</small>';
-          loadingProgress.style.backgroundColor = '#ff4444';
-          
-          // 提供重试按钮
-          setTimeout(() => {
-            loadingText.innerHTML = '视频加载失败<br><small>点击重试</small>';
-            loadingDiv.style.cursor = 'pointer';
-            loadingDiv.onclick = function() {
-              location.reload();
-            };
-          }, 3000);
+        // 监听加载错误
+        video.addEventListener('error', function() {
+          loadingDiv.style.display = 'none';
+          loadingText.textContent = 'Loading failed. Please try again.';
+          loadingDiv.style.display = 'block';
         });
-        
-        // GitHub Pages优化：添加超时处理
-        const loadTimeout = setTimeout(() => {
-          if (!video.played.length) {
-            loadingText.innerHTML = '加载超时<br><small>网络较慢，继续等待或刷新页面</small>';
-          }
-        }, 30000); // 30秒超时
-        
-        // 清除超时
-        video.addEventListener('canplay', () => clearTimeout(loadTimeout));
       } else {
         // 视频已加载，直接播放
         video.play();
