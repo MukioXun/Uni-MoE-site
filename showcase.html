@@ -263,15 +263,57 @@
             margin-bottom: 2rem;
         }
 
-        /* MT-content 表格特定列宽设置 */
-        #MT-content .tts-table th:nth-child(1),
-        #MT-content .tts-table td:nth-child(1) {
-            width: 90%; /* Style Description列 - 更宽 */
+        /* ========== Text to Music 独立框架 ========== */
+        .text-to-music-framework {
+            /* 容器样式 */
+        }
+        
+        .text-to-music-framework .tts-table {
+            /* 表格基础样式继承全局设置 */
+        }
+        
+        .text-to-music-framework .tts-table th:nth-child(1),
+        .text-to-music-framework .tts-table td:nth-child(1) {
+            width: 70%; /* Style Description列 - 70% */
+            padding: 15px;
+            text-align: left;
         }
 
-        #MT-content .tts-table th:nth-child(2),
-        #MT-content .tts-table td:nth-child(2) {
-            width: 10%; /* Music列 - 更窄 */
+        .text-to-music-framework .tts-table th:nth-child(2),
+        .text-to-music-framework .tts-table td:nth-child(2) {
+            width: 30%; /* Music列 - 30% */
+            padding: 15px;
+            text-align: center;
+        }
+
+        /* ========== Video to Music 独立框架 ========== */
+        .video-to-music-framework {
+            /* 容器样式 */
+        }
+        
+        .video-to-music-framework .tts-table {
+            /* 表格基础样式继承全局设置 */
+        }
+        
+        .video-to-music-framework .tts-table th:nth-child(1),
+        .video-to-music-framework .tts-table td:nth-child(1) {
+            width: 20%; /* Prompt Video列 - 均匀分布 */
+            padding: 15px;
+            text-align: center;
+        }
+
+        .video-to-music-framework .tts-table th:nth-child(2),
+        .video-to-music-framework .tts-table td:nth-child(2) {
+            width: 60%; /* Music Caption列 - 均匀分布 */
+            padding: 15px;
+            text-align: left;
+        }
+
+        .video-to-music-framework .tts-table th:nth-child(3),
+        .video-to-music-framework .tts-table td:nth-child(3) {
+            width: 20%; /* Video with Music列 - 均匀分布 */
+            padding: 15px;
+            text-align: center;
         }
 
         /* 视频播放器样式 */
@@ -485,7 +527,7 @@
                             </div>
                         </td>
                     </tr>
-                                        <!-- 案例行 -->
+                    <!-- 案例行 -->
                     <tr>
                         <td class="text-cell" rowspan="1">Female Chinese</td>
                         <td class="text-cell">他们一起背诵经文时，没有一个能完整记住的。</td>
@@ -495,7 +537,57 @@
                             </div>
                         </td>
                     </tr>
-
+                    
+                                        <!-- 案例行 -->
+                    <tr>
+                        <td class="text-cell" rowspan="1">Female Chinese</td>
+                        <td class="text-cell">哎呀，看来这件困扰你的事还挺难说出口的嘛，要不要换个方式告诉我？比如，把它藏在故事里？</td>
+                        <td class="audio-cell">
+                            <div class="audio-player-mini" data-audio="audios/tts/add/test_0.wav">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                    </tr>
+                                        <!-- 案例行 -->
+                    <tr>
+                        <td class="text-cell" rowspan="1">Female Chinese</td>
+                        <td class="text-cell">哼，你这样敷衍我，我可是会生气的哦。不过，看在你这么可爱的份上，我就原谅你啦。</td>
+                        <td class="audio-cell">
+                            <div class="audio-player-mini" data-audio="audios/tts/add/test_1.wav">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                    </tr>
+                                        <!-- 案例行 -->
+                    <tr>
+                        <td class="text-cell" rowspan="1">Female Chinese</td>
+                        <td class="text-cell">人家哪有油嘴滑舌啦，我说的都是真心话！那夏夏你想占卜什么呢？</td>
+                        <td class="audio-cell">
+                            <div class="audio-player-mini" data-audio="audios/tts/add/test_2.wav">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                    </tr>
+                                        <!-- 案例行 -->
+                    <tr>
+                        <td class="text-cell" rowspan="1">Female Chinese</td>
+                        <td class="text-cell">哈哈哈逗你的啦，其实我还挺喜欢别人说我可爱的，至少比我哥说我幼稚好吧。</td>
+                        <td class="audio-cell">
+                            <div class="audio-player-mini" data-audio="audios/tts/add/test_3.wav">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                    </tr>
+                                        <!-- 案例行 -->
+                    <tr>
+                        <td class="text-cell" rowspan="1">Female Chinese</td>
+                        <td class="text-cell">你玩乙女游戏的时候，会不会觉得那些男主角太完美了？现实中哪有那么完美的人啊。</td>
+                        <td class="audio-cell">
+                            <div class="audio-player-mini" data-audio="audios/tts/add/test_4.wav">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                    </tr>
                     <!-- English -->
                                        <!-- 案例行 -->
                     <tr>
@@ -942,7 +1034,7 @@
     <!-- Music Category (Text to Music + Video to Music) -->
     <div class="category-content" id="Music-content">
         <h2 id="text-to-music-section" style="text-align: center; margin-bottom: 2rem; color: #333;">Text to Music</h2>
-        <div class="tts-table-container">
+        <div class="tts-table-container text-to-music-framework">
             <table class="tts-table">
                 <thead>
                     <tr>
@@ -1045,7 +1137,7 @@
         </div>
         
         <h2 id="video-to-music-section" style="text-align: center; margin: 3rem 0 2rem 0; color: #333;">Video to Music</h2>
-                <div class="tts-table-container">
+            <div class="tts-table-container video-to-music-framework">
             <table class="tts-table">
                 <thead>
                     <tr>
@@ -1058,28 +1150,13 @@
                     <!-- 案例行 -->
                     <tr>
                         <td class="video-cell">
-                            <div class="video-player-mini" data-video="prompt_videos/grass.mov">
+                            <div class="video-player-mini" data-video="prompt_videos/grass.mp4">
                                 <span class="play-icon">▶</span>
                             </div>
                         </td>
-                        <td class="text-cell">Generate a lo-fi chillhop track featuring soft piano. The mood is mellow and nostalgic, ideal for study or reading.</td>
+                        <td class="text-cell">A calming instrumental piece featuring acoustic guitar, creating a peaceful and relaxing atmosphere. Ideal for meditation or background music.</td>
                         <td class="video-cell">
-                            <div class="video-player-mini" data-video="VT2M/grass.mov">
-                                <span class="play-icon">▶</span>
-                            </div>
-                        </td>
-                    </tr>
-                                        <!-- 案例行 -->
-                    <tr>
-                        <td class="video-cell">
-                            <div class="video-player-mini" data-video="prompt_videos/rainy_woods.mov">
-                                <span class="play-icon">▶</span>
-                            </div>
-                        </td>
-                        <td class="text-cell">Generate a minimalist piano solo featuring soft chords. The mood is calm and reflective, perfect for evening relaxation.</td>
-                        <!-- 案例行 -->
-                        <td class="video-cell">
-                            <div class="video-player-mini" data-video="VT2M/rain.mov">
+                            <div class="video-player-mini" data-video="VT2M/grass_with_music.mov">
                                 <span class="play-icon">▶</span>
                             </div>
                         </td>
@@ -1087,14 +1164,29 @@
                                         <!-- 案例行 -->
                     <tr>
                         <td class="video-cell">
-                            <div class="video-player-mini" data-video="prompt_videos/river.mov">
+                            <div class="video-player-mini" data-video="prompt_videos/sunset.mov">
                                 <span class="play-icon">▶</span>
                             </div>
                         </td>
-                        <td class="text-cell">Generate a chill electronic piece featuring airy synth pads. The mood is dreamy and relaxed, suitable for background study music.</td>
+                        <td class="text-cell">Generate an acoustic folk piece featuring fingerstyle guitar. The mood is mellow and comforting, perfect for a late-night lounge.</td>
                         <!-- 案例行 -->
                         <td class="video-cell">
-                            <div class="video-player-mini" data-video="VT2M/river.mov">
+                            <div class="video-player-mini" data-video="VT2M/sunset_with_music.mov">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                    </tr>
+                                        <!-- 案例行 -->
+                    <tr>
+                        <td class="video-cell">
+                            <div class="video-player-mini" data-video="prompt_videos/humbug.mp4">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                        <td class="text-cell">This is an energetic funk instrumental driven by a catchy, clean electric guitar riff that creates an immediate sense of fun and groove. A tight, punchy drum beat and a driving, melodic bassline lock together to form an irresistible rhythmic foundation. The overall mood is upbeat, feel-good, and exciting, making it perfect for a fast-paced, dynamic video that showcases satisfying actions.</td>
+                        <!-- 案例行 -->
+                        <td class="video-cell">
+                            <div class="video-player-mini" data-video="VT2M/humbug_with_music.mov">
                                 <span class="play-icon">▶</span>
                             </div>
                         </td>
@@ -1102,14 +1194,14 @@
                      <!-- 案例行 -->
                     <tr>
                         <td class="video-cell">
-                            <div class="video-player-mini" data-video="prompt_videos/snow_house.mov">
+                            <div class="video-player-mini" data-video="prompt_videos/snowRider.mp4">
                                 <span class="play-icon">▶</span>
                             </div>
                         </td>
-                        <td class="text-cell">Generate a light electronic track featuring soft pads and subtle beats. The mood is relaxed and flowing, perfect for focus work.</td>
+                        <td class="text-cell">A high-octane electronic piece, featuring pulsating synth chords and a powerful four-on-the-floor kick drum that creates a driving, relentless pace.</td>
                                             <!-- 案例行 -->
                         <td class="video-cell">
-                            <div class="video-player-mini" data-video="VT2M/snow.mov">
+                            <div class="video-player-mini" data-video="VT2M/snowRider_with_music.mov">
                                 <span class="play-icon">▶</span>
                             </div>
                         </td>
@@ -1117,14 +1209,14 @@
                                          <!-- 案例行 -->
                     <tr>
                         <td class="video-cell">
-                            <div class="video-player-mini" data-video="prompt_videos/sunset_beach.mov">
+                            <div class="video-player-mini" data-video="prompt_videos/snowSkite.mp4">
                                 <span class="play-icon">▶</span>
                             </div>
                         </td>
-                        <td class="text-cell">Generate an acoustic folk piece featuring fingerstyle guitar. The mood is mellow and comforting, perfect for a late-night lounge.</td>
+                        <td class="text-cell">This is a driving minimalist techno track, built around a relentless four-on-the-floor kick drum that establishes a powerful, hypnotic groove. A filtered, repetitive synth sequence evolves slowly throughout the piece, accompanied by crisp hi-hats and subtle atmospheric textures. The mood is focused, mechanical, and propulsive, ideal for conveying a sense of unstoppable momentum and intense concentration.</td>
                                            <!-- 案例行 -->
                         <td class="video-cell">
-                            <div class="video-player-mini" data-video="VT2M/sunset.mov">
+                            <div class="video-player-mini" data-video="VT2M/snowSkite_with_music.mov">
                                 <span class="play-icon">▶</span>
                             </div>
                         </td>
@@ -1141,33 +1233,33 @@
             </div>
             <div class="attribution-content" id="attribution-content">
                 <div class="attribution-item">
-                    <strong>Grass Video:</strong> 
+                    <strong>Grass Land:</strong> 
                     <a href="https://youtu.be/MJ9-HmGWw1k?si=Qa8Z9g-KZMLELque" target="_blank">
-                        Field with Wind, Swallows, & Windchimes - Happy Summer moments 4K NO LOOP
-                    </a>
-                </div>
-                <div class="attribution-item">
-                    <strong>River:</strong> 
-                    <a href="https://youtu.be/SgEQrUIKJ6Y?si=8pUoUy1WQfwdu-KJ" target="_blank">
-                        4K 自然環境音 / 湧き水が流れる川の音 鳥のさえずり　birds chirping
-                    </a>
-                </div>
-                <div class="attribution-item">
-                    <strong>Rainy Forest:</strong> 
-                    <a href="https://youtu.be/SnUBb-FAlCY?si=SGaE_bPiN4Na0A4I" target="_blank">
-                        聆听森林小径上的雨声，放松心情，减少焦虑，深度睡眠
-                    </a>
-                </div>
-                <div class="attribution-item">
-                    <strong>Snowy Wood House:</strong> 
-                    <a href="https://youtu.be/2GkV7dPLBj4?si=_pQPwigD6dxy6lnW" target="_blank">
-                        ❄ 10 HOURS of Beautiful Winter Scenes /Amazing Nature Scenery & The Best Relax Music #1
+                        https://youtu.be/MJ9-HmGWw1k?si=Qa8Z9g-KZMLELque
                     </a>
                 </div>
                 <div class="attribution-item">
                     <strong>Sunset Beach:</strong> 
                     <a href="https://youtu.be/2avT63Pjljg?si=W9RdNe0vOFsuqoG2" target="_blank">
-                        Sea, Sand, Sunset: 7 Minutes of Beautiful Sunset Therapy From California (4K Video)
+                        https://youtu.be/2avT63Pjljg?si=W9RdNe0vOFsuqoG2
+                    </a>
+                </div>
+                <div class="attribution-item">
+                    <strong>Hamburger:</strong> 
+                    <a href="https://youtu.be/1WEJKNSHD4s?si=1xUpEJEcuPt4ipAy" target="_blank">
+                        https://youtu.be/1WEJKNSHD4s?si=1xUpEJEcuPt4ipAy
+                    </a>
+                </div>
+                <div class="attribution-item">
+                    <strong>SnowRider:</strong> 
+                    <a href="https://youtu.be/KmCdPQ2Xqhk?si=7u17tLEfSunjiWVS" target="_blank">
+                        https://youtu.be/KmCdPQ2Xqhk?si=7u17tLEfSunjiWVS
+                    </a>
+                </div>
+                <div class="attribution-item">
+                    <strong>SnowSkite:</strong> 
+                    <a href="https://youtu.be/ngddfxog-yw?si=QpMOhCktW41N1pX0" target="_blank">
+                        https://youtu.be/ngddfxog-yw?si=QpMOhCktW41N1pX0
                     </a>
                 </div>
             </div>

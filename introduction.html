@@ -199,6 +199,45 @@
             font-family: 'Consolas', 'Monaco', monospace;
         }
 
+        /* 视频播放器样式 */
+        .video-player-mini {
+            width: 80px;
+            height: 60px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            box-shadow: 0 2px 6px rgba(255, 154, 158, 0.3);
+        }
+
+        .video-player-mini:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(255, 154, 158, 0.4);
+        }
+
+        .video-player-mini.clicked {
+            background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+        }
+
+        .video-player-mini .play-icon {
+            color: white;
+            font-size: 16px;
+            line-height: 1;
+            user-select: none;
+        }
+
+        .video-cell {
+            text-align: center;
+            padding: 0.5rem;
+            vertical-align: middle;
+        }
+
         @media (max-width: 768px) {
             body {
                 padding: 1rem;
@@ -979,6 +1018,62 @@
                         <td class="text-cell">This is a rock music piece. There is a medium-to-high pitched electric guitar solo at the forefront. In the melodic background, a keyboard and a bass guitar repeating the same pattern can be heard. The acoustic drums are playing a loud and slightly fast-paced rock drum beat. There is a rebellious atmosphere to this piece. It can be used in the soundtrack of a teenage drama or a crime shootout audio game.</td>
                         <td class="audio-cell">
                             <div class="audio-player-mini" data-audio="audios/intro_music/demo_4.mp3">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <table class="tts-table">
+                <thead>
+                    <tr>
+                        <th><center>Prompt Video</center></th>
+                        <th><center>Music Caption</center></th>
+                        <th><center>Video with Music</center></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 案例行 -->
+                    <tr>
+                        <td class="video-cell">
+                            <div class="video-player-mini" data-video="prompt_videos/grass.mp4">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                        <td class="text-cell">A calming instrumental piece featuring acoustic guitar, creating a peaceful and relaxing atmosphere. Ideal for meditation or background music.</td>
+                        <td class="video-cell">
+                            <div class="video-player-mini" data-video="VT2M/grass_with_music.mov">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                    </tr>
+                                        <!-- 案例行 -->
+                    <tr>
+                        <td class="video-cell">
+                            <div class="video-player-mini" data-video="prompt_videos/humbug.mp4">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                        <td class="text-cell">This is an energetic funk instrumental driven by a catchy, clean electric guitar riff that creates an immediate sense of fun and groove. A tight, punchy drum beat and a driving, melodic bassline lock together to form an irresistible rhythmic foundation. The overall mood is upbeat, feel-good, and exciting, making it perfect for a fast-paced, dynamic video that showcases satisfying actions.</td>
+                        <!-- 案例行 -->
+                        <td class="video-cell">
+                            <div class="video-player-mini" data-video="VT2M/humbug_with_music.mov">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                    </tr>
+                     <!-- 案例行 -->
+                    <tr>
+                        <td class="video-cell">
+                            <div class="video-player-mini" data-video="prompt_videos/snowRider.mp4">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                        <td class="text-cell">A high-octane electronic piece, featuring pulsating synth chords and a powerful four-on-the-floor kick drum that creates a driving, relentless pace.</td>
+                                            <!-- 案例行 -->
+                        <td class="video-cell">
+                            <div class="video-player-mini" data-video="VT2M/snowRider_with_music.mov">
                                 <span class="play-icon">▶</span>
                             </div>
                         </td>

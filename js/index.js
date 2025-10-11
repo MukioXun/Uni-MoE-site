@@ -65,7 +65,8 @@ root.innerHTML = `
               <div class="loading-bar">
                 <div class="loading-progress" id="loading-progress"></div>
               </div>
-              <div class="loading-text" id="loading-text" center>Loading... 0%</div>
+              <div class="loading-text" id="loading-text">Loading video...</div>
+              <div class="loading-percentage" id="loading-percentage">0%</div>
             </div>
           </div>
         </div>
@@ -163,6 +164,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const loadingDiv = document.getElementById('video-loading');
   const loadingProgress = document.getElementById('loading-progress');
   const loadingText = document.getElementById('loading-text');
+  const loadingPercentage = document.getElementById('loading-percentage');
   
   let videoLoaded = false;
   
@@ -187,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const percent = Math.round((buffered / duration) * 100);
             
             loadingProgress.style.width = percent + '%';
-            loadingText.textContent = `Loading... ${percent}%`;
+            loadingPercentage.textContent = `${percent}%`;
             
             // 当缓冲足够时可以开始播放
             if (percent >= 25) {
@@ -215,7 +217,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // 监听加载错误
         video.addEventListener('error', function() {
           loadingDiv.style.display = 'none';
-          loadingText.textContent = 'Loading failed. Please try again.';
+          loadingText.textContent = 'Failed to load video';
+          loadingPercentage.textContent = 'Please try again';
           loadingDiv.style.display = 'block';
         });
       } else {
@@ -249,7 +252,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // 监听视频等待事件（缓冲不足）
     video.addEventListener('waiting', function() {
       loadingDiv.style.display = 'block';
-      loadingText.textContent = 'Buffering...';
+      loadingText.textContent = 'Buffering video...';
+      loadingPercentage.textContent = '';
     });
     
     // 监听视频可以继续播放事件
