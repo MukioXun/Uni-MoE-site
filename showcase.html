@@ -274,14 +274,23 @@
         
         .text-to-music-framework .tts-table th:nth-child(1),
         .text-to-music-framework .tts-table td:nth-child(1) {
-            width: 70%; /* Style Description列 - 70% */
+            width: 20%; /* Style列 - 20% */
             padding: 15px;
-            text-align: left;
+            text-align: center;
+            /* font-weight: bold; */
+            background-color: #f8f9fa;
         }
 
         .text-to-music-framework .tts-table th:nth-child(2),
         .text-to-music-framework .tts-table td:nth-child(2) {
-            width: 30%; /* Music列 - 30% */
+            width: 60%; /* Style Description列 - 50% */
+            padding: 15px;
+            text-align: left;
+        }
+
+        .text-to-music-framework .tts-table th:nth-child(3),
+        .text-to-music-framework .tts-table td:nth-child(3) {
+            width: 20%; /* Music列 - 30% */
             padding: 15px;
             text-align: center;
         }
@@ -1038,13 +1047,15 @@
             <table class="tts-table">
                 <thead>
                     <tr>
+                        <th><center>Style</center></th>
                         <th><center>Style Description</center></th>
                         <th><center>Music</center></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- 案例行 -->
+                    <!-- Electronic/Modern 电子/现代音乐 -->
                     <tr>
+                        <td class="text-cell">Electronic</td>
                         <td class="text-cell">Generate an ambient electronic piece featuring synthesizers, soft pads, and light percussion. The atmosphere is calm and ethereal, ideal for meditation background.</td>
                         <td class="audio-cell">
                             <div class="audio-player-mini" data-audio="audios/out/0.wav">
@@ -1052,8 +1063,28 @@
                             </div>
                         </td>
                     </tr>
-                    <!-- 案例行 -->
                     <tr>
+                        <td class="text-cell">Electronic</td>
+                        <td class="text-cell">Generate a tropical house track featuring marimba, airy synth layers, and deep bass. The atmosphere is bright and uplifting, perfect for a summer beach party.</td>
+                        <td class="audio-cell">
+                            <div class="audio-player-mini" data-audio="audios/out/5.wav">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-cell">Electronic</td>
+                        <td class="text-cell">Generate a funk groove featuring electric guitar riffs, slap bass, and punchy drums. The atmosphere is energetic and playful, perfect for a nightclub setting.</td>
+                        <td class="audio-cell">
+                            <div class="audio-player-mini" data-audio="audios/out/2.wav">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- Classical/Orchestral 古典/管弦乐 -->
+                    <tr>
+                        <td class="text-cell">Classical</td>
                         <td class="text-cell">Generate a baroque classical piece featuring harpsichord, violin ensemble, and cello. The atmosphere is elegant and refined, suitable for a historical film score.</td>
                         <td class="audio-cell">
                             <div class="audio-player-mini" data-audio="audios/out/1.wav">
@@ -1062,24 +1093,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="text-cell">Generate a funk groove featuring electric guitar riffs, slap bass, and punchy drums. The atmosphere is energetic and playful, perfect for a nightclub setting.</td>
-                        <td class="audio-cell">
-                            <div class="audio-player-mini" data-audio="audios/out/2.wav">
-                                <span class="play-icon">▶</span>
-                            </div>
-                        </td>
-                    </tr>
-                                        <!-- 案例行 -->
-                    <tr>
-                        <td class="text-cell">Generate a lo-fi chillhop track featuring smooth piano chords, soft vinyl textures, and relaxed drum beats. The atmosphere is mellow and nostalgic, ideal for study music.</td>
-                        <td class="audio-cell">
-                            <div class="audio-player-mini" data-audio="audios/out/3.wav">
-                                <span class="play-icon">▶</span>
-                            </div>
-                        </td>
-                    </tr>
-                                        <!-- 案例行 -->
-                    <tr>
+                        <td class="text-cell">Orchestral</td>
                         <td class="text-cell">Generate a cinematic orchestral piece featuring brass, strings, and timpani. The atmosphere is heroic and powerful, suited for an action film scene.</td>
                         <td class="audio-cell">
                             <div class="audio-player-mini" data-audio="audios/out/4.wav">
@@ -1087,35 +1101,10 @@
                             </div>
                         </td>
                     </tr>
-                                        <!-- 案例行 -->
+                    
+                    <!-- Jazz 爵士乐 -->
                     <tr>
-                        <td class="text-cell">Generate a tropical house track featuring marimba, airy synth layers, and deep bass. The atmosphere is bright and uplifting, perfect for a summer beach party.</td>
-                        <td class="audio-cell">
-                            <div class="audio-player-mini" data-audio="audios/out/5.wav">
-                                <span class="play-icon">▶</span>
-                            </div>
-                        </td>
-                    </tr>
-                                        <!-- 案例行 -->
-                    <tr>
-                        <td class="text-cell">Generate a minimalist piano solo featuring gentle arpeggios and soft dynamics. The atmosphere is introspective and serene, ideal for relaxation background.</td>
-                        <td class="audio-cell">
-                            <div class="audio-player-mini" data-audio="audios/out/6.wav">
-                                <span class="play-icon">▶</span>
-                            </div>
-                        </td>
-                    </tr>
-                                        <!-- 案例行 -->
-                    <tr>
-                        <td class="text-cell">Generate a Middle Eastern folk piece featuring oud, frame drums, and ney flute. The atmosphere is mysterious and spiritual, suited for a cultural festival.</td>
-                        <td class="audio-cell">
-                            <div class="audio-player-mini" data-audio="audios/out/7.wav">
-                                <span class="play-icon">▶</span>
-                            </div>
-                        </td>
-                    </tr>
-                                        <!-- 案例行 -->
-                    <tr>
+                        <td class="text-cell">Jazz</td>
                         <td class="text-cell">Generate a swing jazz piece featuring trumpet, clarinet, walking bass, and drums with brushes. The atmosphere is lively and cheerful, ideal for a street performance.</td>
                         <td class="audio-cell">
                             <div class="audio-player-mini" data-audio="audios/out/8.wav">
@@ -1123,11 +1112,42 @@
                             </div>
                         </td>
                     </tr>
-                                        <!-- 案例行 -->
                     <tr>
+                        <td class="text-cell">Jazz</td>
                         <td class="text-cell">Generate a swing jazz piece featuring a saxophone, upright bass, drums with brushes, and piano. The atmosphere is lively and upbeat.</td>
                         <td class="audio-cell">
                             <div class="audio-player-mini" data-audio="audios/out/9.wav">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- Folk/World 民族/世界音乐 -->
+                    <tr>
+                        <td class="text-cell">Folk</td>
+                        <td class="text-cell">Generate a Middle Eastern folk piece featuring oud, frame drums, and ney flute. The atmosphere is mysterious and spiritual, suited for a cultural festival.</td>
+                        <td class="audio-cell">
+                            <div class="audio-player-mini" data-audio="audios/out/7.wav">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    <!-- Ambient/Chill 氛围/轻松音乐 -->
+                    <tr>
+                        <td class="text-cell">Chill</td>
+                        <td class="text-cell">Generate a lo-fi chillhop track featuring smooth piano chords, soft vinyl textures, and relaxed drum beats. The atmosphere is mellow and nostalgic, ideal for study music.</td>
+                        <td class="audio-cell">
+                            <div class="audio-player-mini" data-audio="audios/out/3.wav">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-cell">Ambient</td>
+                        <td class="text-cell">Generate a minimalist piano solo featuring gentle arpeggios and soft dynamics. The atmosphere is introspective and serene, ideal for relaxation background.</td>
+                        <td class="audio-cell">
+                            <div class="audio-player-mini" data-audio="audios/out/6.wav">
                                 <span class="play-icon">▶</span>
                             </div>
                         </td>
