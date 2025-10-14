@@ -283,6 +283,52 @@
             text-align: center;
             padding: 15px;
         }
+
+        /* Showcase Link Section */
+        .showcase-link-section {
+            text-align: center;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+        }
+
+        .showcase-link-section p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .showcase-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .showcase-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            text-decoration: none;
+            color: white;
+        }
+
+        .showcase-button svg {
+            transition: transform 0.3s ease;
+        }
+
+        .showcase-button:hover svg {
+            transform: translateX(3px);
+        }
     </style>
 </head>
 <body>
@@ -330,7 +376,7 @@
                     <br>
                     Right: It demonstrates competitive performance against leading models on comprehensive speech and music metrics.
                 </p>
-                <p><strong>Fig. 1</strong>Performance of UniMoE-Audio</p>
+                <p><strong>Fig. 1</strong> Performance of UniMoE-Audio</p>
             </div>
         </div>
         <br>
@@ -1114,6 +1160,15 @@
                 </tbody>
             </table>
         </div>
+    </div>
+    <div class="showcase-link-section">
+        <p>Explore more comprehensive examples and advanced features in our detailed showcase.</p>
+        <a href="showcase.html" class="showcase-button">
+            <span>View Full Showcase</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+        </a>
     </div>
 
     <!-- 页脚 -->
