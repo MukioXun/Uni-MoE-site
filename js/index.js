@@ -52,14 +52,14 @@ root.innerHTML = `
           x5-playsinline
           crossorigin="anonymous"
           loading="lazy"> 
-          <source src="video/UniMoE-Audio-website.mp4" type="video/mp4">
+          <source src="video/UniMoE_Audio-preview_video.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
         <div class="video-overlay" id="video-overlay">
           <div class="video-overlay-content">
             <h3 class="video-title">Introduction to UniMoE-Audio</h3>
             <div class="video-duration">
-              <span class="duration-text">Duration: 3 min 12 s</span>
+              <span class="duration-text">Duration: 2 min 23 s</span>
             </div>
             <div class="video-loading" id="video-loading" style="display: none;">
               <div class="loading-bar">
